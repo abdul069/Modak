@@ -14,7 +14,7 @@ export function Header() {
           className="flex items-center gap-2 font-display text-xl tracking-tight text-brand-primary"
         >
           <Logo />
-          <span className="font-display text-2xl">Modak</span>
+          <span className="font-display text-2xl">AGNAU</span>
         </Link>
 
         <nav

@@ -10,7 +10,7 @@ import { breadcrumbSchema, buildMetadata } from "@/lib/seo";
 export const metadata: Metadata = buildMetadata({
   title: "Over ons",
   description:
-    "Modak is een Belgisch renovatiebedrijf met 20+ jaar ervaring. Eén team voor de volledige energetische schil van uw woning, met thuisbasis in Gent.",
+    "AGNAU is een Belgisch renovatiebedrijf met 20+ jaar ervaring. Eén team voor de volledige energetische schil van uw woning, met thuisbasis in Gent.",
   path: "/over-ons",
 });
 
@@ -45,7 +45,7 @@ export default function OverOnsPage() {
       <Hero
         eyebrow="Over ons"
         title="Een Gents bedrijf, gegroeid uit 20 jaar werven."
-        subtitle="Modak werd opgericht om wat we al twee decennia goed deden onder één duidelijke vlag te brengen: renovatie zonder versnipperde aannemers."
+        subtitle="AGNAU werd opgericht om wat we al twee decennia goed deden onder één duidelijke vlag te brengen: renovatie zonder versnipperde aannemers."
       />
 
       <div className="container-page py-12">
@@ -54,7 +54,7 @@ export default function OverOnsPage() {
 
       {/* Het verhaal */}
       <section className="container-page pb-20">
-        <div className="mx-auto max-w-3xl prose-modak">
+        <div className="mx-auto max-w-3xl prose-agnau">
           <SectionHeader
             eyebrow="Het verhaal"
             title="Twintig jaar ervaring, vandaag onder één naam."
@@ -63,7 +63,7 @@ export default function OverOnsPage() {
             We zijn al meer dan twintig jaar actief in renovatie en
             haustechniek in Oost-Vlaanderen. Eerst als vakman op de werf, dan
             als technisch coördinator, en sinds 2024 onder onze eigen vlag:
-            <strong> Modak</strong>. Niet omdat we iets te bewijzen hadden,
+            <strong> AGNAU</strong>. Niet omdat we iets te bewijzen hadden,
             maar omdat we wilden uitdragen waar we al jaren in geloven —
             renovatie zonder versnippering.
           </p>

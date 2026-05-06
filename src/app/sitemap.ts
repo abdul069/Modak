@@ -14,6 +14,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "",
     "/diensten",
     "/totaalrenovatie",
+    "/premies",
     "/realisaties",
     "/over-ons",
     "/voor-aannemers",
@@ -25,7 +26,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
     url: `${base}${path}`,
     lastModified: now,
     changeFrequency: "monthly",
-    priority: path === "" ? 1 : path === "/privacy" ? 0.3 : 0.7,
+    priority:
+      path === ""
+        ? 1
+        : path === "/privacy"
+          ? 0.3
+          : path === "/premies"
+            ? 0.85
+            : 0.7,
   }));
 
   const services: MetadataRoute.Sitemap = getAllServices().map((s) => ({

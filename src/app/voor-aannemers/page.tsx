@@ -13,7 +13,7 @@ import { siteConfig } from "@/lib/site";
 export const metadata: Metadata = buildMetadata({
   title: "Voor aannemers en architecten",
   description:
-    "Modak is uw VCA-gecertificeerde onderaannemer voor sanitair, verwarming, ventilatie en haustechniek. Geen verrassingen op uw werf.",
+    "AGNAU is uw VCA-gecertificeerde onderaannemer voor sanitair, verwarming, ventilatie en haustechniek. Geen verrassingen op uw werf.",
   path: "/voor-aannemers",
 });
 
@@ -51,7 +51,7 @@ export default function VoorAannemersPage() {
             />
             <p className="mt-6 text-brand-ink-soft">
               Voor architecten, hoofdaannemers en projectontwikkelaars treedt
-              Modak op als technische onderaannemer. We nemen sanitair,
+              AGNAU op als technische onderaannemer. We nemen sanitair,
               verwarming, ventilatie en warmtepompinstallaties op ons —
               meestal in pakket, soms als losse discipline.
             </p>

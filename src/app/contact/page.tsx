@@ -14,7 +14,7 @@ import { siteConfig } from "@/lib/site";
 export const metadata: Metadata = buildMetadata({
   title: "Contact",
   description:
-    "Contacteer Modak voor renovatie, warmtepompen, ventilatie en alle diensten. Telefoon, e-mail of via het formulier.",
+    "Contacteer AGNAU voor renovatie, warmtepompen, ventilatie en alle diensten. Telefoon, e-mail of via het formulier.",
   path: "/contact",
 });
 
@@ -105,7 +105,7 @@ export default function ContactPage() {
               <h3 className="font-display text-lg text-brand-ink">Vind ons</h3>
               <div className="mt-3 aspect-video w-full overflow-hidden rounded-lg border border-brand-line">
                 <iframe
-                  title="Modak op de kaart — Hooiwege 40j, 9940 Evergem"
+                  title="AGNAU op de kaart — Hooiwege 40j, 9940 Evergem"
                   src="https://www.openstreetmap.org/export/embed.html?bbox=3.6700%2C51.1000%2C3.7000%2C51.1200&amp;layer=mapnik&amp;marker=51.1100%2C3.6850"
                   loading="lazy"
                   className="h-full w-full border-0"

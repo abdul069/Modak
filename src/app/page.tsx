@@ -25,7 +25,7 @@ export default function HomePage() {
         variant="home"
         eyebrow="Renovatie · Gent · Vlaanderen"
         title="Eén partner voor je volledige renovatie — van dak tot warmtepomp."
-        subtitle="Modak combineert dak, isolatie, verwarming, ventilatie, sanitair en airco onder één dak. Geen jongleren met aannemers, één team dat je woning gezond, zuinig en mooi maakt."
+        subtitle="AGNAU combineert dak, isolatie, verwarming, ventilatie, sanitair en airco onder één dak. Geen jongleren met aannemers, één team dat je woning gezond, zuinig en mooi maakt."
         primaryCta={{ label: "Vraag offerte aan", href: "/offerte" }}
         secondaryCta={{ label: "Ontdek onze diensten", href: "/diensten" }}
       />
@@ -166,7 +166,7 @@ export default function HomePage() {
             items={[
               {
                 quote:
-                  "Modak heeft ons dak, isolatie en warmtepomp in één traject gedaan. Geen telefoons tussen aannemers, alles geregeld.",
+                  "AGNAU heeft ons dak, isolatie en warmtepomp in één traject gedaan. Geen telefoons tussen aannemers, alles geregeld.",
                 author: "Familie D.",
                 role: "Totaalrenovatie · Sint-Denijs-Westrem",
               },
@@ -184,7 +184,7 @@ export default function HomePage() {
               },
               {
                 quote:
-                  "Als architect waardeer ik de planningsdiscipline. Modak zit op werven die ze beloven.",
+                  "Als architect waardeer ik de planningsdiscipline. AGNAU zit op werven die ze beloven.",
                 author: "Architectenbureau L.",
                 role: "B2B-samenwerking",
               },

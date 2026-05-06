@@ -74,7 +74,7 @@ export default async function BlogPostPage({ params }: Props) {
         <header className="mt-6">
           <p className="text-xs uppercase tracking-wider text-brand-ink-soft">
             {formatDate(data.frontmatter.date)} ·{" "}
-            {data.frontmatter.author ?? "Modak"}
+            {data.frontmatter.author ?? "AGNAU"}
           </p>
           <h1 className="mt-3 font-display text-brand-ink">
             {data.frontmatter.title}

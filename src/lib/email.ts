@@ -3,7 +3,7 @@ import { Resend } from "resend";
 const apiKey = process.env.RESEND_API_KEY;
 const contactEmail = process.env.CONTACT_EMAIL ?? "info@modak.be";
 const fromAddress =
-  process.env.EMAIL_FROM ?? "Modak <noreply@modak.be>";
+  process.env.EMAIL_FROM ?? "AGNAU <noreply@modak.be>";
 
 const resend = apiKey ? new Resend(apiKey) : null;
 

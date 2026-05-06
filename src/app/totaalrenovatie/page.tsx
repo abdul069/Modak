@@ -12,7 +12,7 @@ import { breadcrumbSchema, buildMetadata } from "@/lib/seo";
 export const metadata: Metadata = buildMetadata({
   title: "Totaalrenovatie",
   description:
-    "Eén partner voor je volledige energetische renovatie — dak, isolatie, warmtepomp, ventilatie, sanitair en badkamer. Modak coördineert van A tot Z.",
+    "Eén partner voor je volledige energetische renovatie — dak, isolatie, warmtepomp, ventilatie, sanitair en badkamer. AGNAU coördineert van A tot Z.",
   path: "/totaalrenovatie",
 });
 
@@ -73,7 +73,7 @@ export default function TotaalrenovatiePage() {
       <Hero
         eyebrow="Totaalrenovatie"
         title="Eén plan, één planning, één aanspreekpunt."
-        subtitle="Geen jongleren met aannemers. Modak coördineert je volledige energetische renovatie — dak, isolatie, warmtepomp, ventilatie, sanitair en badkamer in één vlot traject."
+        subtitle="Geen jongleren met aannemers. AGNAU coördineert je volledige energetische renovatie — dak, isolatie, warmtepomp, ventilatie, sanitair en badkamer in één vlot traject."
         primaryCta={{
           label: "Plan een vrijblijvend gesprek",
           href: "/contact",
@@ -166,7 +166,7 @@ export default function TotaalrenovatiePage() {
         <SectionHeader
           eyebrow="Hoe alles aansluit"
           title="Acht diensten die elkaar versterken."
-          description="Een warmtepomp werkt pas optimaal in een goed geïsoleerde woning. Ventilatie is essentieel om gezond te blijven. Sanitair beïnvloedt vloerverwarming. Modak ziet het geheel."
+          description="Een warmtepomp werkt pas optimaal in een goed geïsoleerde woning. Ventilatie is essentieel om gezond te blijven. Sanitair beïnvloedt vloerverwarming. AGNAU ziet het geheel."
           align="center"
           className="mx-auto"
         />
@@ -182,7 +182,7 @@ export default function TotaalrenovatiePage() {
             <div className="aspect-[4/3] overflow-hidden rounded-xl bg-white">
               {/* TODO: vervangen door echte projectfoto na fotosessie week 2 */}
               <div className="flex h-full items-center justify-center text-brand-primary/20">
-                <span className="font-display text-5xl">Foto Modak</span>
+                <span className="font-display text-5xl">Foto AGNAU</span>
               </div>
             </div>
             <div>
@@ -275,7 +275,7 @@ function DiagramSvg() {
   return (
     <div
       role="img"
-      aria-label="Diagram dat toont hoe Modak's diensten met elkaar verbonden zijn"
+      aria-label="Diagram dat toont hoe AGNAU's diensten met elkaar verbonden zijn"
       className="grid grid-cols-2 gap-3 md:grid-cols-4"
     >
       {items.map((item) => (
@@ -290,7 +290,7 @@ function DiagramSvg() {
         <ArrowDown className="size-6 text-brand-accent" />
       </div>
       <div className="col-span-2 rounded-lg border border-brand-primary bg-brand-primary px-6 py-4 text-center text-white md:col-span-4">
-        <p className="font-display text-xl">Eén modak-team</p>
+        <p className="font-display text-xl">Eén AGNAU-team</p>
         <p className="text-sm text-white/80">Eén planning, één garantie</p>
       </div>
     </div>

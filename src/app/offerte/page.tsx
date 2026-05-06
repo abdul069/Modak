@@ -8,7 +8,7 @@ import { breadcrumbSchema, buildMetadata } from "@/lib/seo";
 export const metadata: Metadata = buildMetadata({
   title: "Vraag offerte",
   description:
-    "Vraag een vrijblijvende offerte aan bij Modak. Drie korte stappen, en we nemen binnen 1-2 werkdagen contact op.",
+    "Vraag een vrijblijvende offerte aan bij AGNAU. Drie korte stappen, en we nemen binnen 1-2 werkdagen contact op.",
   path: "/offerte",
 });
 

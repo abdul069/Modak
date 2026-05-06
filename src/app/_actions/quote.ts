@@ -103,7 +103,7 @@ export async function submitQuote(
     await sendEmail({
       to: contactEmail,
       replyTo: data.email,
-      subject: `[Modak.be] Offerteaanvraag — ${data.name}`,
+      subject: `[AGNAU.be] Offerteaanvraag — ${data.name}`,
       html: `
         <h2 style="font-family:sans-serif">Nieuwe offerteaanvraag</h2>
         <table style="font-family:sans-serif;border-collapse:collapse;line-height:1.5">
@@ -125,13 +125,13 @@ export async function submitQuote(
 
     await sendEmail({
       to: data.email,
-      subject: "Offerteaanvraag ontvangen — Modak",
+      subject: "Offerteaanvraag ontvangen — AGNAU",
       html: `
         <p>Hallo ${safe(data.name)},</p>
         <p>Bedankt voor je offerteaanvraag voor ${safe(serviceLabels)}.</p>
         <p>We bekijken de informatie en nemen binnen 1-2 werkdagen contact op om een plaatsbezoek te plannen of om eerst telefonisch door te lopen wat we precies kunnen betekenen.</p>
         <p>Voor dringende vragen kan je ons bereiken op ${siteConfig.contact.phone}.</p>
-        <p>Tot snel,<br>Het Modak-team</p>
+        <p>Tot snel,<br>Het AGNAU-team</p>
       `,
     });
 

@@ -1,6 +1,6 @@
 # modak.be
 
-Marketing site for Modak — Belgian renovation company in Ghent. Single partner
+Marketing site for AGNAU — Belgian renovation company in Ghent. Single partner
 for the full energetic shell of a home: roof, insulation, heat pumps, heating,
 ventilation, sanitary, bathrooms, air conditioning.
 
@@ -36,7 +36,7 @@ npm run build && npm run start
 |---|---|---|
 | `RESEND_API_KEY` | for forms in prod | Resend API key for transactional mail |
 | `CONTACT_EMAIL` | recommended | Inbox that receives form submissions (default `info@modak.be`) |
-| `EMAIL_FROM` | optional | From address (default `Modak <noreply@modak.be>`) |
+| `EMAIL_FROM` | optional | From address (default `AGNAU <noreply@modak.be>`) |
 | `NEXT_PUBLIC_SITE_URL` | yes | Public origin used for canonical URLs (e.g. `https://modak.be`) |
 | `NEXT_PUBLIC_PLAUSIBLE_DOMAIN` | optional | Enables the Plausible script tag when set |
 | `CRM_WEBHOOK_URL` | optional | Best-effort POST per submission for future CRM integration |

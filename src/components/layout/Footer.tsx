@@ -8,7 +8,7 @@ export function Footer() {
     <footer className="mt-32 border-t border-brand-line bg-brand-primary text-white">
       <div className="container-page grid gap-12 py-16 md:grid-cols-4">
         <div className="space-y-3">
-          <span className="font-display text-2xl">Modak</span>
+          <span className="font-display text-2xl">AGNAU</span>
           <p className="text-sm text-white/75">
             Eén partner voor je volledige renovatie — van dak tot
             warmtepomp. Gent · Oost-Vlaanderen · Vlaanderen.

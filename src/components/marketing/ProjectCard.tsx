@@ -42,7 +42,7 @@ export function ProjectCard({
         ) : (
           <div className="grid h-full place-items-center text-brand-ink-soft/60">
             <span className="font-display text-4xl text-brand-primary/20">
-              Modak
+              AGNAU
             </span>
           </div>
         )}

@@ -72,7 +72,7 @@ export async function submitContact(
     await sendEmail({
       to: contactEmail,
       replyTo: data.email,
-      subject: `[Modak.be] Contactaanvraag van ${data.name}`,
+      subject: `[AGNAU.be] Contactaanvraag van ${data.name}`,
       html: `
         <h2 style="font-family:sans-serif">Nieuwe contactaanvraag</h2>
         <table style="font-family:sans-serif;border-collapse:collapse">
@@ -90,12 +90,12 @@ export async function submitContact(
     // Confirmation to klant
     await sendEmail({
       to: data.email,
-      subject: "We hebben je bericht ontvangen — Modak",
+      subject: "We hebben je bericht ontvangen — AGNAU",
       html: `
         <p>Hallo ${safe(data.name)},</p>
         <p>Bedankt voor je bericht. We lezen het zo snel mogelijk en nemen contact op binnen één werkdag.</p>
         <p>Voor dringende vragen kan je ons bereiken op ${siteConfig.contact.phone}.</p>
-        <p>Tot snel,<br>Het Modak-team</p>
+        <p>Tot snel,<br>Het AGNAU-team</p>
       `,
     });
 

@@ -16,7 +16,7 @@ export function buildMetadata({
   ogImage,
   noIndex,
 }: PageMetaInput): Metadata {
-  const fullTitle = title.includes("Modak")
+  const fullTitle = title.includes("AGNAU")
     ? title
     : `${title} | ${siteConfig.name}`;
   const desc = description ?? siteConfig.description;

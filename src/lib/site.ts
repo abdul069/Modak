@@ -1,5 +1,5 @@
 export const siteConfig = {
-  name: "Modak",
+  name: "AGNAU",
   domain: "modak.be",
   url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://modak.be",
   contact: {
@@ -82,6 +82,7 @@ export type ServiceSlug = (typeof services)[number]["slug"];
 export const navigation = [
   { label: "Diensten", href: "/diensten" },
   { label: "Totaalrenovatie", href: "/totaalrenovatie" },
+  { label: "Premies", href: "/premies" },
   { label: "Realisaties", href: "/realisaties" },
   { label: "Over ons", href: "/over-ons" },
   { label: "Voor aannemers", href: "/voor-aannemers" },

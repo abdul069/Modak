@@ -43,7 +43,7 @@ const components = {
 
 export function MDXContent(props: MDXRemoteProps) {
   return (
-    <div className="prose-modak max-w-none">
+    <div className="prose-agnau max-w-none">
       <MDXRemote {...props} components={{ ...components, ...(props.components ?? {}) }} />
     </div>
   );

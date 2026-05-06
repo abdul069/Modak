@@ -9,7 +9,7 @@ import { siteConfig } from "@/lib/site";
 export const metadata: Metadata = buildMetadata({
   title: "Privacybeleid",
   description:
-    "Privacybeleid van Modak. Welke gegevens we verzamelen, waarvoor, hoe lang en welke rechten je hebt.",
+    "Privacybeleid van AGNAU. Welke gegevens we verzamelen, waarvoor, hoe lang en welke rechten je hebt.",
   path: "/privacy",
 });
 
@@ -26,7 +26,7 @@ export default function PrivacyPage() {
       <Hero
         eyebrow="Juridisch"
         title="Privacybeleid"
-        subtitle="Hoe Modak omgaat met je persoonsgegevens — kort en zonder juridisch jargon waar mogelijk."
+        subtitle="Hoe AGNAU omgaat met je persoonsgegevens — kort en zonder juridisch jargon waar mogelijk."
       />
 
       <article className="container-page max-w-3xl py-16 md:py-20">
@@ -36,9 +36,9 @@ export default function PrivacyPage() {
           Laatst bijgewerkt: {lastUpdated}
         </p>
 
-        <div className="prose-modak mt-8 max-w-none">
+        <div className="prose-agnau mt-8 max-w-none">
           <p>
-            Modak hecht veel belang aan de bescherming van je persoonsgegevens.
+            AGNAU hecht veel belang aan de bescherming van je persoonsgegevens.
             In deze privacyverklaring leggen we duidelijk en transparant uit
             welke gegevens we verzamelen, waarvoor we ze gebruiken, hoe lang we
             ze bewaren en welke rechten je hebt.
@@ -55,7 +55,7 @@ export default function PrivacyPage() {
           </p>
           <ul>
             <li>
-              <strong>Modak</strong>
+              <strong>AGNAU</strong>
             </li>
             <li>
               {siteConfig.contact.address.street},{" "}

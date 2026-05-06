@@ -9,8 +9,8 @@ interface Props {
 
 export function PremieBlock({
   title = "Premies & subsidies",
-  body = "Voor warmtepompen, dakisolatie en ventilatie zijn er Vlaamse premies en federale belastingvoordelen. We berekenen samen wat je in jouw situatie kan recupereren.",
-  href = "/blog/premies-renovatie-vlaanderen",
+  body = "Voor warmtepompen, dakisolatie en ventilatie zijn er Vlaamse premies via Mijn VerbouwPremie. We berekenen samen wat je in jouw situatie kan recupereren.",
+  href = "/premies",
 }: Props) {
   return (
     <section className="rounded-lg border border-brand-accent/40 bg-brand-accent/10 p-6 md:p-8">
@@ -25,7 +25,7 @@ export function PremieBlock({
             href={href}
             className="mt-3 inline-flex text-sm font-medium text-brand-primary underline-offset-4 hover:underline"
           >
-            Bekijk de actuele premies →
+            Bekijk alle actuele premies →
           </Link>
         </div>
       </div>
