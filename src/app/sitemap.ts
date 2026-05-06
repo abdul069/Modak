@@ -20,11 +20,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/blog",
     "/contact",
     "/offerte",
+    "/privacy",
   ].map((path) => ({
     url: `${base}${path}`,
     lastModified: now,
     changeFrequency: "monthly",
-    priority: path === "" ? 1 : 0.7,
+    priority: path === "" ? 1 : path === "/privacy" ? 0.3 : 0.7,
   }));
 
   const services: MetadataRoute.Sitemap = getAllServices().map((s) => ({

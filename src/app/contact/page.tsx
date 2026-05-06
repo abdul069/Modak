@@ -104,15 +104,22 @@ export default function ContactPage() {
             <div>
               <h3 className="font-display text-lg text-brand-ink">Vind ons</h3>
               <div className="mt-3 aspect-video w-full overflow-hidden rounded-lg border border-brand-line">
-                {/* TODO: vervang door echte locatie wanneer adres definitief is */}
                 <iframe
-                  title="Modak op de kaart"
-                  src="https://www.openstreetmap.org/export/embed.html?bbox=3.6928%2C51.0337%2C3.7728%2C51.0737&amp;layer=mapnik"
+                  title="Modak op de kaart — Hooiwege 40j, 9940 Evergem"
+                  src="https://www.openstreetmap.org/export/embed.html?bbox=3.6700%2C51.1000%2C3.7000%2C51.1200&amp;layer=mapnik&amp;marker=51.1100%2C3.6850"
                   loading="lazy"
                   className="h-full w-full border-0"
                   referrerPolicy="no-referrer-when-downgrade"
                 />
               </div>
+              <a
+                href="https://www.openstreetmap.org/?mlat=51.1100&mlon=3.6850#map=17/51.1100/3.6850"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-2 inline-block text-xs text-brand-primary hover:underline"
+              >
+                Open in OpenStreetMap →
+              </a>
             </div>
           </aside>
 

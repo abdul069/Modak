@@ -2,27 +2,27 @@ export const siteConfig = {
   name: "Modak",
   domain: "modak.be",
   url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://modak.be",
-  // TODO: confirm final values with marketing/owner
   contact: {
     email: process.env.CONTACT_EMAIL ?? "info@modak.be",
-    phone: "+32 9 000 00 00",
-    phoneHref: "tel:+3290000000",
+    phone: "+32 485 10 89 89",
+    phoneHref: "tel:+32485108989",
     address: {
-      street: "Adresstraat 1",
-      postalCode: "9000",
-      city: "Gent",
+      street: "Hooiwege 40j",
+      postalCode: "9940",
+      city: "Evergem",
       country: "België",
     },
-    kbo: "BE 0000.000.000",
-    iban: "BE00 0000 0000 0000",
+    // TODO: KBO/BTW-nummer aanvullen wanneer beschikbaar
+    kbo: "TODO: BE 0000.000.000",
   },
   social: {
+    // TODO: vervang door echte social URLs
     instagram: "https://www.instagram.com/",
     facebook: "https://www.facebook.com/",
     linkedin: "https://www.linkedin.com/",
   },
   description:
-    "Belgische renovatiespecialist uit Gent. Eén partner voor je volledige renovatie — dak, isolatie, warmtepompen, verwarming, ventilatie, sanitair, badkamers en airco.",
+    "Belgische renovatiespecialist uit Evergem. Eén partner voor je volledige renovatie — dak, isolatie, warmtepompen, verwarming, ventilatie, sanitair, badkamers en airco.",
   ogImage: "/og.jpg",
 } as const;
 

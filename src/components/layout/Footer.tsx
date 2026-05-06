@@ -107,10 +107,18 @@ export function Footer() {
       <div className="border-t border-white/10">
         <div className="container-page flex flex-col gap-4 py-6 text-xs text-white/65 md:flex-row md:items-center md:justify-between">
           <p>
-            © {year} {siteConfig.name}. KBO {siteConfig.contact.kbo}. Alle rechten
-            voorbehouden.
+            © {year} {siteConfig.name}.
+            {siteConfig.contact.kbo.startsWith("TODO") ? null : (
+              <> KBO {siteConfig.contact.kbo}.</>
+            )}{" "}
+            Alle rechten voorbehouden.
           </p>
-          <ul className="flex flex-wrap gap-x-4 gap-y-2">
+          <ul className="flex flex-wrap items-center gap-x-4 gap-y-2">
+            <li>
+              <Link href="/privacy" className="hover:text-white">
+                Privacybeleid
+              </Link>
+            </li>
             {certificates.map((c) => (
               <li key={c.id}>{c.label}</li>
             ))}

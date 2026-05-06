@@ -5,14 +5,14 @@ launch-blocking severity.
 
 ## Hard blockers (legal / commercial)
 
-- [ ] **Final telephone number** — placeholder `+32 9 000 00 00` in `src/lib/site.ts`
-- [ ] **Final address** — placeholder `Adresstraat 1, 9000 Gent` in `src/lib/site.ts`
-- [ ] **KBO / BTW-nummer** — placeholder `BE 0000.000.000` in `src/lib/site.ts` (footer)
-- [ ] **IBAN** (only if used in invoices/footer; remove if not)
-- [ ] **Privacy policy** — page not yet built; needed before forms go live (GDPR)
-- [ ] **Algemene voorwaarden** — page not yet built
-- [ ] **Cookie banner** — not implemented; needed if Plausible/analytics in EU
-- [ ] **GDPR consent text** below contact + offerte forms — current text is generic, legal review needed
+- [x] **Final telephone number** — `+32 485 10 89 89`
+- [x] **Final address** — `Hooiwege 40j, 9940 Evergem`
+- [x] **Final email** — `info@modak.be`
+- [x] **Privacy policy** — built at `/privacy` (Belgian GDPR-conform). Linked from footer. Recommended: laat door jurist nakijken vóór go-live.
+- [ ] **KBO / BTW-nummer** — placeholder `TODO: BE 0000.000.000` in `src/lib/site.ts`. Footer en privacypagina tonen dit veld pas zodra het ingevuld is.
+- [ ] **Algemene voorwaarden** — pagina nog niet gebouwd (optioneel afhankelijk van bedrijfsvoering)
+- [ ] **Cookie banner** — niet geïmplementeerd. Plausible en Vercel Analytics zijn cookieloos en privacy-vriendelijk; in principe is geen banner nodig zolang er geen marketing-cookies bij komen. Bij twijfel jurist consulteren.
+- [ ] **GDPR consent text** onder contact + offerte formulieren — huidige tekst verwijst naar het privacybeleid; legal review aanbevolen.
 
 ## Brand / visual
 

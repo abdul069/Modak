@@ -312,6 +312,15 @@ export function QuoteForm() {
             </p>
           ) : null}
 
+          <p className="text-xs text-brand-ink-soft">
+            Door deze aanvraag te versturen stem je in met de verwerking van je
+            gegevens om je offerte op te maken. Lees ons{" "}
+            <a href="/privacy" className="underline hover:text-brand-primary">
+              privacybeleid
+            </a>
+            .
+          </p>
+
           <div className="flex flex-wrap items-center justify-between gap-3 pt-2">
             <Button type="button" variant="ghost" onClick={back}>
               <ArrowLeft className="size-4" />

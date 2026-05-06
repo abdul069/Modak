@@ -89,7 +89,11 @@ export function ContactForm() {
 
       <p className="text-xs text-brand-ink-soft">
         Door dit formulier te versturen stem je in met de verwerking van je
-        gegevens om je vraag te behandelen.
+        gegevens om je vraag te behandelen. Lees ons{" "}
+        <a href="/privacy" className="underline hover:text-brand-primary">
+          privacybeleid
+        </a>
+        .
       </p>
     </form>
   );
