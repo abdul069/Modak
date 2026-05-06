@@ -35,6 +35,46 @@
     border-color: var(--color-brand-line);
   }
 
+  /* ----- Animations ------------------------------------------------ */
+  @keyframes a-fade-up {
+    from { opacity: 0; transform: translate3d(0, 14px, 0); }
+    to { opacity: 1; transform: translate3d(0, 0, 0); }
+  }
+  @keyframes a-fade-in {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  @keyframes a-scale-in {
+    from { opacity: 0; transform: scale(0.97); }
+    to { opacity: 1; transform: scale(1); }
+  }
+  @keyframes a-marquee {
+    from { transform: translate3d(0, 0, 0); }
+    to { transform: translate3d(-50%, 0, 0); }
+  }
+  @keyframes a-mesh {
+    0%   { background-position: 0% 0%, 100% 100%; }
+    50%  { background-position: 60% 30%, 30% 80%; }
+    100% { background-position: 0% 0%, 100% 100%; }
+  }
+  @keyframes a-shimmer {
+    0% { background-position: -120% 0; }
+    100% { background-position: 220% 0; }
+  }
+  @keyframes a-pulse-ring {
+    0%   { transform: scale(0.95); opacity: 0.6; }
+    70%  { transform: scale(1.4); opacity: 0; }
+    100% { transform: scale(1.4); opacity: 0; }
+  }
+
+  .animate-fade-up   { animation: a-fade-up 0.7s cubic-bezier(0.22,1,0.36,1) both; }
+  .animate-fade-in   { animation: a-fade-in 0.6s ease both; }
+  .animate-scale-in  { animation: a-scale-in 0.6s cubic-bezier(0.22,1,0.36,1) both; }
+  .animate-marquee   { animation: a-marquee 40s linear infinite; }
+  .animate-mesh      { animation: a-mesh 18s ease-in-out infinite; }
+  .animate-shimmer   { animation: a-shimmer 2.4s ease-in-out infinite; }
+  .animate-pulse-ring { animation: a-pulse-ring 2.4s ease-out infinite; }
+
   html {
     scroll-behavior: smooth;
     -webkit-text-size-adjust: 100%;
@@ -97,6 +137,43 @@
       transition-duration: 0.01ms !important;
       scroll-behavior: auto !important;
     }
+  }
+}
+
+@layer utilities {
+  .marquee-mask {
+    -webkit-mask-image: linear-gradient(
+      to right,
+      transparent 0,
+      black 8%,
+      black 92%,
+      transparent 100%
+    );
+    mask-image: linear-gradient(
+      to right,
+      transparent 0,
+      black 8%,
+      black 92%,
+      transparent 100%
+    );
+  }
+  .text-shimmer {
+    background: linear-gradient(
+      100deg,
+      currentColor 30%,
+      var(--color-brand-accent) 50%,
+      currentColor 70%
+    );
+    background-size: 200% 100%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .bg-mesh-hero {
+    background-image:
+      radial-gradient(at 20% 30%, rgba(201, 169, 97, 0.28), transparent 45%),
+      radial-gradient(at 80% 75%, rgba(255, 255, 255, 0.10), transparent 55%);
+    background-size: 200% 200%;
   }
 }
 

@@ -14,7 +14,7 @@ import { Breadcrumbs } from "@/components/marketing/Breadcrumbs";
 import { SectionHeader } from "@/components/marketing/SectionHeader";
 import { CTABlock } from "@/components/marketing/CTABlock";
 import { FAQAccordion } from "@/components/marketing/FAQAccordion";
-import { Button } from "@/components/ui/button";
+import { Reveal } from "@/components/ui/Reveal";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { breadcrumbSchema, buildMetadata } from "@/lib/seo";
 
@@ -215,25 +215,26 @@ export default function PremiesPage() {
 
       {/* Income bands */}
       <section className="container-page pb-12">
-        <SectionHeader
-          eyebrow="Inkomenscategorieën"
-          title="Welke premie krijg jij?"
-          description="Mijn VerbouwPremie werkt met vier inkomenscategorieën. Hoe lager het inkomen, hoe hoger de premie."
-        />
+        <Reveal>
+          <SectionHeader
+            eyebrow="Inkomenscategorieën"
+            title="Welke premie krijg jij?"
+            description="Mijn VerbouwPremie werkt met vier inkomenscategorieën. Hoe lager het inkomen, hoe hoger de premie."
+          />
+        </Reveal>
         <ul className="mt-10 grid gap-4 md:grid-cols-3">
-          {incomeBands.map((b) => (
-            <li
-              key={b.cat}
-              className="rounded-lg border border-brand-line bg-white p-6"
-            >
-              <p className="text-xs font-semibold uppercase tracking-wider text-brand-primary">
-                {b.cat}
-              </p>
-              <h3 className="mt-1 font-display text-xl text-brand-ink">
-                {b.label}
-              </h3>
-              <p className="mt-2 text-sm text-brand-ink-soft">{b.detail}</p>
-            </li>
+          {incomeBands.map((b, i) => (
+            <Reveal key={b.cat} delay={i * 80}>
+              <li className="h-full rounded-lg border border-brand-line bg-white p-6 transition-shadow hover:shadow-md">
+                <p className="text-xs font-semibold uppercase tracking-wider text-brand-primary">
+                  {b.cat}
+                </p>
+                <h3 className="mt-1 font-display text-xl text-brand-ink">
+                  {b.label}
+                </h3>
+                <p className="mt-2 text-sm text-brand-ink-soft">{b.detail}</p>
+              </li>
+            </Reveal>
           ))}
         </ul>
       </section>
@@ -241,17 +242,19 @@ export default function PremiesPage() {
       {/* Premies per category */}
       <section className="bg-brand-bg-alt/50 py-20">
         <div className="container-page">
-          <SectionHeader
-            eyebrow="Per type werk"
-            title="Wat krijg je per discipline?"
-            description="Bedragen volgens Mijn VerbouwPremie, geldig vanaf maart 2026. Voor jouw exacte premie rekenen we het door tijdens het plaatsbezoek."
-          />
+          <Reveal>
+            <SectionHeader
+              eyebrow="Per type werk"
+              title="Wat krijg je per discipline?"
+              description="Bedragen volgens Mijn VerbouwPremie, geldig vanaf maart 2026. Voor jouw exacte premie rekenen we het door tijdens het plaatsbezoek."
+            />
+          </Reveal>
           <div className="mt-12 grid gap-6 lg:grid-cols-2">
-            {premies.map((p) => (
+            {premies.map((p, idx) => (
+              <Reveal key={p.slug} delay={idx * 100}>
               <article
-                key={p.slug}
                 id={p.slug}
-                className="rounded-xl border border-brand-line bg-white p-6 md:p-8"
+                className="rounded-xl border border-brand-line bg-white p-6 transition-shadow hover:shadow-md md:p-8"
               >
                 <div className="flex items-start justify-between gap-4">
                   <div>
@@ -329,6 +332,7 @@ export default function PremiesPage() {
                   </Link>
                 ) : null}
               </article>
+              </Reveal>
             ))}
           </div>
         </div>

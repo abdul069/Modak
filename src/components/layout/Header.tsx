@@ -1,20 +1,45 @@
+"use client";
+
+import * as React from "react";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Logo } from "@/components/brand/Logo";
 import { navigation, siteConfig } from "@/lib/site";
 import { MobileNav } from "@/components/layout/MobileNav";
+import { cn } from "@/lib/utils";
 
 export function Header() {
+  const [scrolled, setScrolled] = React.useState(false);
+
+  React.useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 12);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
   return (
-    <header className="sticky top-0 z-40 w-full border-b border-brand-line/60 bg-brand-bg/85 backdrop-blur supports-[backdrop-filter]:bg-brand-bg/70">
-      <div className="container-page flex h-16 items-center justify-between gap-6 md:h-20">
+    <header
+      className={cn(
+        "sticky top-0 z-40 w-full border-b backdrop-blur transition-all duration-300",
+        scrolled
+          ? "border-brand-line/80 bg-brand-bg/90 shadow-[0_1px_0_0_rgba(0,0,0,0.02)]"
+          : "border-transparent bg-brand-bg/60"
+      )}
+    >
+      <div
+        className={cn(
+          "container-page flex items-center justify-between gap-6 transition-all duration-300",
+          scrolled ? "h-14 md:h-16" : "h-16 md:h-20"
+        )}
+      >
         <Link
           href="/"
           aria-label={`${siteConfig.name} home`}
-          className="flex items-center gap-2 font-display text-xl tracking-tight text-brand-primary"
+          className="group inline-flex items-center transition-opacity hover:opacity-90"
         >
-          <Logo />
-          <span className="font-display text-2xl">AGNAU</span>
+          <Logo className="transition-transform duration-300 group-hover:-translate-y-0.5" />
         </Link>
 
         <nav
@@ -25,7 +50,10 @@ export function Header() {
             <Link
               key={item.href}
               href={item.href}
-              className="text-sm text-brand-ink transition-colors hover:text-brand-primary"
+              className="relative text-sm text-brand-ink transition-colors hover:text-brand-primary
+                         after:absolute after:left-0 after:-bottom-1 after:h-px after:w-full
+                         after:origin-left after:scale-x-0 after:bg-brand-primary
+                         after:transition-transform after:duration-300 hover:after:scale-x-100"
             >
               {item.label}
             </Link>
@@ -36,23 +64,12 @@ export function Header() {
           <Button asChild size="sm" className="hidden md:inline-flex">
             <Link href="/offerte">
               Vraag offerte
-              <ArrowRight className="size-4" />
+              <ArrowRight className="size-4 transition-transform group-hover:translate-x-0.5" />
             </Link>
           </Button>
           <MobileNav />
         </div>
       </div>
     </header>
-  );
-}
-
-function Logo() {
-  return (
-    <span
-      aria-hidden
-      className="grid size-9 place-items-center rounded-md bg-brand-primary text-sm font-semibold text-white"
-    >
-      M
-    </span>
   );
 }

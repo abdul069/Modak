@@ -6,6 +6,7 @@ import { Menu } from "lucide-react";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
 import { navigation, siteConfig } from "@/lib/site";
+import { Logo } from "@/components/brand/Logo";
 
 export function MobileNav() {
   const [open, setOpen] = React.useState(false);
@@ -22,9 +23,8 @@ export function MobileNav() {
         </Button>
       </SheetTrigger>
       <SheetContent side="right" className="flex flex-col gap-8">
-        <span className="font-display text-2xl text-brand-primary">
-          {siteConfig.name}
-        </span>
+        <Logo />
+
         <nav
           className="flex flex-col gap-1"
           aria-label="Mobiele hoofdnavigatie"
