@@ -14,25 +14,6 @@ export const metadata: Metadata = buildMetadata({
   path: "/over-ons",
 });
 
-const team = [
-  // TODO: vervang door echte team-leden + foto's na fotosessie
-  {
-    name: "TODO: Naam zaakvoerder",
-    role: "Zaakvoerder",
-    bio: "20+ jaar ervaring in renovatie en haustechniek. Spreekt klant en monteur dezelfde taal.",
-  },
-  {
-    name: "TODO: Werfleider",
-    role: "Werfleider & RESCert-installateur",
-    bio: "Onze technische rots in de branding op grote werven.",
-  },
-  {
-    name: "TODO: Office",
-    role: "Planning & administratie",
-    bio: "Houdt overzicht over offertes, planningen en premiedossiers.",
-  },
-];
-
 export default function OverOnsPage() {
   const breadcrumbs = [
     { name: "Home", url: "/" },
@@ -118,34 +99,7 @@ export default function OverOnsPage() {
         </div>
       </section>
 
-      {/* Team */}
-      <section className="container-page py-20">
-        <SectionHeader
-          eyebrow="Team"
-          title="De mensen achter de werf."
-          description="Een klein, vast team van vakmensen en kaders die u allemaal bij naam zult kennen tegen het einde van uw project."
-        />
-        <div className="mt-12 grid gap-6 md:grid-cols-3">
-          {team.map((member) => (
-            <article
-              key={member.name}
-              className="rounded-lg border border-brand-line bg-white p-6"
-            >
-              <div className="aspect-square w-full overflow-hidden rounded-md bg-brand-bg-alt">
-                {/* TODO: profielfoto's na fotosessie */}
-                <div className="grid h-full place-items-center text-brand-primary/20">
-                  <span className="font-display text-3xl">M</span>
-                </div>
-              </div>
-              <h3 className="mt-4 font-display text-lg text-brand-ink">
-                {member.name}
-              </h3>
-              <p className="text-sm text-brand-primary">{member.role}</p>
-              <p className="mt-2 text-sm text-brand-ink-soft">{member.bio}</p>
-            </article>
-          ))}
-        </div>
-      </section>
+      {/* Team section removed per owner request */}
 
       {/* Certificaten */}
       <section className="bg-brand-bg-alt/50 py-20">
