@@ -1,9 +1,9 @@
 export const siteConfig = {
   name: "AGNAU",
-  domain: "modak.be",
-  url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://modak.be",
+  domain: "agnau.be",
+  url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://agnau.be",
   contact: {
-    email: process.env.CONTACT_EMAIL ?? "info@modak.be",
+    email: process.env.CONTACT_EMAIL ?? "info@agnau.be",
     phone: "+32 485 10 89 89",
     phoneHref: "tel:+32485108989",
     address: {
