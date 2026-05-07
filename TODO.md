@@ -24,11 +24,12 @@ launch-blocking severity.
 ## Content
 
 - [ ] **Hero copy on home** — confirm kernbelofte, currently the spec's draft
-- [ ] **All photo assets** — currently every project + team uses placeholder backgrounds
+- [ ] **Photo assets** — partially done; remaining placeholders:
   - [ ] Hero photo on home (LCP — should be preloaded once available)
-  - [ ] Project hero + gallery images (`public/images/projects/`)
+  - [x] Project hero images for de 3 realisaties (`public/images/projects/*-hero.jpg`)
+  - [ ] Project gallery images (`gallery: []` in MDX frontmatters — nog leeg)
   - [ ] Team headshots (`/over-ons`)
-  - [ ] Voorbeeldproject foto on `/totaalrenovatie`
+  - [x] Voorbeeldproject foto on `/totaalrenovatie` (hergebruikt Sint-Denijs-Westrem-hero)
 - [ ] **Real testimonials** — `src/app/page.tsx` uses 4 placeholder quotes
 - [ ] **Real B2B reference projects** — `src/app/voor-aannemers/page.tsx` lists 3 placeholders
 - [ ] **Team bios + names** — `src/app/over-ons/page.tsx` has TODO entries
