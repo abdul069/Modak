@@ -37,7 +37,8 @@ export const services = [
     title: "Dakrenovatie",
     icon: "Home",
     short: "Volledige dakrenovaties met aandacht voor structuur, dichting en afwerking.",
-    image: STOCK_PHOTO,
+    image: "/images/projects/totaalrenovatie-sint-denijs-westrem-hero.jpg",
+    tint: "neutral",
   },
   {
     slug: "dakisolatie",
@@ -45,14 +46,15 @@ export const services = [
     icon: "Layers",
     short: "Energiebesparend isoleren — binnen of buitenom — met blijvende premies.",
     image: STOCK_PHOTO,
+    tint: "amber",
   },
   {
     slug: "warmtepompen",
     title: "Warmtepompen",
     icon: "Flame",
     short: "Lucht-water en geothermische warmtepompen, RESCert-gecertificeerd.",
-    image:
-      "https://images.unsplash.com/photo-1605000797499-95a51c5269ae?w=1200&q=80&auto=format&fit=crop",
+    image: "/images/projects/warmtepomp-gent-hero.jpg",
+    tint: "neutral",
   },
   {
     slug: "verwarming",
@@ -60,6 +62,7 @@ export const services = [
     icon: "Thermometer",
     short: "Centrale verwarming, vloerverwarming en hybride installaties.",
     image: STOCK_PHOTO,
+    tint: "red",
   },
   {
     slug: "ventilatie",
@@ -67,6 +70,7 @@ export const services = [
     icon: "Wind",
     short: "Systeem C en D met warmterecuperatie voor een gezond binnenklimaat.",
     image: STOCK_PHOTO,
+    tint: "emerald",
   },
   {
     slug: "sanitair",
@@ -74,13 +78,15 @@ export const services = [
     icon: "Droplet",
     short: "Volledige sanitaire installaties — leidingen, toestellen en aansluitingen.",
     image: STOCK_PHOTO,
+    tint: "sky",
   },
   {
     slug: "badkamers",
     title: "Badkamers",
     icon: "Bath",
     short: "Badkamers van A tot Z — ontwerp, betegeling, sanitair en afwerking.",
-    image: STOCK_PHOTO,
+    image: "/images/projects/badkamer-merelbeke-hero.jpg",
+    tint: "neutral",
   },
   {
     slug: "airco",
@@ -88,6 +94,7 @@ export const services = [
     icon: "Snowflake",
     short: "Splitairco's, multisplit en VRV-systemen voor woning of kantoor.",
     image: STOCK_PHOTO,
+    tint: "cyan",
   },
 ] as const;
 

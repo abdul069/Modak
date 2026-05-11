@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import { resolveIcon } from "@/lib/icon-map";
+import { cn } from "@/lib/utils";
 
 interface ServiceTileProps {
   title: string;
@@ -9,9 +10,26 @@ interface ServiceTileProps {
   slug: string;
   icon?: string;
   image: string;
+  tint?: "neutral" | "amber" | "red" | "emerald" | "sky" | "cyan";
 }
 
-export function ServiceTile({ title, short, slug, icon, image }: ServiceTileProps) {
+const TINT_GRADIENTS: Record<string, string> = {
+  neutral: "from-black/85 via-black/40 to-transparent",
+  amber: "from-amber-900/85 via-amber-800/45 to-transparent",
+  red: "from-red-900/85 via-red-800/45 to-transparent",
+  emerald: "from-emerald-900/85 via-emerald-800/45 to-transparent",
+  sky: "from-sky-900/85 via-sky-800/45 to-transparent",
+  cyan: "from-cyan-900/85 via-cyan-800/45 to-transparent",
+};
+
+export function ServiceTile({
+  title,
+  short,
+  slug,
+  icon,
+  image,
+  tint = "neutral",
+}: ServiceTileProps) {
   const Icon = resolveIcon(icon);
   return (
     <Link
@@ -27,7 +45,10 @@ export function ServiceTile({ title, short, slug, icon, image }: ServiceTileProp
       />
       <div
         aria-hidden
-        className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/35 to-transparent"
+        className={cn(
+          "absolute inset-0 bg-gradient-to-t",
+          TINT_GRADIENTS[tint] ?? TINT_GRADIENTS.neutral
+        )}
       />
       <div className="absolute inset-x-0 bottom-0 flex items-end justify-between gap-3 p-6 text-white">
         <div>

@@ -244,6 +244,7 @@ export default async function ServicePage({ params }: Props) {
                     short={s.frontmatter.shortDescription}
                     icon={s.frontmatter.icon}
                     image={siteMatch?.image ?? siteConfig.heroPhoto}
+                    tint={siteMatch?.tint}
                   />
                 );
               })}

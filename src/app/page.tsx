@@ -72,6 +72,7 @@ export default function HomePage() {
                   short={service.short}
                   icon={service.icon}
                   image={service.image}
+                  tint={service.tint}
                 />
               </Reveal>
             ))}
