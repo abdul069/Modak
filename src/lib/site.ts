@@ -97,6 +97,14 @@ export const services = [
     image: PHOTO_WARMTEPOMP,
     tint: "cyan",
   },
+  {
+    slug: "elektriciteitswerken",
+    title: "Elektriciteitswerken",
+    icon: "Zap",
+    short: "Residentiële elektriciteit — van keuring tot volledige herbedrading en domotica.",
+    image: PHOTO_TOTAAL,
+    tint: "amber",
+  },
 ] as const;
 
 export type ServiceSlug = (typeof services)[number]["slug"];
