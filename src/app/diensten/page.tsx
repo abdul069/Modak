@@ -1,12 +1,12 @@
 import type { Metadata } from "next";
-import { Hero } from "@/components/marketing/Hero";
-import { ServiceCard } from "@/components/marketing/ServiceCard";
+import { HeroPhoto } from "@/components/marketing/HeroPhoto";
+import { ServiceTile } from "@/components/marketing/ServiceTile";
 import { CTABlock } from "@/components/marketing/CTABlock";
 import { Breadcrumbs } from "@/components/marketing/Breadcrumbs";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { breadcrumbSchema } from "@/lib/seo";
 import { buildMetadata } from "@/lib/seo";
-import { services } from "@/lib/site";
+import { services, siteConfig } from "@/lib/site";
 
 export const metadata: Metadata = buildMetadata({
   title: "Onze diensten",
@@ -24,28 +24,37 @@ export default function DienstenPage() {
           { name: "Diensten", url: "/diensten" },
         ])}
       />
-      <Hero
+      <HeroPhoto
+        photoUrl={siteConfig.heroPhoto}
+        photoAlt="AGNAU op de werf"
         eyebrow="Onze diensten"
-        title="Acht specialisaties, één team."
+        title="Acht specialisaties. Eén team."
         subtitle="Van dakrenovatie tot airco-installatie — alles wat de energetische schil van een woning omvat, en alles wat erbij hoort."
         primaryCta={{ label: "Vraag offerte aan", href: "/offerte" }}
+        size="compact"
+        showScrollIndicator={false}
       />
 
-      <div className="container-page py-16">
+      <div className="container-page py-10">
         <Breadcrumbs
           items={[
             { name: "Home", url: "/" },
             { name: "Diensten", url: "/diensten" },
           ]}
         />
-        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          {services.map((s) => (
-            <ServiceCard key={s.slug} {...s} />
-          ))}
-        </div>
       </div>
 
-      <div className="container-page pb-20">
+      <section className="section-dark py-20">
+        <div className="container-page">
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            {services.map((s) => (
+              <ServiceTile key={s.slug} {...s} />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <div className="container-page py-20">
         <CTABlock
           variant="secondary"
           title="Niet zeker welke dienst je nodig hebt?"

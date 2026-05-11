@@ -2,15 +2,21 @@
 
 import * as React from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Logo } from "@/components/brand/Logo";
-import { navigation, siteConfig } from "@/lib/site";
+import { navigation, services, siteConfig } from "@/lib/site";
 import { MobileNav } from "@/components/layout/MobileNav";
+import { resolveIcon } from "@/lib/icon-map";
 import { cn } from "@/lib/utils";
+
+const SERVICE_NAV_PATHS = ["/", "/diensten"];
 
 export function Header() {
   const [scrolled, setScrolled] = React.useState(false);
+  const pathname = usePathname();
+  const showServiceNav = SERVICE_NAV_PATHS.includes(pathname ?? "");
 
   React.useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 12);
@@ -70,6 +76,29 @@ export function Header() {
           <MobileNav />
         </div>
       </div>
+
+      {showServiceNav ? (
+        <div className="hidden border-t border-brand-line/60 bg-brand-bg-alt/70 lg:block">
+          <nav
+            className="container-page flex items-center gap-6 overflow-x-auto py-2.5"
+            aria-label="Diensten"
+          >
+            {services.map((service) => {
+              const Icon = resolveIcon(service.icon);
+              return (
+                <Link
+                  key={service.slug}
+                  href={`/diensten/${service.slug}`}
+                  className="group inline-flex shrink-0 items-center gap-1.5 text-xs font-medium text-brand-ink-soft transition-colors hover:text-brand-primary"
+                >
+                  <Icon className="size-3.5 transition-colors group-hover:text-brand-primary" />
+                  {service.title}
+                </Link>
+              );
+            })}
+          </nav>
+        </div>
+      ) : null}
     </header>
   );
 }

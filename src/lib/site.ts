@@ -24,6 +24,8 @@ export const siteConfig = {
   description:
     "Belgische renovatiespecialist uit Evergem. Eén partner voor je volledige renovatie — dak, isolatie, warmtepompen, verwarming, ventilatie, sanitair, badkamers en airco.",
   ogImage: "/og.jpg",
+  heroPhoto:
+    "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=2400&q=85&auto=format&fit=crop",
 } as const;
 
 export const services = [
@@ -32,48 +34,64 @@ export const services = [
     title: "Dakrenovatie",
     icon: "Home",
     short: "Volledige dakrenovaties met aandacht voor structuur, dichting en afwerking.",
+    image:
+      "https://images.unsplash.com/photo-1632759145351-1d76fabf28e4?w=1200&q=80&auto=format&fit=crop",
   },
   {
     slug: "dakisolatie",
     title: "Dakisolatie",
     icon: "Layers",
     short: "Energiebesparend isoleren — binnen of buitenom — met blijvende premies.",
+    image:
+      "https://images.unsplash.com/photo-1517581177682-a085bb7ffb15?w=1200&q=80&auto=format&fit=crop",
   },
   {
     slug: "warmtepompen",
     title: "Warmtepompen",
     icon: "Flame",
     short: "Lucht-water en geothermische warmtepompen, RESCert-gecertificeerd.",
+    image:
+      "https://images.unsplash.com/photo-1605000797499-95a51c5269ae?w=1200&q=80&auto=format&fit=crop",
   },
   {
     slug: "verwarming",
     title: "Verwarming",
     icon: "Thermometer",
     short: "Centrale verwarming, vloerverwarming en hybride installaties.",
+    image:
+      "https://images.unsplash.com/photo-1581094288338-2314dddb7ece?w=1200&q=80&auto=format&fit=crop",
   },
   {
     slug: "ventilatie",
     title: "Ventilatie",
     icon: "Wind",
     short: "Systeem C en D met warmterecuperatie voor een gezond binnenklimaat.",
+    image:
+      "https://images.unsplash.com/photo-1631545308456-77ca5b9dd1a8?w=1200&q=80&auto=format&fit=crop",
   },
   {
     slug: "sanitair",
     title: "Sanitair",
     icon: "Droplet",
     short: "Volledige sanitaire installaties — leidingen, toestellen en aansluitingen.",
+    image:
+      "https://images.unsplash.com/photo-1620626011761-996317b8d101?w=1200&q=80&auto=format&fit=crop",
   },
   {
     slug: "badkamers",
     title: "Badkamers",
     icon: "Bath",
     short: "Badkamers van A tot Z — ontwerp, betegeling, sanitair en afwerking.",
+    image:
+      "https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?w=1200&q=80&auto=format&fit=crop",
   },
   {
     slug: "airco",
     title: "Airco",
     icon: "Snowflake",
     short: "Splitairco's, multisplit en VRV-systemen voor woning of kantoor.",
+    image:
+      "https://images.unsplash.com/photo-1631545806609-25295e5fefd2?w=1200&q=80&auto=format&fit=crop",
   },
 ] as const;
 

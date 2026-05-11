@@ -4,6 +4,7 @@ import Script from "next/script";
 import { Analytics } from "@vercel/analytics/react";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
+import { StickyCTA } from "@/components/marketing/StickyCTA";
 import { siteConfig } from "@/lib/site";
 import "./globals.css";
 
@@ -91,6 +92,7 @@ export default function RootLayout({
           {children}
         </main>
         <Footer />
+        <StickyCTA />
         <Analytics />
       </body>
     </html>

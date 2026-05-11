@@ -13,9 +13,12 @@
 
   --color-brand-bg: #f4f1eb;
   --color-brand-bg-alt: #ebe6db;
+  --color-brand-bg-dark: #0a0a0a;
   --color-brand-ink: #1a1a1a;
   --color-brand-ink-soft: #4a4a4a;
+  --color-brand-ink-inverted: #ffffff;
   --color-brand-line: #d9d3c5;
+  --color-brand-accent-bold: #f5c518;
 
   --font-sans: var(--font-inter), ui-sans-serif, system-ui, -apple-system,
     "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
@@ -178,6 +181,16 @@
 }
 
 @layer components {
+  .section-dark {
+    background-color: var(--color-brand-bg-dark);
+    color: var(--color-brand-ink-inverted);
+  }
+
+  .section-accent {
+    background-color: var(--color-brand-accent-bold);
+    color: var(--color-brand-bg-dark);
+  }
+
   .container-page {
     width: 100%;
     margin-inline: auto;
