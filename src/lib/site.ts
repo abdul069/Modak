@@ -105,6 +105,22 @@ export const services = [
     image: PHOTO_TOTAAL,
     tint: "amber",
   },
+  {
+    slug: "zonnepanelen",
+    title: "Zonnepanelen",
+    icon: "Sun",
+    short: "PV-installaties op maat — van panelen tot omvormer en aansluiting op het net.",
+    image: PHOTO_TOTAAL,
+    tint: "amber",
+  },
+  {
+    slug: "laadpalen",
+    title: "Laadpalen",
+    icon: "Plug",
+    short: "Laadpalen voor elektrische wagens — thuis, voor mede-eigenaars of bedrijf.",
+    image: PHOTO_WARMTEPOMP,
+    tint: "emerald",
+  },
 ] as const;
 
 export type ServiceSlug = (typeof services)[number]["slug"];
