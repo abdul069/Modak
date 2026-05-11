@@ -48,7 +48,11 @@ export function HeroPhoto({
       />
       <div
         aria-hidden
-        className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/10 to-black/75"
+        className="absolute inset-0 bg-gradient-to-b from-black/55 via-black/35 to-black/90"
+      />
+      <div
+        aria-hidden
+        className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-black/85 to-transparent"
       />
 
       <div

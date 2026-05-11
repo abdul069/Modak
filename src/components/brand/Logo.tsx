@@ -154,12 +154,11 @@ export function LogoWordmark({ className }: { className?: string }) {
   return (
     <span
       className={cn(
-        "font-display text-[1.3rem] font-medium tracking-[0.22em]",
+        "font-sans text-[1.35rem] font-bold uppercase tracking-[0.16em] leading-none",
         className
       )}
     >
       AGNAU
-      {/* groen accent in de "A" (decoratief), enkel zichtbaar in kleur-variant via CSS */}
     </span>
   );
 }

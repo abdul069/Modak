@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
-import { Hero } from "@/components/marketing/Hero";
+import { ArrowRight, CheckCircle2 } from "lucide-react";
+import { HeroPhoto } from "@/components/marketing/HeroPhoto";
 import { Breadcrumbs } from "@/components/marketing/Breadcrumbs";
 import { SectionHeader } from "@/components/marketing/SectionHeader";
 import { CTABlock } from "@/components/marketing/CTABlock";
@@ -10,7 +10,7 @@ import { FAQAccordion } from "@/components/marketing/FAQAccordion";
 import { PremieBlock } from "@/components/marketing/PremieBlock";
 import { CertificateBadges } from "@/components/marketing/CertificateBadges";
 import { ProjectCard } from "@/components/marketing/ProjectCard";
-import { ServiceCard } from "@/components/marketing/ServiceCard";
+import { ServiceTile } from "@/components/marketing/ServiceTile";
 import { MDXContent } from "@/components/MDXContent";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { breadcrumbSchema, buildMetadata, serviceSchema } from "@/lib/seo";
@@ -19,7 +19,7 @@ import {
   getAllServices,
   getServiceBySlug,
 } from "@/lib/content";
-import { CheckCircle2 } from "lucide-react";
+import { services as siteServices, siteConfig } from "@/lib/site";
 
 interface Props {
   params: Promise<{ service: string }>;
@@ -76,16 +76,22 @@ export default async function ServicePage({ params }: Props) {
         ]}
       />
 
-      <Hero
-        variant="service"
+      <HeroPhoto
+        photoUrl={
+          siteServices.find((s) => s.slug === frontmatter.slug)?.image ??
+          siteConfig.heroPhoto
+        }
+        photoAlt={frontmatter.title}
         eyebrow="Dienst"
         title={frontmatter.title}
         subtitle={frontmatter.intro ?? frontmatter.shortDescription}
         primaryCta={{ label: "Vraag offerte", href: "/offerte" }}
         secondaryCta={{ label: "Contacteer ons", href: "/contact" }}
+        size="compact"
+        showScrollIndicator={false}
       />
 
-      <div className="container-page py-12">
+      <div className="container-page py-10">
         <Breadcrumbs items={breadcrumbs} />
       </div>
 
@@ -120,27 +126,23 @@ export default async function ServicePage({ params }: Props) {
 
       {/* Hoe werken we */}
       {frontmatter.steps && frontmatter.steps.length > 0 ? (
-        <section className="bg-brand-bg-alt/50 py-20">
+        <section className="section-dark py-20">
           <div className="container-page">
             <SectionHeader
               eyebrow="Hoe werken we"
               title="Een vast traject van plaatsbezoek tot oplevering."
+              invert
             />
-            <ol className="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-4">
+            <ol className="mt-12 grid gap-8 md:grid-cols-2 lg:grid-cols-4">
               {frontmatter.steps.map((step, i) => (
-                <li
-                  key={i}
-                  className="rounded-lg border border-brand-line bg-white p-6"
-                >
-                  <span className="font-display text-3xl text-brand-accent">
+                <li key={i} className="border-t border-white/20 pt-6">
+                  <span className="font-display text-4xl text-brand-accent">
                     {String(i + 1).padStart(2, "0")}
                   </span>
-                  <h3 className="mt-3 font-display text-lg text-brand-ink">
+                  <h3 className="mt-4 font-display text-lg text-white">
                     {step.title}
                   </h3>
-                  <p className="mt-2 text-sm text-brand-ink-soft">
-                    {step.body}
-                  </p>
+                  <p className="mt-2 text-sm text-white/75">{step.body}</p>
                 </li>
               ))}
             </ol>
@@ -173,7 +175,7 @@ export default async function ServicePage({ params }: Props) {
 
       {/* Related realisaties */}
       {relatedProjects.length > 0 ? (
-        <section className="bg-brand-bg-alt/50 py-20">
+        <section className="bg-brand-bg-alt py-20">
           <div className="container-page">
             <div className="flex flex-wrap items-end justify-between gap-4">
               <SectionHeader
@@ -222,21 +224,30 @@ export default async function ServicePage({ params }: Props) {
 
       {/* Related services */}
       {relatedServices.length > 0 ? (
-        <section className="container-page pb-20">
-          <SectionHeader
-            eyebrow="Vaak gecombineerd met"
-            title="Diensten die hier logisch op aansluiten."
-          />
-          <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-            {relatedServices.map((s) => (
-              <ServiceCard
-                key={s.slug}
-                slug={s.slug}
-                title={s.frontmatter.title}
-                short={s.frontmatter.shortDescription}
-                icon={s.frontmatter.icon}
-              />
-            ))}
+        <section className="section-dark py-20">
+          <div className="container-page">
+            <SectionHeader
+              eyebrow="Vaak gecombineerd met"
+              title="Diensten die hier logisch op aansluiten."
+              invert
+            />
+            <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+              {relatedServices.map((s) => {
+                const siteMatch = siteServices.find(
+                  (sv) => sv.slug === s.slug
+                );
+                return (
+                  <ServiceTile
+                    key={s.slug}
+                    slug={s.slug}
+                    title={s.frontmatter.title}
+                    short={s.frontmatter.shortDescription}
+                    icon={s.frontmatter.icon}
+                    image={siteMatch?.image ?? siteConfig.heroPhoto}
+                  />
+                );
+              })}
+            </div>
           </div>
         </section>
       ) : null}

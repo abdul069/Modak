@@ -78,7 +78,7 @@ export function Header() {
       </div>
 
       {showServiceNav ? (
-        <div className="hidden border-t border-brand-line/60 bg-brand-bg-alt/70 lg:block">
+        <div className="hidden border-t border-brand-line/40 bg-white lg:block">
           <nav
             className="container-page flex items-center gap-6 overflow-x-auto py-2.5"
             aria-label="Diensten"
