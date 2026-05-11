@@ -24,13 +24,19 @@ export const siteConfig = {
   description:
     "Belgische renovatiespecialist uit Evergem. Eén partner voor je volledige renovatie — dak, isolatie, warmtepompen, verwarming, ventilatie, sanitair, badkamers en airco.",
   ogImage: "/og.jpg",
-  heroPhoto:
-    "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=2400&q=85&auto=format&fit=crop",
+  heroPhoto: "/images/projects/pexels-kleurhuys-73327268-8480421.jpg",
 } as const;
 
 const PHOTO_TOTAAL = "/images/projects/totaalrenovatie-sint-denijs-westrem-hero.jpg";
-const PHOTO_WARMTEPOMP = "/images/projects/warmtepomp-gent-hero.jpg";
+const PHOTO_WARMTEPOMP_PROJECT = "/images/projects/warmtepomp-gent-hero.jpg";
 const PHOTO_BADKAMER = "/images/projects/badkamer-merelbeke-hero.jpg";
+
+const PHOTO_WARMTEPOMP = "/images/projects/pexels-alpha-innotec-936418931-20046693.jpg";
+const PHOTO_LAADPAAL = "/images/projects/pexels-haberdoedas-32472662.jpg";
+const PHOTO_VERLICHTING = "/images/projects/pexels-jonathan-cordova-r-2637981-36551684.jpg";
+const PHOTO_PV_INSTALL = "/images/projects/pexels-sdvmovies-29206488.jpg";
+const PHOTO_PV_HELLEND = "/images/projects/pexels-sdvmovies-29206495.jpg";
+const PHOTO_PV_PLAT = "/images/projects/pexels-sdvmovies-29206500.jpg";
 
 export const services = [
   {
@@ -38,7 +44,7 @@ export const services = [
     title: "Dakrenovatie",
     icon: "Home",
     short: "Volledige dakrenovaties met aandacht voor structuur, dichting en afwerking.",
-    image: PHOTO_TOTAAL,
+    image: PHOTO_PV_INSTALL,
     tint: "neutral",
   },
   {
@@ -46,8 +52,8 @@ export const services = [
     title: "Dakisolatie",
     icon: "Layers",
     short: "Energiebesparend isoleren — binnen of buitenom — met blijvende premies.",
-    image: PHOTO_TOTAAL,
-    tint: "amber",
+    image: PHOTO_PV_PLAT,
+    tint: "neutral",
   },
   {
     slug: "warmtepompen",
@@ -62,7 +68,7 @@ export const services = [
     title: "Verwarming",
     icon: "Thermometer",
     short: "Centrale verwarming, vloerverwarming en hybride installaties.",
-    image: PHOTO_WARMTEPOMP,
+    image: PHOTO_WARMTEPOMP_PROJECT,
     tint: "red",
   },
   {
@@ -94,7 +100,7 @@ export const services = [
     title: "Airco",
     icon: "Snowflake",
     short: "Splitairco's, multisplit en VRV-systemen voor woning of kantoor.",
-    image: PHOTO_WARMTEPOMP,
+    image: PHOTO_WARMTEPOMP_PROJECT,
     tint: "cyan",
   },
   {
@@ -102,24 +108,24 @@ export const services = [
     title: "Elektriciteitswerken",
     icon: "Zap",
     short: "Residentiële elektriciteit — van keuring tot volledige herbedrading en domotica.",
-    image: PHOTO_TOTAAL,
-    tint: "amber",
+    image: PHOTO_VERLICHTING,
+    tint: "neutral",
   },
   {
     slug: "zonnepanelen",
     title: "Zonnepanelen",
     icon: "Sun",
     short: "PV-installaties op maat — van panelen tot omvormer en aansluiting op het net.",
-    image: PHOTO_TOTAAL,
-    tint: "amber",
+    image: PHOTO_PV_HELLEND,
+    tint: "neutral",
   },
   {
     slug: "laadpalen",
     title: "Laadpalen",
     icon: "Plug",
     short: "Laadpalen voor elektrische wagens — thuis, voor mede-eigenaars of bedrijf.",
-    image: PHOTO_WARMTEPOMP,
-    tint: "emerald",
+    image: PHOTO_LAADPAAL,
+    tint: "neutral",
   },
 ] as const;
 
