@@ -28,8 +28,9 @@ export const siteConfig = {
     "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=2400&q=85&auto=format&fit=crop",
 } as const;
 
-const STOCK_PHOTO =
-  "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1200&q=80&auto=format&fit=crop";
+const PHOTO_TOTAAL = "/images/projects/totaalrenovatie-sint-denijs-westrem-hero.jpg";
+const PHOTO_WARMTEPOMP = "/images/projects/warmtepomp-gent-hero.jpg";
+const PHOTO_BADKAMER = "/images/projects/badkamer-merelbeke-hero.jpg";
 
 export const services = [
   {
@@ -37,7 +38,7 @@ export const services = [
     title: "Dakrenovatie",
     icon: "Home",
     short: "Volledige dakrenovaties met aandacht voor structuur, dichting en afwerking.",
-    image: "/images/projects/totaalrenovatie-sint-denijs-westrem-hero.jpg",
+    image: PHOTO_TOTAAL,
     tint: "neutral",
   },
   {
@@ -45,7 +46,7 @@ export const services = [
     title: "Dakisolatie",
     icon: "Layers",
     short: "Energiebesparend isoleren — binnen of buitenom — met blijvende premies.",
-    image: STOCK_PHOTO,
+    image: PHOTO_TOTAAL,
     tint: "amber",
   },
   {
@@ -53,7 +54,7 @@ export const services = [
     title: "Warmtepompen",
     icon: "Flame",
     short: "Lucht-water en geothermische warmtepompen, RESCert-gecertificeerd.",
-    image: "/images/projects/warmtepomp-gent-hero.jpg",
+    image: PHOTO_WARMTEPOMP,
     tint: "neutral",
   },
   {
@@ -61,7 +62,7 @@ export const services = [
     title: "Verwarming",
     icon: "Thermometer",
     short: "Centrale verwarming, vloerverwarming en hybride installaties.",
-    image: STOCK_PHOTO,
+    image: PHOTO_WARMTEPOMP,
     tint: "red",
   },
   {
@@ -69,7 +70,7 @@ export const services = [
     title: "Ventilatie",
     icon: "Wind",
     short: "Systeem C en D met warmterecuperatie voor een gezond binnenklimaat.",
-    image: STOCK_PHOTO,
+    image: PHOTO_TOTAAL,
     tint: "emerald",
   },
   {
@@ -77,7 +78,7 @@ export const services = [
     title: "Sanitair",
     icon: "Droplet",
     short: "Volledige sanitaire installaties — leidingen, toestellen en aansluitingen.",
-    image: STOCK_PHOTO,
+    image: PHOTO_BADKAMER,
     tint: "sky",
   },
   {
@@ -85,7 +86,7 @@ export const services = [
     title: "Badkamers",
     icon: "Bath",
     short: "Badkamers van A tot Z — ontwerp, betegeling, sanitair en afwerking.",
-    image: "/images/projects/badkamer-merelbeke-hero.jpg",
+    image: PHOTO_BADKAMER,
     tint: "neutral",
   },
   {
@@ -93,7 +94,7 @@ export const services = [
     title: "Airco",
     icon: "Snowflake",
     short: "Splitairco's, multisplit en VRV-systemen voor woning of kantoor.",
-    image: STOCK_PHOTO,
+    image: PHOTO_WARMTEPOMP,
     tint: "cyan",
   },
 ] as const;
