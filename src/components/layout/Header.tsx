@@ -11,12 +11,10 @@ import { MobileNav } from "@/components/layout/MobileNav";
 import { resolveIcon } from "@/lib/icon-map";
 import { cn } from "@/lib/utils";
 
-const SERVICE_NAV_PATHS = ["/", "/diensten"];
-
 export function Header() {
   const [scrolled, setScrolled] = React.useState(false);
-  const pathname = usePathname();
-  const showServiceNav = SERVICE_NAV_PATHS.includes(pathname ?? "");
+  const pathname = usePathname() ?? "";
+  const showServiceNav = pathname === "/" || pathname.startsWith("/diensten");
 
   React.useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 12);

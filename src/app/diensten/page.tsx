@@ -54,13 +54,11 @@ export default function DienstenPage() {
         </div>
       </section>
 
-      <div className="container-page py-20">
-        <CTABlock
-          variant="secondary"
-          title="Niet zeker welke dienst je nodig hebt?"
-          body="Geen probleem. We komen langs en bekijken samen wat zinvol is — vrijblijvend."
-        />
-      </div>
+      <CTABlock
+        variant="secondary"
+        title="Niet zeker welke dienst je nodig hebt?"
+        body="Geen probleem. We komen langs en bekijken samen wat zinvol is — vrijblijvend."
+      />
     </>
   );
 }

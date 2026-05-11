@@ -252,12 +252,10 @@ export default async function ServicePage({ params }: Props) {
         </section>
       ) : null}
 
-      <section className="container-page pb-20">
-        <CTABlock
-          title={`Plan uw ${frontmatter.title.toLowerCase()} met AGNAU.`}
-          body="We komen langs voor een plaatsbezoek en bezorgen een eerlijke offerte. Vrijblijvend en zonder verkoperspraat."
-        />
-      </section>
+      <CTABlock
+        title={`Plan uw ${frontmatter.title.toLowerCase()} met AGNAU.`}
+        body="We komen langs voor een plaatsbezoek en bezorgen een eerlijke offerte. Vrijblijvend en zonder verkoperspraat."
+      />
     </>
   );
 }

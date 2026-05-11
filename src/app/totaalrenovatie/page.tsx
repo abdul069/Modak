@@ -253,14 +253,12 @@ export default function TotaalrenovatiePage() {
         </div>
       </section>
 
-      <section className="container-page py-20">
-        <CTABlock
-          title="Plan een vrijblijvend gesprek."
-          body="Eén uur volstaat om uw woning, ambities en budget te begrijpen. Geen offerte zonder dat we eerst geluisterd hebben."
-          primaryCta={{ label: "Contacteer ons", href: "/contact" }}
-          secondaryCta={{ label: "Vraag offerte aan", href: "/offerte" }}
-        />
-      </section>
+      <CTABlock
+        title="Plan een vrijblijvend gesprek."
+        body="Eén uur volstaat om uw woning, ambities en budget te begrijpen. Geen offerte zonder dat we eerst geluisterd hebben."
+        primaryCta={{ label: "Contacteer ons", href: "/contact" }}
+        secondaryCta={{ label: "Vraag offerte aan", href: "/offerte" }}
+      />
     </>
   );
 }

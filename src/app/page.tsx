@@ -198,16 +198,12 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="section-dark py-24">
-        <div className="container-page">
-          <Reveal direction="scale">
-            <CTABlock
-              title="Klaar om uw renovatie eindelijk te beginnen?"
-              body="We komen langs, luisteren, en bezorgen een onderbouwde offerte. Vrijblijvend, zonder verkoperspraat."
-            />
-          </Reveal>
-        </div>
-      </section>
+      <Reveal direction="scale">
+        <CTABlock
+          title="Klaar om uw renovatie eindelijk te beginnen?"
+          body="We komen langs, luisteren, en bezorgen een onderbouwde offerte. Vrijblijvend, zonder verkoperspraat."
+        />
+      </Reveal>
     </>
   );
 }

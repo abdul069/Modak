@@ -149,12 +149,10 @@ export default async function ProjectPage({ params }: Props) {
         </section>
       ) : null}
 
-      <section className="container-page pb-20">
-        <CTABlock
-          title="Een gelijkaardig project in gedachten?"
-          body="Vraag een offerte op maat aan, of plan een gesprek om uw situatie te bespreken."
-        />
-      </section>
+      <CTABlock
+        title="Een gelijkaardig project in gedachten?"
+        body="Vraag een offerte op maat aan, of plan een gesprek om uw situatie te bespreken."
+      />
     </>
   );
 }

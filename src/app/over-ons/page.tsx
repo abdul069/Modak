@@ -114,12 +114,10 @@ export default function OverOnsPage() {
         </div>
       </section>
 
-      <section className="container-page py-20">
-        <CTABlock
-          title="Zin om kennis te maken?"
-          body="Een vrijblijvend gesprek bij u thuis of op kantoor — daar starten alle goede projecten mee."
-        />
-      </section>
+      <CTABlock
+        title="Zin om kennis te maken?"
+        body="Een vrijblijvend gesprek bij u thuis of op kantoor — daar starten alle goede projecten mee."
+      />
     </>
   );
 }
