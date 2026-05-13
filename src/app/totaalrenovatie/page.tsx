@@ -186,7 +186,7 @@ export default function TotaalrenovatiePage() {
                 alt="Totaalrenovatie Sint-Denijs-Westrem — donker fineer keuken met witte bovenkasten en Siemens oven"
                 fill
                 sizes="(min-width: 1024px) 50vw, 100vw"
-                className="object-cover"
+                className="photo-graded object-cover"
               />
             </div>
             <div>

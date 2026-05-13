@@ -189,6 +189,14 @@
       radial-gradient(at 80% 75%, rgba(255, 255, 255, 0.10), transparent 55%);
     background-size: 200% 200%;
   }
+  /* Unifies phone-quality photography: slight desaturation + lift in
+     contrast/blacks so all WhatsApp uploads share one editorial tone. */
+  .photo-graded {
+    filter: saturate(0.92) contrast(1.06) brightness(0.98);
+  }
+  .photo-graded-strong {
+    filter: saturate(0.78) contrast(1.1) brightness(0.96);
+  }
 }
 
 @layer components {

@@ -45,7 +45,7 @@ export function HeroPhoto({
         fill
         priority
         sizes="100vw"
-        className="animate-ken-burns object-cover object-[center_30%]"
+        className="animate-ken-burns photo-graded object-cover object-[center_30%]"
       />
       <div
         aria-hidden

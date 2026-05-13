@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
-import { HeroPhoto } from "@/components/marketing/HeroPhoto";
+import { HeroSplit } from "@/components/marketing/HeroSplit";
 import { TrustBar } from "@/components/marketing/TrustBar";
 import { ServiceTile } from "@/components/marketing/ServiceTile";
 import { FeaturedProject } from "@/components/marketing/FeaturedProject";
@@ -30,14 +30,15 @@ export default function HomePage() {
     <>
       <JsonLd data={localBusinessSchema()} />
 
-      <HeroPhoto
+      <HeroSplit
         photoUrl={siteConfig.heroPhoto}
-        photoAlt="Hedendaagse Belgische woning gerenoveerd door AGNAU"
-        eyebrow="Renovatie · Gent · Vlaanderen"
+        photoAlt="Afgewerkte badkamer met backlit ronde spiegel en oak vanity — AGNAU realisatie"
+        eyebrow="Renovatie · Gent · 2026"
         title="Eén partner. Volledige renovatie."
-        subtitle="Dak, isolatie, warmtepomp, ventilatie, sanitair en badkamer onder één planning. Geen jongleren met aannemers — één team dat je woning gezond, zuinig en mooi maakt."
+        subtitle="Dak, isolatie, warmtepomp, ventilatie, sanitair en badkamer onder één planning. Eén team dat je woning gezond, zuinig en mooi maakt."
         primaryCta={{ label: "Vraag offerte aan", href: "/offerte" }}
         secondaryCta={{ label: "Bekijk realisaties", href: "/realisaties" }}
+        caption="Badkamer · 2024"
       />
 
       <TrustBar />
@@ -51,9 +52,11 @@ export default function HomePage() {
           location={featured[0].frontmatter.location}
           excerpt={featured[0].frontmatter.excerpt ?? ""}
           image={featured[0].frontmatter.heroImage ?? ""}
+          extraImages={featured[0].frontmatter.gallery ?? []}
           quote={featured[0].frontmatter.quote}
           imageSide="left"
           variant={PROJECT_ACCENT_VARIANTS[0]}
+          index={1}
         />
       ) : null}
 
@@ -91,9 +94,11 @@ export default function HomePage() {
           location={featured[1].frontmatter.location}
           excerpt={featured[1].frontmatter.excerpt ?? ""}
           image={featured[1].frontmatter.heroImage ?? ""}
+          extraImages={featured[1].frontmatter.gallery ?? []}
           quote={featured[1].frontmatter.quote}
           imageSide="right"
           variant={PROJECT_ACCENT_VARIANTS[1]}
+          index={2}
         />
       ) : null}
 
@@ -152,9 +157,11 @@ export default function HomePage() {
           location={featured[2].frontmatter.location}
           excerpt={featured[2].frontmatter.excerpt ?? ""}
           image={featured[2].frontmatter.heroImage ?? ""}
+          extraImages={featured[2].frontmatter.gallery ?? []}
           quote={featured[2].frontmatter.quote}
           imageSide="left"
           variant={PROJECT_ACCENT_VARIANTS[2]}
+          index={3}
         />
       ) : null}
 

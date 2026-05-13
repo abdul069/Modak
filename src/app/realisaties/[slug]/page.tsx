@@ -75,7 +75,7 @@ export default async function ProjectPage({ params }: Props) {
                 fill
                 priority
                 sizes="(min-width: 1280px) 1200px, 100vw"
-                className="object-cover"
+                className="photo-graded object-cover"
               />
             </div>
           </Parallax>
