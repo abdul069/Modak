@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { Parallax } from "./Parallax";
 
 export interface FeaturedProjectProps {
   slug: string;
@@ -54,20 +55,23 @@ export function FeaturedProject({
 
   return (
     <section className="grid lg:grid-cols-2">
-      <div
+      <Parallax
+        range={120}
         className={cn(
           "relative aspect-[4/5] lg:aspect-auto lg:min-h-[640px]",
           imageSide === "right" && "lg:order-2"
         )}
       >
-        <Image
-          src={image}
-          alt={`Realisatie ${title}`}
-          fill
-          sizes="(min-width: 1024px) 50vw, 100vw"
-          className="object-cover"
-        />
-      </div>
+        <div className="absolute inset-x-0 -top-[10%] h-[120%]">
+          <Image
+            src={image}
+            alt={`Realisatie ${title}`}
+            fill
+            sizes="(min-width: 1024px) 50vw, 100vw"
+            className="object-cover transition-transform duration-700 hover:scale-[1.03]"
+          />
+        </div>
+      </Parallax>
       <div className={cn("flex flex-col justify-center p-8 md:p-14 lg:p-20", textBg)}>
         <p className={cn("text-xs font-medium uppercase tracking-[0.3em]", subtleText)}>
           Realisatie · {location}

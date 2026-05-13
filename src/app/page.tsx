@@ -7,6 +7,8 @@ import { FeaturedProject } from "@/components/marketing/FeaturedProject";
 import { TestimonialSlider } from "@/components/marketing/TestimonialSlider";
 import { CTABlock } from "@/components/marketing/CTABlock";
 import { SectionHeader } from "@/components/marketing/SectionHeader";
+import { StatsStrip } from "@/components/marketing/StatsStrip";
+import { ScrollMarquee } from "@/components/marketing/ScrollMarquee";
 import { Button } from "@/components/ui/button";
 import { Reveal } from "@/components/ui/Reveal";
 import { JsonLd } from "@/components/seo/JsonLd";
@@ -39,6 +41,8 @@ export default function HomePage() {
       />
 
       <TrustBar />
+
+      <StatsStrip />
 
       {featured[0] ? (
         <FeaturedProject
@@ -134,6 +138,12 @@ export default function HomePage() {
           </ol>
         </div>
       </section>
+
+      <ScrollMarquee
+        variant="accent"
+        words={["Dak", "Isolatie", "Warmtepomp", "Ventilatie", "Sanitair", "Badkamer", "Zonnepanelen", "Laadpaal"]}
+        speed={0.5}
+      />
 
       {featured[2] ? (
         <FeaturedProject

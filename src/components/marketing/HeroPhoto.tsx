@@ -3,6 +3,7 @@ import Link from "next/link";
 import { ArrowRight, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import { MagneticButton } from "./MagneticButton";
 
 export interface HeroPhotoProps {
   photoUrl: string;
@@ -44,7 +45,7 @@ export function HeroPhoto({
         fill
         priority
         sizes="100vw"
-        className="object-cover"
+        className="animate-ken-burns object-cover"
       />
       <div
         aria-hidden
@@ -90,12 +91,14 @@ export function HeroPhoto({
             style={{ animationDelay: "460ms" }}
           >
             {primaryCta ? (
-              <Button asChild size="lg" variant="accent" className="group/btn">
-                <Link href={primaryCta.href}>
-                  {primaryCta.label}
-                  <ArrowRight className="size-4 transition-transform duration-300 group-hover/btn:translate-x-1" />
-                </Link>
-              </Button>
+              <MagneticButton>
+                <Button asChild size="lg" variant="accent" className="group/btn">
+                  <Link href={primaryCta.href}>
+                    {primaryCta.label}
+                    <ArrowRight className="size-4 transition-transform duration-300 group-hover/btn:translate-x-1" />
+                  </Link>
+                </Button>
+              </MagneticButton>
             ) : null}
             {secondaryCta ? (
               <Button
