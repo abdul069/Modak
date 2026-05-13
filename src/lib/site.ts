@@ -24,19 +24,20 @@ export const siteConfig = {
   description:
     "Belgische renovatiespecialist uit Evergem. Eén partner voor je volledige renovatie — dak, isolatie, warmtepompen, verwarming, ventilatie, sanitair, badkamers en airco.",
   ogImage: "/og.jpg",
-  heroPhoto: "/images/projects/pexels-kleurhuys-73327268-8480421.jpg",
+  heroPhoto: "/images/projects/IMG-20260512-WA0102.jpg",
 } as const;
 
-const PHOTO_TOTAAL = "/images/projects/totaalrenovatie-sint-denijs-westrem-hero.jpg";
-const PHOTO_WARMTEPOMP_PROJECT = "/images/projects/warmtepomp-gent-hero.jpg";
-const PHOTO_BADKAMER = "/images/projects/badkamer-merelbeke-hero.jpg";
-
-const PHOTO_WARMTEPOMP = "/images/projects/pexels-alpha-innotec-936418931-20046693.jpg";
-const PHOTO_LAADPAAL = "/images/projects/pexels-haberdoedas-32472662.jpg";
-const PHOTO_VERLICHTING = "/images/projects/pexels-jonathan-cordova-r-2637981-36551684.jpg";
-const PHOTO_PV_HELLEND = "/images/projects/pexels-sdvmovies-29206495.jpg";
-const PHOTO_DAKWERKER = "/images/projects/roof.jpg";
+const PHOTO_DAKRENOVATIE = "/images/projects/IMG-20260512-WA0118.jpg";
 const PHOTO_DAKISOLATIE = "/images/projects/Roof-insulation-main-blog-image.jpg";
+const PHOTO_WARMTEPOMP = "/images/projects/pexels-alpha-innotec-936418931-20046693.jpg";
+const PHOTO_VERWARMING = "/images/projects/IMG-20260512-WA0093.jpg";
+const PHOTO_VENTILATIE = "/images/projects/IMG-20260512-WA0074.jpg";
+const PHOTO_SANITAIR = "/images/projects/IMG-20260512-WA0095.jpg";
+const PHOTO_BADKAMER = "/images/projects/IMG-20260512-WA0097.jpg";
+const PHOTO_AIRCO = "/images/projects/IMG-20260512-WA0085.jpg";
+const PHOTO_VERLICHTING = "/images/projects/pexels-jonathan-cordova-r-2637981-36551684.jpg";
+const PHOTO_ZONNEPANELEN = "/images/projects/IMG-20260512-WA0087.jpg";
+const PHOTO_LAADPAAL = "/images/projects/pexels-haberdoedas-32472662.jpg";
 
 export const services = [
   {
@@ -44,7 +45,7 @@ export const services = [
     title: "Dakrenovatie",
     icon: "Home",
     short: "Volledige dakrenovaties met aandacht voor structuur, dichting en afwerking.",
-    image: PHOTO_DAKWERKER,
+    image: PHOTO_DAKRENOVATIE,
     tint: "neutral",
   },
   {
@@ -68,24 +69,24 @@ export const services = [
     title: "Verwarming",
     icon: "Thermometer",
     short: "Centrale verwarming, vloerverwarming en hybride installaties.",
-    image: PHOTO_WARMTEPOMP_PROJECT,
-    tint: "red",
+    image: PHOTO_VERWARMING,
+    tint: "neutral",
   },
   {
     slug: "ventilatie",
     title: "Ventilatie",
     icon: "Wind",
     short: "Systeem C en D met warmterecuperatie voor een gezond binnenklimaat.",
-    image: PHOTO_TOTAAL,
-    tint: "emerald",
+    image: PHOTO_VENTILATIE,
+    tint: "neutral",
   },
   {
     slug: "sanitair",
     title: "Sanitair",
     icon: "Droplet",
     short: "Volledige sanitaire installaties — leidingen, toestellen en aansluitingen.",
-    image: PHOTO_BADKAMER,
-    tint: "sky",
+    image: PHOTO_SANITAIR,
+    tint: "neutral",
   },
   {
     slug: "badkamers",
@@ -100,8 +101,8 @@ export const services = [
     title: "Airco",
     icon: "Snowflake",
     short: "Splitairco's, multisplit en VRV-systemen voor woning of kantoor.",
-    image: PHOTO_WARMTEPOMP_PROJECT,
-    tint: "cyan",
+    image: PHOTO_AIRCO,
+    tint: "neutral",
   },
   {
     slug: "elektriciteitswerken",
@@ -116,7 +117,7 @@ export const services = [
     title: "Zonnepanelen",
     icon: "Sun",
     short: "PV-installaties op maat — van panelen tot omvormer en aansluiting op het net.",
-    image: PHOTO_PV_HELLEND,
+    image: PHOTO_ZONNEPANELEN,
     tint: "neutral",
   },
   {

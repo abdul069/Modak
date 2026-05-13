@@ -182,8 +182,8 @@ export default function TotaalrenovatiePage() {
           <div className="grid gap-10 lg:grid-cols-2 lg:items-center">
             <div className="relative aspect-[4/3] overflow-hidden rounded-xl bg-white">
               <Image
-                src="/images/projects/totaalrenovatie-sint-denijs-westrem-hero.jpg"
-                alt="Totaalrenovatie halfopen woning Sint-Denijs-Westrem — gevel met nieuw dak en zonnepanelen"
+                src="/images/projects/IMG-20260512-WA0120.jpg"
+                alt="Totaalrenovatie Sint-Denijs-Westrem — afgewerkt padouk terras tegen bakstenen gevel"
                 fill
                 sizes="(min-width: 1024px) 50vw, 100vw"
                 className="object-cover"
