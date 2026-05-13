@@ -30,7 +30,7 @@ export function HeroPhoto({
   showScrollIndicator = true,
   className,
 }: HeroPhotoProps) {
-  const heightClass = size === "full" ? "min-h-[88vh]" : "min-h-[60vh]";
+  const heightClass = size === "full" ? "min-h-[78vh] md:min-h-[88vh]" : "min-h-[55vh] md:min-h-[60vh]";
   return (
     <section
       className={cn(
@@ -45,7 +45,7 @@ export function HeroPhoto({
         fill
         priority
         sizes="100vw"
-        className="animate-ken-burns object-cover"
+        className="animate-ken-burns object-cover object-[center_30%]"
       />
       <div
         aria-hidden

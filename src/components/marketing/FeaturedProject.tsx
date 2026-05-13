@@ -56,13 +56,13 @@ export function FeaturedProject({
   return (
     <section className="grid lg:grid-cols-2">
       <Parallax
-        range={120}
+        range={80}
         className={cn(
-          "relative aspect-[4/5] lg:aspect-auto lg:min-h-[640px]",
+          "relative aspect-[4/3] sm:aspect-[3/2] lg:aspect-auto lg:min-h-[640px]",
           imageSide === "right" && "lg:order-2"
         )}
       >
-        <div className="absolute inset-x-0 -top-[10%] h-[120%]">
+        <div className="absolute inset-x-0 -top-[8%] h-[116%]">
           <Image
             src={image}
             alt={`Realisatie ${title}`}

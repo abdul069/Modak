@@ -24,11 +24,11 @@ export const siteConfig = {
   description:
     "Belgische renovatiespecialist uit Evergem. Eén partner voor je volledige renovatie — dak, isolatie, warmtepompen, verwarming, ventilatie, sanitair, badkamers en airco.",
   ogImage: "/og.jpg",
-  heroPhoto: "/images/projects/IMG-20260512-WA0102.jpg",
+  heroPhoto: "/images/projects/IMG-20260512-WA0070.jpg",
 } as const;
 
 const PHOTO_DAKRENOVATIE = "/images/projects/IMG-20260512-WA0118.jpg";
-const PHOTO_DAKISOLATIE = "/images/projects/Roof-insulation-main-blog-image.jpg";
+const PHOTO_DAKISOLATIE = "/images/projects/IMG-20260512-WA0100.jpg";
 const PHOTO_WARMTEPOMP = "/images/projects/pexels-alpha-innotec-936418931-20046693.jpg";
 const PHOTO_VERWARMING = "/images/projects/IMG-20260512-WA0093.jpg";
 const PHOTO_VENTILATIE = "/images/projects/IMG-20260512-WA0074.jpg";
