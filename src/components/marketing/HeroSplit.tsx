@@ -37,7 +37,7 @@ export function HeroSplit({
     <section
       className={cn(
         "section-dark relative overflow-hidden",
-        "lg:min-h-[92vh]",
+        "md:min-h-[88vh] lg:min-h-[92vh]",
         className
       )}
     >
@@ -56,9 +56,9 @@ export function HeroSplit({
         }}
       />
 
-      <div className="container-page relative grid items-center gap-8 pb-20 pt-28 md:gap-16 md:pb-28 md:pt-36 lg:grid-cols-12 lg:gap-16 lg:py-32">
+      <div className="container-page relative grid items-center gap-8 pb-20 pt-28 md:grid-cols-12 md:gap-12 md:pb-28 md:pt-36 lg:gap-16 lg:py-32">
         {/* Text panel */}
-        <div className="lg:col-span-7">
+        <div className="md:col-span-7">
           {eyebrow ? (
             <p
               className="animate-fade-up text-[0.7rem] font-medium uppercase tracking-[0.4em] text-brand-accent md:text-xs"
@@ -115,9 +115,9 @@ export function HeroSplit({
         </div>
 
         {/* Framed photo card */}
-        <div className="relative lg:col-span-5">
+        <div className="relative md:col-span-5">
           <div
-            className="animate-fade-up relative mx-auto aspect-[4/5] w-full max-w-[460px] overflow-hidden rounded-md shadow-[0_30px_80px_-20px_rgba(0,0,0,0.55)] ring-1 ring-white/10 lg:ml-auto lg:mr-0"
+            className="animate-fade-up relative mx-auto aspect-[4/5] w-full max-w-[460px] overflow-hidden rounded-md shadow-[0_30px_80px_-20px_rgba(0,0,0,0.55)] ring-1 ring-white/10 md:ml-auto md:mr-0"
             style={{ animationDelay: "320ms" }}
           >
             <div className="absolute inset-0 -m-[6%]">
@@ -156,7 +156,7 @@ export function HeroSplit({
       {/* Scroll indicator (desktop only) */}
       <div
         aria-hidden
-        className="absolute bottom-6 left-1/2 hidden -translate-x-1/2 text-white/50 lg:block"
+        className="absolute bottom-6 left-1/2 hidden -translate-x-1/2 text-white/50 md:block"
       >
         <ChevronDown className="size-5 animate-bounce" />
       </div>
