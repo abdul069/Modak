@@ -56,7 +56,7 @@ export function HeroSplit({
         }}
       />
 
-      <div className="container-page relative grid items-center gap-12 pb-20 pt-28 md:gap-16 md:pb-28 md:pt-36 lg:grid-cols-12 lg:gap-16 lg:py-32">
+      <div className="container-page relative grid items-center gap-8 pb-20 pt-28 md:gap-16 md:pb-28 md:pt-36 lg:grid-cols-12 lg:gap-16 lg:py-32">
         {/* Text panel */}
         <div className="lg:col-span-7">
           {eyebrow ? (
@@ -117,7 +117,7 @@ export function HeroSplit({
         {/* Framed photo card */}
         <div className="relative lg:col-span-5">
           <div
-            className="animate-fade-up relative ml-auto aspect-[4/5] w-full max-w-[460px] overflow-hidden rounded-md shadow-[0_30px_80px_-20px_rgba(0,0,0,0.55)] ring-1 ring-white/10"
+            className="animate-fade-up relative mx-auto aspect-[4/5] w-full max-w-[460px] overflow-hidden rounded-md shadow-[0_30px_80px_-20px_rgba(0,0,0,0.55)] ring-1 ring-white/10 lg:ml-auto lg:mr-0"
             style={{ animationDelay: "320ms" }}
           >
             <div className="absolute inset-0 -m-[6%]">
