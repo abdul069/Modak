@@ -37,7 +37,7 @@ export function HeroSplit({
     <section
       className={cn(
         "section-dark relative overflow-hidden",
-        "min-h-[88vh] md:min-h-[92vh]",
+        "lg:min-h-[92vh]",
         className
       )}
     >
@@ -153,10 +153,10 @@ export function HeroSplit({
         </div>
       </div>
 
-      {/* Scroll indicator */}
+      {/* Scroll indicator (desktop only) */}
       <div
         aria-hidden
-        className="absolute bottom-6 left-1/2 -translate-x-1/2 text-white/50"
+        className="absolute bottom-6 left-1/2 hidden -translate-x-1/2 text-white/50 lg:block"
       >
         <ChevronDown className="size-5 animate-bounce" />
       </div>
