@@ -37,7 +37,6 @@ export function HeroSplit({
     <section
       className={cn(
         "section-dark relative overflow-hidden",
-        "md:min-h-[88vh] lg:min-h-[92vh]",
         className
       )}
     >
