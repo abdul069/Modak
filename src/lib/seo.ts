@@ -5,6 +5,7 @@ interface PageMetaInput {
   title: string;
   description?: string;
   path?: string;
+  canonical?: string;
   ogImage?: string;
   noIndex?: boolean;
 }
@@ -13,6 +14,7 @@ export function buildMetadata({
   title,
   description,
   path = "/",
+  canonical,
   ogImage,
   noIndex,
 }: PageMetaInput): Metadata {
@@ -20,7 +22,7 @@ export function buildMetadata({
     ? title
     : `${title} | ${siteConfig.name}`;
   const desc = description ?? siteConfig.description;
-  const url = `${siteConfig.url}${path}`;
+  const url = canonical ?? `${siteConfig.url}${path}`;
   const image = ogImage ?? siteConfig.ogImage;
 
   return {
@@ -67,6 +69,31 @@ export function localBusinessSchema() {
   };
 }
 
+export function organizationSchema() {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    name: siteConfig.legalName,
+    legalName: siteConfig.legalName,
+    url: siteConfig.url,
+    logo: `${siteConfig.url}/og.jpg`,
+    description: siteConfig.description,
+    sameAs: [
+      siteConfig.social.instagram,
+      siteConfig.social.facebook,
+      siteConfig.social.linkedin,
+    ],
+    contactPoint: {
+      "@type": "ContactPoint",
+      telephone: siteConfig.contact.phone,
+      contactType: "customer service",
+      email: siteConfig.contact.email,
+      areaServed: "BE",
+      availableLanguage: ["nl-BE"],
+    },
+  };
+}
+
 export function breadcrumbSchema(
   items: { name: string; url: string }[]
 ) {
@@ -92,7 +119,7 @@ export function serviceSchema(input: {
     "@type": "Service",
     name: input.name,
     description: input.description,
-    url: `${siteConfig.url}/diensten/${input.slug}`,
+    url: `${siteConfig.url}/${input.slug}`,
     provider: {
       "@type": "LocalBusiness",
       name: siteConfig.name,

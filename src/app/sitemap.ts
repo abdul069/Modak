@@ -1,10 +1,10 @@
 import type { MetadataRoute } from "next";
 import { siteConfig } from "@/lib/site";
-import {
-  getAllBlogPosts,
-  getAllProjects,
-  getAllServices,
-} from "@/lib/content";
+import { getAllDivisions } from "@/lib/division";
+import { divisionUrl } from "@/lib/subdomain";
+import { projects } from "@/content/realisaties";
+import { blogPosts } from "@/content/blog";
+import { jobs } from "@/content/jobs";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const base = siteConfig.url;
@@ -12,16 +12,15 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   const staticRoutes: MetadataRoute.Sitemap = [
     "",
-    "/diensten",
-    "/totaalrenovatie",
-    "/premies",
-    "/realisaties",
     "/over-ons",
-    "/voor-aannemers",
+    "/realisaties",
+    "/jobs",
+    "/premies",
     "/blog",
     "/contact",
     "/offerte",
     "/privacy",
+    "/algemene-voorwaarden",
   ].map((path) => ({
     url: `${base}${path}`,
     lastModified: now,
@@ -29,33 +28,45 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority:
       path === ""
         ? 1
-        : path === "/privacy"
+        : path === "/privacy" || path === "/algemene-voorwaarden"
           ? 0.3
-          : path === "/premies"
-            ? 0.85
-            : 0.7,
+          : 0.7,
   }));
 
-  const services: MetadataRoute.Sitemap = getAllServices().map((s) => ({
-    url: `${base}/diensten/${s.slug}`,
+  // Division homepages live on their own subdomains in production.
+  const divisions: MetadataRoute.Sitemap = getAllDivisions().map((d) => ({
+    url: divisionUrl(d.slug),
     lastModified: now,
     changeFrequency: "monthly",
-    priority: 0.8,
+    priority: 0.9,
   }));
 
-  const projects: MetadataRoute.Sitemap = getAllProjects().map((p) => ({
+  const projectRoutes: MetadataRoute.Sitemap = projects.map((p) => ({
     url: `${base}/realisaties/${p.slug}`,
     lastModified: now,
     changeFrequency: "yearly",
     priority: 0.6,
   }));
 
-  const blog: MetadataRoute.Sitemap = getAllBlogPosts().map((p) => ({
+  const blogRoutes: MetadataRoute.Sitemap = blogPosts.map((p) => ({
     url: `${base}/blog/${p.slug}`,
-    lastModified: new Date(p.frontmatter.date),
+    lastModified: new Date(p.date),
     changeFrequency: "yearly",
     priority: 0.5,
   }));
 
-  return [...staticRoutes, ...services, ...projects, ...blog];
+  const jobRoutes: MetadataRoute.Sitemap = jobs.map((j) => ({
+    url: `${base}/jobs/${j.slug}`,
+    lastModified: now,
+    changeFrequency: "weekly",
+    priority: 0.6,
+  }));
+
+  return [
+    ...staticRoutes,
+    ...divisions,
+    ...projectRoutes,
+    ...blogRoutes,
+    ...jobRoutes,
+  ];
 }

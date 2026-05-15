@@ -1,13 +1,13 @@
 import { cn } from "@/lib/utils";
+import { Reveal } from "@/components/ui/Reveal";
 
-interface Props {
+type SectionHeaderProps = {
   eyebrow?: string;
   title: string;
   description?: string;
   align?: "left" | "center";
   className?: string;
-  as?: "h2" | "h3";
-}
+};
 
 export function SectionHeader({
   eyebrow,
@@ -15,27 +15,20 @@ export function SectionHeader({
   description,
   align = "left",
   className,
-  as: Heading = "h2",
-}: Props) {
+}: SectionHeaderProps) {
   return (
-    <header
+    <Reveal
       className={cn(
-        "max-w-2xl",
+        "max-w-3xl",
         align === "center" && "mx-auto text-center",
-        className
+        className,
       )}
     >
-      {eyebrow ? (
-        <p className="mb-3 text-xs font-medium uppercase tracking-[0.2em] text-brand-primary">
-          {eyebrow}
-        </p>
-      ) : null}
-      <Heading className="font-display text-brand-ink">{title}</Heading>
+      {eyebrow ? <p className="eyebrow mb-3">{eyebrow}</p> : null}
+      <h2>{title}</h2>
       {description ? (
-        <p className="mt-3 text-base text-brand-ink-soft md:text-lg">
-          {description}
-        </p>
+        <p className="mt-4 text-lg leading-relaxed text-slate">{description}</p>
       ) : null}
-    </header>
+    </Reveal>
   );
 }

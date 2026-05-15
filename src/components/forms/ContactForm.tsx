@@ -1,109 +1,77 @@
 "use client";
 
+import * as React from "react";
 import { useActionState } from "react";
-import { useFormStatus } from "react-dom";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-import { FormField } from "@/components/forms/FormField";
-import {
-  submitContact,
-  type ContactState,
-} from "@/app/_actions/contact";
-
-const initial: ContactState = { ok: false };
+import { ArrowUpRight, Loader2 } from "lucide-react";
+import { submitContact } from "@/app/_actions/contact";
 
 export function ContactForm() {
-  const [state, formAction] = useActionState(submitContact, initial);
+  const [state, action, pending] = useActionState(submitContact, null);
+  const errors = state && !state.ok ? state.errors : {};
 
   return (
-    <form
-      action={formAction}
-      className="space-y-5 rounded-xl border border-brand-line bg-white p-6 md:p-8"
-      noValidate
-    >
-      {/* Honeypot — visually hidden, must remain empty */}
-      <div aria-hidden className="absolute left-[-9999px] h-0 w-0 overflow-hidden">
-        <label htmlFor="website-hp">Laat dit veld leeg</label>
-        <input
-          id="website-hp"
-          type="text"
-          name="website"
-          tabIndex={-1}
-          autoComplete="off"
-        />
+    <form action={action} className="space-y-6" noValidate>
+      {/* honeypot */}
+      <input
+        type="text"
+        name="company"
+        tabIndex={-1}
+        autoComplete="off"
+        aria-hidden
+        className="pointer-events-none absolute h-0 w-0 opacity-0"
+      />
+
+      <div className="grid gap-6 md:grid-cols-2">
+        <Field label="Naam" name="naam" required error={errors.naam} />
+        <Field label="E-mail" name="email" type="email" required error={errors.email} />
       </div>
+      <Field label="Telefoon" name="telefoon" type="tel" error={errors.telefoon} />
+      <Field label="Bericht" name="bericht" required multiline error={errors.bericht} />
 
-      <FormField
-        label="Naam"
-        name="name"
-        required
-        error={state.errors?.name}
-      >
-        <Input name="name" required autoComplete="name" />
-      </FormField>
-
-      <FormField
-        label="E-mail"
-        name="email"
-        required
-        error={state.errors?.email}
-      >
-        <Input
-          name="email"
-          type="email"
-          required
-          autoComplete="email"
-          inputMode="email"
-        />
-      </FormField>
-
-      <FormField
-        label="Telefoon"
-        name="phone"
-        hint="Optioneel — handig voor snelle vragen."
-        error={state.errors?.phone}
-      >
-        <Input name="phone" type="tel" autoComplete="tel" inputMode="tel" />
-      </FormField>
-
-      <FormField
-        label="Bericht"
-        name="message"
-        required
-        error={state.errors?.message}
-      >
-        <Textarea name="message" required rows={6} />
-      </FormField>
-
-      {state.message ? (
-        <p
-          role="alert"
-          className="rounded-md border border-red-200 bg-red-50 px-3 py-2 text-sm text-red-700"
-        >
-          {state.message}
+      <div className="flex flex-col items-start gap-3 pt-2 md:flex-row md:items-center md:justify-between">
+        <p className="text-xs text-mute">
+          We reageren binnen één werkdag. Zie ons{" "}
+          <a href="/privacy" className="underline">privacybeleid</a>.
         </p>
-      ) : null}
-
-      <SubmitButton />
-
-      <p className="text-xs text-brand-ink-soft">
-        Door dit formulier te versturen stem je in met de verwerking van je
-        gegevens om je vraag te behandelen. Lees ons{" "}
-        <a href="/privacy" className="underline hover:text-brand-primary">
-          privacybeleid
-        </a>
-        .
-      </p>
+        <button
+          type="submit"
+          disabled={pending}
+          className="group inline-flex items-center justify-center gap-2 rounded-md bg-ink px-6 py-3.5 font-medium text-white shadow-sm transition-all hover:bg-[var(--ink-deep)] hover:shadow-md disabled:opacity-60"
+        >
+          {pending ? (
+            <>
+              <Loader2 className="size-4 animate-spin" />
+              Versturen...
+            </>
+          ) : (
+            <>
+              Verstuur bericht
+              <ArrowUpRight className="size-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+            </>
+          )}
+        </button>
+      </div>
     </form>
   );
 }
 
-function SubmitButton() {
-  const { pending } = useFormStatus();
+function Field({
+  label, name, type = "text", required, multiline, error,
+}: { label: string; name: string; type?: string; required?: boolean; multiline?: boolean; error?: string }) {
+  const id = `contact-${name}`;
+  const common = "block w-full rounded-md border border-line bg-white px-4 py-3 text-sm text-ink placeholder:text-mute focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent/30";
   return (
-    <Button type="submit" size="lg" disabled={pending} className="w-full sm:w-auto">
-      {pending ? "Versturen..." : "Verstuur bericht"}
-    </Button>
+    <div className="space-y-2">
+      <label htmlFor={id} className="block text-sm font-medium text-ink">
+        {label}
+        {required ? <span className="ml-0.5 text-accent">*</span> : null}
+      </label>
+      {multiline ? (
+        <textarea id={id} name={name} required={required} rows={5} className={common} />
+      ) : (
+        <input id={id} name={name} type={type} required={required} className={common} />
+      )}
+      {error ? <p className="text-xs text-accent-deep">{error}</p> : null}
+    </div>
   );
 }

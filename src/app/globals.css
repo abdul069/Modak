@@ -1,248 +1,182 @@
 @import "tailwindcss";
 
-@theme {
-  --color-brand-primary: #1f4e5f;
-  --color-brand-primary-50: #f0f5f7;
-  --color-brand-primary-100: #d6e3e8;
-  --color-brand-primary-700: #1a4250;
-  --color-brand-primary-900: #122d37;
+/* ============================================================
+   AGNAU v3 — Multi-division portal design tokens
+   ============================================================ */
 
-  --color-brand-accent: #c9a961;
-  --color-brand-accent-soft: #e8d9af;
-  --color-brand-accent-dark: #a88840;
+:root {
+  /* Surfaces & ink */
+  --white:      #FFFFFF;
+  --off-white:  #F7F8FA;
+  --ink:        #1A1F2E;
+  --slate:      #5B6478;
+  --mute:       #A0A6B3;
+  --line:       #E5E7EB;
+  --ink-deep:   #0F1320;
 
-  --color-brand-bg: #f4f1eb;
-  --color-brand-bg-alt: #ebe6db;
-  --color-brand-ink: #1a1a1a;
-  --color-brand-ink-soft: #4a4a4a;
-  --color-brand-line: #d9d3c5;
+  /* Default accent — overridden per division via [data-division] */
+  --accent:      var(--ink);
+  --accent-soft: var(--off-white);
+  --accent-deep: var(--ink-deep);
 
-  --font-sans: var(--font-inter), ui-sans-serif, system-ui, -apple-system,
-    "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-  --font-display: var(--font-fraunces), ui-serif, Georgia, "Times New Roman",
-    serif;
+  /* Division swatches (raw, for inline use such as the homepage grid) */
+  --dak:    #D9531E; --dak-soft:   #FDEDE5; --dak-deep:   #B23E0F;
+  --rd:     #00A4D6; --rd-soft:    #E0F4FA; --rd-deep:    #007BA3;
+  --reno:   #E8A93A; --reno-soft:  #FCF3E1; --reno-deep:  #B8821E;
+  --hvac:   #2BAE66; --hvac-soft:  #E1F4EA; --hvac-deep:  #1E8049;
+  --solar:  #F4C430; --solar-soft: #FEF6D9; --solar-deep: #C99B17;
+  --ev:     #7B3FE4; --ev-soft:    #EFE7FC; --ev-deep:    #5A23B5;
 
-  --radius-sm: 4px;
-  --radius-md: 8px;
-  --radius-lg: 14px;
-  --radius-xl: 22px;
+  /* Radii */
+  --r-sm: 6px;
+  --r-md: 12px;
+  --r-lg: 20px;
+  --r-xl: 28px;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 2px rgba(15, 19, 32, 0.06);
+  --shadow-md: 0 8px 24px rgba(15, 19, 32, 0.08);
+  --shadow-lg: 0 24px 60px rgba(15, 19, 32, 0.12);
+
+  /* Type scale (clamps) */
+  --fs-display: clamp(2.5rem, 5vw + 0.5rem, 5rem);
+  --fs-h1:      clamp(2rem, 3vw + 1rem, 3.5rem);
+  --fs-h2:      clamp(1.5rem, 1.6vw + 1rem, 2.5rem);
+  --fs-h3:      clamp(1.125rem, 0.6vw + 1rem, 1.5rem);
+  --fs-body:    1rem;
+  --fs-small:   0.875rem;
+  --fs-eyebrow: 0.75rem;
+}
+
+/* Per-division accent overrides */
+[data-division="dak"]   { --accent: var(--dak);   --accent-soft: var(--dak-soft);   --accent-deep: var(--dak-deep);   }
+[data-division="rd"]    { --accent: var(--rd);    --accent-soft: var(--rd-soft);    --accent-deep: var(--rd-deep);    }
+[data-division="reno"]  { --accent: var(--reno);  --accent-soft: var(--reno-soft);  --accent-deep: var(--reno-deep);  }
+[data-division="hvac"]  { --accent: var(--hvac);  --accent-soft: var(--hvac-soft);  --accent-deep: var(--hvac-deep);  }
+[data-division="solar"] { --accent: var(--solar); --accent-soft: var(--solar-soft); --accent-deep: var(--solar-deep); }
+[data-division="ev"]    { --accent: var(--ev);    --accent-soft: var(--ev-soft);    --accent-deep: var(--ev-deep);    }
+
+/* Bridge tokens into Tailwind v4 utilities */
+@theme inline {
+  --color-white:      var(--white);
+  --color-off-white:  var(--off-white);
+  --color-ink:        var(--ink);
+  --color-ink-deep:   var(--ink-deep);
+  --color-slate:      var(--slate);
+  --color-mute:       var(--mute);
+  --color-line:       var(--line);
+
+  --color-accent:      var(--accent);
+  --color-accent-soft: var(--accent-soft);
+  --color-accent-deep: var(--accent-deep);
+
+  --color-dak:    var(--dak);
+  --color-rd:     var(--rd);
+  --color-reno:   var(--reno);
+  --color-hvac:   var(--hvac);
+  --color-solar:  var(--solar);
+  --color-ev:     var(--ev);
+
+  --font-display: var(--font-manrope), ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-sans:    var(--font-inter), ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-mono:    var(--font-jetbrains), ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+
+  --radius-sm: var(--r-sm);
+  --radius-md: var(--r-md);
+  --radius-lg: var(--r-lg);
+  --radius-xl: var(--r-xl);
 }
 
 @layer base {
-  *,
-  ::before,
-  ::after {
-    border-color: var(--color-brand-line);
-  }
-
-  /* ----- Animations ------------------------------------------------ */
-  @keyframes a-fade-up {
-    from { opacity: 0; transform: translate3d(0, 14px, 0); }
-    to { opacity: 1; transform: translate3d(0, 0, 0); }
-  }
-  @keyframes a-fade-in {
-    from { opacity: 0; }
-    to { opacity: 1; }
-  }
-  @keyframes a-scale-in {
-    from { opacity: 0; transform: scale(0.97); }
-    to { opacity: 1; transform: scale(1); }
-  }
-  @keyframes a-marquee {
-    from { transform: translate3d(0, 0, 0); }
-    to { transform: translate3d(-50%, 0, 0); }
-  }
-  @keyframes a-mesh {
-    0%   { background-position: 0% 0%, 100% 100%; }
-    50%  { background-position: 60% 30%, 30% 80%; }
-    100% { background-position: 0% 0%, 100% 100%; }
-  }
-  @keyframes a-shimmer {
-    0% { background-position: -120% 0; }
-    100% { background-position: 220% 0; }
-  }
-  @keyframes a-pulse-ring {
-    0%   { transform: scale(0.95); opacity: 0.6; }
-    70%  { transform: scale(1.4); opacity: 0; }
-    100% { transform: scale(1.4); opacity: 0; }
-  }
-
-  .animate-fade-up   { animation: a-fade-up 0.7s cubic-bezier(0.22,1,0.36,1) both; }
-  .animate-fade-in   { animation: a-fade-in 0.6s ease both; }
-  .animate-scale-in  { animation: a-scale-in 0.6s cubic-bezier(0.22,1,0.36,1) both; }
-  .animate-marquee   { animation: a-marquee 40s linear infinite; }
-  .animate-mesh      { animation: a-mesh 18s ease-in-out infinite; }
-  .animate-shimmer   { animation: a-shimmer 2.4s ease-in-out infinite; }
-  .animate-pulse-ring { animation: a-pulse-ring 2.4s ease-out infinite; }
+  *, ::before, ::after { border-color: var(--line); }
 
   html {
-    scroll-behavior: smooth;
     -webkit-text-size-adjust: 100%;
+    scroll-behavior: smooth;
   }
 
-  html,
-  body {
-    background-color: var(--color-brand-bg);
-    color: var(--color-brand-ink);
+  html, body {
+    background-color: var(--white);
+    color: var(--ink);
     font-family: var(--font-sans);
+    font-size: var(--fs-body);
+    line-height: 1.6;
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
 
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
+  h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-display);
-    font-weight: 500;
-    letter-spacing: -0.01em;
-    color: var(--color-brand-ink);
-  }
-
-  h1 {
-    font-size: clamp(2.25rem, 4vw + 1rem, 4rem);
+    font-weight: 800;
+    letter-spacing: -0.02em;
     line-height: 1.05;
+    color: var(--ink);
   }
 
-  h2 {
-    font-size: clamp(1.75rem, 2vw + 1rem, 2.75rem);
-    line-height: 1.1;
-  }
-
-  h3 {
-    font-size: clamp(1.25rem, 1vw + 1rem, 1.75rem);
-    line-height: 1.2;
-  }
+  h1 { font-size: var(--fs-h1); }
+  h2 { font-size: var(--fs-h2); }
+  h3 { font-size: var(--fs-h3); line-height: 1.2; letter-spacing: -0.01em; }
 
   :focus-visible {
-    outline: 2px solid var(--color-brand-primary);
+    outline: 2px solid var(--accent);
     outline-offset: 3px;
     border-radius: 2px;
   }
 
-  ::selection {
-    background: var(--color-brand-primary);
-    color: white;
-  }
+  ::selection { background: var(--accent); color: var(--white); }
 
+  /* When Lenis runs, it adds .lenis-smooth to <html>; honour reduced-motion */
   @media (prefers-reduced-motion: reduce) {
-    *,
-    ::before,
-    ::after {
+    *, ::before, ::after {
       animation-duration: 0.01ms !important;
       animation-iteration-count: 1 !important;
       transition-duration: 0.01ms !important;
       scroll-behavior: auto !important;
     }
   }
-}
 
-@layer utilities {
-  .marquee-mask {
-    -webkit-mask-image: linear-gradient(
-      to right,
-      transparent 0,
-      black 8%,
-      black 92%,
-      transparent 100%
-    );
-    mask-image: linear-gradient(
-      to right,
-      transparent 0,
-      black 8%,
-      black 92%,
-      transparent 100%
-    );
-  }
-  .text-shimmer {
-    background: linear-gradient(
-      100deg,
-      currentColor 30%,
-      var(--color-brand-accent) 50%,
-      currentColor 70%
-    );
-    background-size: 200% 100%;
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-  }
-  .bg-mesh-hero {
-    background-image:
-      radial-gradient(at 20% 30%, rgba(201, 169, 97, 0.28), transparent 45%),
-      radial-gradient(at 80% 75%, rgba(255, 255, 255, 0.10), transparent 55%);
-    background-size: 200% 200%;
-  }
+  /* Lenis baseline */
+  html.lenis, html.lenis body { height: auto; }
+  .lenis.lenis-smooth { scroll-behavior: auto !important; }
+  .lenis.lenis-smooth [data-lenis-prevent] { overscroll-behavior: contain; }
+  .lenis.lenis-stopped { overflow: hidden; }
 }
 
 @layer components {
-  .container-page {
-    width: 100%;
-    margin-inline: auto;
-    padding-inline: 1.25rem;
-    max-width: 1200px;
-  }
-
-  @media (min-width: 768px) {
-    .container-page {
-      padding-inline: 2rem;
-    }
-  }
-
   .skip-link {
     position: absolute;
     top: -100px;
     left: 1rem;
-    background: var(--color-brand-primary);
-    color: white;
+    background: var(--ink);
+    color: var(--white);
     padding: 0.75rem 1rem;
-    border-radius: 6px;
+    border-radius: var(--r-sm);
     z-index: 100;
     transition: top 0.15s ease;
   }
+  .skip-link:focus { top: 1rem; }
 
-  .skip-link:focus {
-    top: 1rem;
+  .eyebrow {
+    font-family: var(--font-mono);
+    font-size: var(--fs-eyebrow);
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: var(--accent);
+    font-weight: 500;
+  }
+}
+
+@layer utilities {
+  .marquee-mask {
+    -webkit-mask-image: linear-gradient(to right, transparent 0, black 8%, black 92%, transparent 100%);
+    mask-image: linear-gradient(to right, transparent 0, black 8%, black 92%, transparent 100%);
   }
 
-  .prose-agnau {
-    color: var(--color-brand-ink);
-    line-height: 1.7;
+  /* keyframes for marquee (Framer Motion handles most other animation) */
+  @keyframes a-marquee {
+    from { transform: translate3d(0, 0, 0); }
+    to   { transform: translate3d(-50%, 0, 0); }
   }
-
-  .prose-agnau p {
-    margin-block: 1em;
-  }
-
-  .prose-agnau h2 {
-    margin-top: 2.5em;
-    margin-bottom: 0.6em;
-  }
-
-  .prose-agnau h3 {
-    margin-top: 1.8em;
-    margin-bottom: 0.4em;
-  }
-
-  .prose-agnau ul {
-    list-style: disc;
-    padding-left: 1.4em;
-  }
-
-  .prose-agnau ol {
-    list-style: decimal;
-    padding-left: 1.4em;
-  }
-
-  .prose-agnau li {
-    margin-block: 0.4em;
-  }
-
-  .prose-agnau a {
-    color: var(--color-brand-primary);
-    text-decoration: underline;
-    text-underline-offset: 3px;
-  }
+  .animate-marquee { animation: a-marquee 40s linear infinite; }
 }
