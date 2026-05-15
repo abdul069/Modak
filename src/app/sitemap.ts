@@ -1,6 +1,7 @@
 import type { MetadataRoute } from "next";
 import { siteConfig } from "@/lib/site";
 import { getAllDivisions } from "@/lib/division";
+import { divisionUrl } from "@/lib/subdomain";
 import { projects } from "@/content/realisaties";
 import { blogPosts } from "@/content/blog";
 import { jobs } from "@/content/jobs";
@@ -32,8 +33,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
           : 0.7,
   }));
 
+  // Division homepages live on their own subdomains in production.
   const divisions: MetadataRoute.Sitemap = getAllDivisions().map((d) => ({
-    url: `${base}/${d.slug}`,
+    url: divisionUrl(d.slug),
     lastModified: now,
     changeFrequency: "monthly",
     priority: 0.9,

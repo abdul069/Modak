@@ -1,8 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Inter, Manrope, JetBrains_Mono } from "next/font/google";
 import { Analytics } from "@vercel/analytics/react";
-import { Header } from "@/components/layout/Header";
-import { Footer } from "@/components/layout/Footer";
 import { LenisProvider } from "@/components/layout/LenisProvider";
 import { MetaPixel } from "@/components/tracking/MetaPixel";
 import { GTM, GTMNoScript } from "@/components/tracking/GTM";
@@ -95,13 +93,7 @@ export default function RootLayout({
         <a href="#main" className="skip-link">
           Spring naar inhoud
         </a>
-        <LenisProvider>
-          <Header />
-          <main id="main" className="min-h-[60vh]">
-            {children}
-          </main>
-          <Footer />
-        </LenisProvider>
+        <LenisProvider>{children}</LenisProvider>
         <UTMCapture />
         <Analytics />
       </body>

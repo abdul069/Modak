@@ -4,6 +4,7 @@ import { Container } from "@/components/ui/Container";
 import { Logo } from "@/components/brand/Logo";
 import { companyNav, siteConfig } from "@/lib/site";
 import { getAllDivisions } from "@/lib/division";
+import { divisionUrl } from "@/lib/subdomain";
 
 export function Footer() {
   const year = new Date().getFullYear();
@@ -34,7 +35,7 @@ export function Footer() {
             {divisions.map((d) => (
               <li key={d.slug}>
                 <Link
-                  href={`/${d.slug}`}
+                  href={divisionUrl(d.slug)}
                   className="group inline-flex items-center gap-2 text-white/85 transition hover:text-white"
                 >
                   <span

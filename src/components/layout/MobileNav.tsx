@@ -7,6 +7,7 @@ import { Menu, X, ArrowUpRight } from "lucide-react";
 import { AnimatePresence, motion } from "framer-motion";
 import { companyNav, siteConfig } from "@/lib/site";
 import { getAllDivisions } from "@/lib/division";
+import { divisionUrl } from "@/lib/subdomain";
 
 export function MobileNav() {
   const [open, setOpen] = React.useState(false);
@@ -66,7 +67,7 @@ export function MobileNav() {
                 {divisions.map((d) => (
                   <li key={d.slug}>
                     <Link
-                      href={`/${d.slug}`}
+                      href={divisionUrl(d.slug)}
                       onClick={() => setOpen(false)}
                       data-division={d.themeKey}
                       className="group flex items-center justify-between rounded-md bg-accent px-4 py-3 text-white transition-transform hover:translate-x-1"

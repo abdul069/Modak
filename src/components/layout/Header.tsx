@@ -8,6 +8,7 @@ import { Container } from "@/components/ui/Container";
 import { Logo } from "@/components/brand/Logo";
 import { MobileNav } from "@/components/layout/MobileNav";
 import { companyNav, siteConfig } from "@/lib/site";
+import { apexUrl } from "@/lib/subdomain";
 import { cn } from "@/lib/utils";
 
 export function Header() {
@@ -31,8 +32,8 @@ export function Header() {
     >
       <Container className={cn("flex items-center justify-between gap-6 transition-all duration-300", scrolled ? "h-14 md:h-16" : "h-16 md:h-20")}>
         <Link
-          href="/"
-          aria-label={`${siteConfig.name} home`}
+          href={apexUrl()}
+          aria-label={`Terug naar ${siteConfig.name} portal`}
           className="group inline-flex items-center transition-opacity hover:opacity-90"
         >
           <Logo className="transition-transform duration-300 group-hover:-translate-y-0.5" />

@@ -8,6 +8,7 @@ import { CTABlock } from "@/components/marketing/CTABlock";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { breadcrumbSchema, buildMetadata } from "@/lib/seo";
 import { getAllDivisions } from "@/lib/division";
+import { divisionUrl } from "@/lib/subdomain";
 import { siteConfig } from "@/lib/site";
 
 export const metadata: Metadata = buildMetadata({
@@ -43,7 +44,7 @@ export default function OffertePage() {
             {divisions.map((d) => (
               <li key={d.slug}>
                 <Link
-                  href={`/${d.slug}#offerte`}
+                  href={divisionUrl(d.slug, "/#offerte")}
                   data-division={d.themeKey}
                   className="group relative block h-full overflow-hidden rounded-xl bg-accent p-6 text-white transition-transform duration-300 hover:-translate-y-1 hover:shadow-2xl"
                 >

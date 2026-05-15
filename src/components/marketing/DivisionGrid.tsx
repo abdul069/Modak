@@ -5,6 +5,7 @@ import { ArrowUpRight } from "lucide-react";
 import { motion, useReducedMotion } from "framer-motion";
 import { DivisionIcon } from "@/components/brand/DivisionIcon";
 import { getAllDivisions } from "@/lib/division";
+import { divisionUrl } from "@/lib/subdomain";
 
 export function DivisionGrid() {
   const divisions = getAllDivisions();
@@ -29,7 +30,7 @@ export function DivisionGrid() {
           }}
         >
           <Link
-            href={`/${d.slug}`}
+            href={divisionUrl(d.slug)}
             data-division={d.themeKey}
             className="group relative block h-full overflow-hidden rounded-xl bg-accent p-6 text-white transition-transform duration-300 hover:-translate-y-1 hover:shadow-2xl md:p-7"
           >
