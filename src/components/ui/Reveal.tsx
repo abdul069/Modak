@@ -1,81 +1,97 @@
 "use client";
 
 import * as React from "react";
-import { cn } from "@/lib/utils";
+import { motion, useReducedMotion, type Variants } from "framer-motion";
 
-interface RevealProps {
-  children: React.ReactNode;
-  /** Animation delay in ms */
+type RevealProps = {
+  as?: "div" | "section" | "article" | "header" | "footer" | "li";
   delay?: number;
-  /** Direction of the reveal */
-  direction?: "up" | "left" | "right" | "scale" | "none";
-  /** Tailwind className passthrough */
-  className?: string;
-  /** When true, only triggers once (default true) */
+  y?: number;
+  duration?: number;
   once?: boolean;
-  /** Visible threshold (0-1) */
-  threshold?: number;
-}
-
-const directionMap: Record<NonNullable<RevealProps["direction"]>, string> = {
-  up: "translate-y-4",
-  left: "-translate-x-4",
-  right: "translate-x-4",
-  scale: "scale-[0.97]",
-  none: "",
+  className?: string;
+  children: React.ReactNode;
 };
 
 export function Reveal({
-  children,
+  as = "div",
   delay = 0,
-  direction = "up",
-  className,
+  y = 16,
+  duration = 0.6,
   once = true,
-  threshold = 0.08,
+  className,
+  children,
 }: RevealProps) {
-  const ref = React.useRef<HTMLDivElement | null>(null);
-  const [visible, setVisible] = React.useState(false);
+  const reduceMotion = useReducedMotion();
+  const MotionTag = motion[as] as typeof motion.div;
 
-  React.useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-
-    const reduced = window.matchMedia(
-      "(prefers-reduced-motion: reduce)"
-    ).matches;
-    if (reduced) {
-      setVisible(true);
-      return;
-    }
-
-    const obs = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setVisible(true);
-          if (once) obs.disconnect();
-        } else if (!once) {
-          setVisible(false);
-        }
-      },
-      { threshold, rootMargin: "0px 0px -8% 0px" }
-    );
-    obs.observe(el);
-    return () => obs.disconnect();
-  }, [once, threshold]);
+  const variants: Variants = {
+    hidden: { opacity: 0, y: reduceMotion ? 0 : y },
+    show: { opacity: 1, y: 0 },
+  };
 
   return (
-    <div
-      ref={ref}
-      style={{ transitionDelay: `${delay}ms` }}
-      className={cn(
-        "transition-[opacity,transform] duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] will-change-transform",
-        visible
-          ? "translate-y-0 translate-x-0 scale-100 opacity-100"
-          : `${directionMap[direction]} opacity-0`,
-        className
-      )}
+    <MotionTag
+      initial="hidden"
+      whileInView="show"
+      viewport={{ once, margin: "-10% 0px -10% 0px" }}
+      transition={{ duration, delay, ease: [0.22, 1, 0.36, 1] }}
+      variants={variants}
+      className={className}
     >
       {children}
-    </div>
+    </MotionTag>
+  );
+}
+
+type StaggerProps = {
+  className?: string;
+  children: React.ReactNode;
+  delay?: number;
+  staggerChildren?: number;
+};
+
+export function RevealStagger({
+  className,
+  children,
+  delay = 0,
+  staggerChildren = 0.08,
+}: StaggerProps) {
+  return (
+    <motion.div
+      initial="hidden"
+      whileInView="show"
+      viewport={{ once: true, margin: "-10% 0px -10% 0px" }}
+      variants={{
+        hidden: {},
+        show: { transition: { staggerChildren, delayChildren: delay } },
+      }}
+      className={className}
+    >
+      {children}
+    </motion.div>
+  );
+}
+
+export function RevealItem({
+  children,
+  y = 16,
+  className,
+}: {
+  children: React.ReactNode;
+  y?: number;
+  className?: string;
+}) {
+  const reduceMotion = useReducedMotion();
+  return (
+    <motion.div
+      variants={{
+        hidden: { opacity: 0, y: reduceMotion ? 0 : y },
+        show: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] } },
+      }}
+      className={className}
+    >
+      {children}
+    </motion.div>
   );
 }

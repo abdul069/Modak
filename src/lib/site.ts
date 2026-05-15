@@ -1,99 +1,53 @@
 export const siteConfig = {
   name: "AGNAU",
-  domain: "modak.be",
-  url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://modak.be",
+  legalName: "AGNAU bv",
+  domain: "agnau.be",
+  url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://agnau.be",
+  description:
+    "Vlaamse multidisciplinaire bouwgroep. Zes specialistische divisies — dakwerken, ramen & deuren, renovatie, HVAC, zonne-energie, laadpalen — onder één dak, met eigen werfploegen.",
   contact: {
-    email: process.env.CONTACT_EMAIL ?? "info@modak.be",
-    phone: "+32 485 10 89 89",
-    phoneHref: "tel:+32485108989",
+    email: process.env.CONTACT_EMAIL ?? "info@agnau.be",
+    phone: "+32 9 123 45 67",
+    phoneHref: "tel:+3291234567",
     address: {
       street: "Hooiwege 40j",
       postalCode: "9940",
       city: "Evergem",
       country: "België",
     },
-    // TODO: KBO/BTW-nummer aanvullen wanneer beschikbaar
+    openingHours: [
+      { day: "Maandag - Vrijdag", hours: "8:00 - 17:00" },
+      { day: "Zaterdag", hours: "Op afspraak" },
+      { day: "Zondag", hours: "Gesloten" },
+    ],
     kbo: "TODO: BE 0000.000.000",
   },
   social: {
-    // TODO: vervang door echte social URLs
     instagram: "https://www.instagram.com/",
     facebook: "https://www.facebook.com/",
     linkedin: "https://www.linkedin.com/",
   },
-  description:
-    "Belgische renovatiespecialist uit Evergem. Eén partner voor je volledige renovatie — dak, isolatie, warmtepompen, verwarming, ventilatie, sanitair, badkamers en airco.",
   ogImage: "/og.jpg",
 } as const;
 
-export const services = [
-  {
-    slug: "dakrenovatie",
-    title: "Dakrenovatie",
-    icon: "Home",
-    short: "Volledige dakrenovaties met aandacht voor structuur, dichting en afwerking.",
-  },
-  {
-    slug: "dakisolatie",
-    title: "Dakisolatie",
-    icon: "Layers",
-    short: "Energiebesparend isoleren — binnen of buitenom — met blijvende premies.",
-  },
-  {
-    slug: "warmtepompen",
-    title: "Warmtepompen",
-    icon: "Flame",
-    short: "Lucht-water en geothermische warmtepompen, RESCert-gecertificeerd.",
-  },
-  {
-    slug: "verwarming",
-    title: "Verwarming",
-    icon: "Thermometer",
-    short: "Centrale verwarming, vloerverwarming en hybride installaties.",
-  },
-  {
-    slug: "ventilatie",
-    title: "Ventilatie",
-    icon: "Wind",
-    short: "Systeem C en D met warmterecuperatie voor een gezond binnenklimaat.",
-  },
-  {
-    slug: "sanitair",
-    title: "Sanitair",
-    icon: "Droplet",
-    short: "Volledige sanitaire installaties — leidingen, toestellen en aansluitingen.",
-  },
-  {
-    slug: "badkamers",
-    title: "Badkamers",
-    icon: "Bath",
-    short: "Badkamers van A tot Z — ontwerp, betegeling, sanitair en afwerking.",
-  },
-  {
-    slug: "airco",
-    title: "Airco",
-    icon: "Snowflake",
-    short: "Splitairco's, multisplit en VRV-systemen voor woning of kantoor.",
-  },
-] as const;
-
-export type ServiceSlug = (typeof services)[number]["slug"];
-
-export const navigation = [
-  { label: "Diensten", href: "/diensten" },
-  { label: "Totaalrenovatie", href: "/totaalrenovatie" },
-  { label: "Premies", href: "/premies" },
-  { label: "Realisaties", href: "/realisaties" },
+export const companyNav = [
   { label: "Over ons", href: "/over-ons" },
-  { label: "Voor aannemers", href: "/voor-aannemers" },
+  { label: "Realisaties", href: "/realisaties" },
+  { label: "Jobs", href: "/jobs" },
+  { label: "Premies", href: "/premies" },
   { label: "Blog", href: "/blog" },
   { label: "Contact", href: "/contact" },
 ] as const;
 
-export const certificates = [
-  { id: "rescert", label: "RESCert", description: "Erkend installateur warmtepompen & zonneboilers" },
-  { id: "vca", label: "VCA*", description: "Veiligheid, gezondheid en milieu op de werf" },
-  { id: "erkend-aannemer", label: "Erkend aannemer", description: "Vlaamse erkenning categorie D" },
-  { id: "daikin", label: "Daikin Stand-By", description: "Officieel partner Daikin warmtepompen" },
-  { id: "viessmann", label: "Viessmann", description: "Erkend installatiepartner Viessmann" },
+export const partners = [
+  { id: "rescert",  label: "RESCert",      description: "Erkend installateur warmtepompen & zonneboilers" },
+  { id: "vca",      label: "VCA*",         description: "Veiligheid, gezondheid en milieu op de werf" },
+  { id: "erkend",   label: "Erkend aannemer", description: "Vlaamse erkenning categorie D" },
+  { id: "daikin",   label: "Daikin Stand-By", description: "Officieel Daikin-partner" },
+  { id: "viessmann",label: "Viessmann",    description: "Erkend installatiepartner Viessmann" },
+  { id: "reynaers", label: "Reynaers",     description: "Premium aluminium ramen & deuren" },
+  { id: "schueco",  label: "Schüco",       description: "Aluminium gevelsystemen" },
+  { id: "bosch",    label: "Bosch",        description: "Verwarming & warmtepompen" },
 ] as const;
+
+export type PartnerId = (typeof partners)[number]["id"];

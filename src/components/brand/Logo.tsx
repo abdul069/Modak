@@ -169,7 +169,7 @@ export function Logo({ className, variant = "color" }: Props) {
     <span
       className={cn(
         "inline-flex items-center gap-2.5",
-        variant === "color" ? "text-brand-primary" : "text-white",
+        variant === "color" ? "text-ink" : "text-white",
         className
       )}
     >

@@ -1,9 +1,12 @@
 import type { Metadata, Viewport } from "next";
-import { Inter, Fraunces } from "next/font/google";
-import Script from "next/script";
+import { Inter, Manrope, JetBrains_Mono } from "next/font/google";
 import { Analytics } from "@vercel/analytics/react";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
+import { LenisProvider } from "@/components/layout/LenisProvider";
+import { MetaPixel } from "@/components/tracking/MetaPixel";
+import { GTM, GTMNoScript } from "@/components/tracking/GTM";
+import { UTMCapture } from "@/components/tracking/UTMCapture";
 import { siteConfig } from "@/lib/site";
 import "./globals.css";
 
@@ -13,15 +16,22 @@ const inter = Inter({
   display: "swap",
 });
 
-const fraunces = Fraunces({
+const manrope = Manrope({
   subsets: ["latin"],
-  variable: "--font-fraunces",
+  variable: "--font-manrope",
   display: "swap",
-  axes: ["opsz"],
+  weight: ["400", "500", "600", "700", "800"],
+});
+
+const jetbrains = JetBrains_Mono({
+  subsets: ["latin"],
+  variable: "--font-jetbrains",
+  display: "swap",
+  weight: ["400", "500"],
 });
 
 export const viewport: Viewport = {
-  themeColor: "#1F4E5F",
+  themeColor: "#FFFFFF",
   width: "device-width",
   initialScale: 1,
 };
@@ -29,7 +39,7 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
   title: {
-    default: `${siteConfig.name} — renovatie van dak tot warmtepomp`,
+    default: `${siteConfig.name} — Eén partner. Zes specialiteiten.`,
     template: `%s | ${siteConfig.name}`,
   },
   description: siteConfig.description,
@@ -37,12 +47,14 @@ export const metadata: Metadata = {
   authors: [{ name: siteConfig.name }],
   generator: "Next.js",
   keywords: [
+    "dakwerken",
+    "ramen en deuren",
     "renovatie",
-    "totaalrenovatie",
-    "dakrenovatie",
+    "HVAC",
     "warmtepomp",
-    "ventilatie",
-    "Gent",
+    "zonnepanelen",
+    "laadpalen",
+    "Evergem",
     "Vlaanderen",
     "aannemer",
   ],
@@ -60,37 +72,34 @@ export const metadata: Metadata = {
     title: siteConfig.name,
     description: siteConfig.description,
   },
-  icons: {
-    icon: "/favicon.ico",
-  },
+  icons: { icon: "/favicon.ico" },
 };
-
-const plausibleDomain = process.env.NEXT_PUBLIC_PLAUSIBLE_DOMAIN;
 
 export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="nl-BE" className={`${inter.variable} ${fraunces.variable}`}>
+    <html
+      lang="nl-BE"
+      className={`${inter.variable} ${manrope.variable} ${jetbrains.variable}`}
+    >
       <head>
-        {plausibleDomain ? (
-          <Script
-            defer
-            data-domain={plausibleDomain}
-            src="https://plausible.io/js/script.js"
-            strategy="afterInteractive"
-          />
-        ) : null}
+        <GTM />
+        <MetaPixel />
       </head>
-      <body className="min-h-screen bg-brand-bg font-sans text-brand-ink antialiased">
+      <body className="min-h-screen bg-white font-sans text-ink antialiased">
+        <GTMNoScript />
         <a href="#main" className="skip-link">
           Spring naar inhoud
         </a>
-        <Header />
-        <main id="main" className="min-h-[60vh]">
-          {children}
-        </main>
-        <Footer />
+        <LenisProvider>
+          <Header />
+          <main id="main" className="min-h-[60vh]">
+            {children}
+          </main>
+          <Footer />
+        </LenisProvider>
+        <UTMCapture />
         <Analytics />
       </body>
     </html>

@@ -4,26 +4,27 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/utils";
 
 const buttonVariants = cva(
-  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-primary focus-visible:ring-offset-2 focus-visible:ring-offset-brand-bg disabled:pointer-events-none disabled:opacity-50",
+  "group inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-white disabled:pointer-events-none disabled:opacity-50 active:scale-[0.98]",
   {
     variants: {
       variant: {
         primary:
-          "bg-brand-primary text-white hover:bg-brand-primary-700",
-        accent:
-          "bg-brand-accent text-brand-ink hover:bg-brand-accent-dark hover:text-white",
+          "bg-accent text-white hover:bg-accent-deep shadow-sm hover:shadow-md",
+        ink:
+          "bg-ink text-white hover:bg-ink-deep shadow-sm hover:shadow-md",
         outline:
-          "border border-brand-primary text-brand-primary bg-transparent hover:bg-brand-primary hover:text-white",
+          "border border-line text-ink bg-white hover:border-accent hover:text-accent",
         ghost:
-          "text-brand-primary hover:bg-brand-primary/5",
-        link: "text-brand-primary underline-offset-4 hover:underline",
+          "text-ink hover:bg-off-white",
         invert:
-          "bg-white text-brand-primary hover:bg-brand-bg",
+          "bg-white text-ink hover:bg-off-white shadow-sm",
+        accentSoft:
+          "bg-accent-soft text-accent-deep hover:bg-accent hover:text-white",
       },
       size: {
-        default: "h-11 px-5 py-2",
-        sm: "h-9 px-3 text-sm",
-        lg: "h-12 px-7 text-base",
+        default: "h-11 px-5 text-sm",
+        sm: "h-9 px-3.5 text-sm",
+        lg: "h-14 px-7 text-base",
         icon: "size-10",
       },
     },

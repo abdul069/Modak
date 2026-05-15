@@ -1,83 +1,56 @@
 import Link from "next/link";
-import { ArrowRight, Phone } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { siteConfig } from "@/lib/site";
-import { cn } from "@/lib/utils";
+import { ArrowUpRight } from "lucide-react";
+import { Container } from "@/components/ui/Container";
+import { Reveal } from "@/components/ui/Reveal";
 
-interface Props {
-  variant?: "primary" | "secondary" | "b2b";
+type CTABlockProps = {
+  eyebrow?: string;
   title: string;
   body?: string;
   primaryCta?: { label: string; href: string };
   secondaryCta?: { label: string; href: string };
-  className?: string;
-}
+};
 
 export function CTABlock({
-  variant = "primary",
+  eyebrow,
   title,
   body,
-  primaryCta = { label: "Vraag een offerte aan", href: "/offerte" },
-  secondaryCta = { label: "Contacteer ons", href: "/contact" },
-  className,
-}: Props) {
-  const isDark = variant !== "secondary";
+  primaryCta = { label: "Vraag offerte", href: "/offerte" },
+  secondaryCta,
+}: CTABlockProps) {
   return (
-    <section
-      className={cn(
-        "rounded-xl px-6 py-12 md:px-12 md:py-16",
-        isDark
-          ? "bg-brand-primary text-white"
-          : "bg-brand-bg-alt text-brand-ink",
-        className
-      )}
-    >
-      <div className="grid items-center gap-8 md:grid-cols-[1.5fr_1fr]">
-        <div>
-          <h2
-            className={cn(
-              "font-display",
-              isDark ? "text-white" : "text-brand-ink"
-            )}
-          >
-            {title}
-          </h2>
-          {body ? (
-            <p
-              className={cn(
-                "mt-4 max-w-2xl text-base md:text-lg",
-                isDark ? "text-white/80" : "text-brand-ink-soft"
-              )}
-            >
-              {body}
-            </p>
-          ) : null}
-        </div>
-        <div className="flex flex-col items-stretch gap-3 md:items-end">
-          <Button asChild size="lg" variant={isDark ? "accent" : "primary"}>
-            <Link href={primaryCta.href}>
-              {primaryCta.label}
-              <ArrowRight className="size-4" />
-            </Link>
-          </Button>
-          {variant === "b2b" ? (
-            <Button asChild size="lg" variant="invert">
-              <Link href={siteConfig.contact.phoneHref}>
-                <Phone className="size-4" />
-                {siteConfig.contact.phone}
+    <section className="relative overflow-hidden bg-[var(--ink-deep)] py-20 text-white md:py-28">
+      <Container>
+        <Reveal>
+          <div className="max-w-3xl">
+            {eyebrow ? (
+              <p className="font-mono text-xs uppercase tracking-[0.18em] text-white/50">
+                {eyebrow}
+              </p>
+            ) : null}
+            <h2 className="mt-3 text-white">{title}</h2>
+            {body ? <p className="mt-5 max-w-xl text-lg text-white/75">{body}</p> : null}
+
+            <div className="mt-8 flex flex-wrap items-center gap-3">
+              <Link
+                href={primaryCta.href}
+                className="group inline-flex items-center gap-2 rounded-md bg-white px-6 py-3.5 font-medium text-ink transition-colors hover:bg-off-white"
+              >
+                {primaryCta.label}
+                <ArrowUpRight className="size-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
               </Link>
-            </Button>
-          ) : (
-            <Button
-              asChild
-              size="lg"
-              variant={isDark ? "invert" : "outline"}
-            >
-              <Link href={secondaryCta.href}>{secondaryCta.label}</Link>
-            </Button>
-          )}
-        </div>
-      </div>
+              {secondaryCta ? (
+                <Link
+                  href={secondaryCta.href}
+                  className="inline-flex items-center gap-2 rounded-md border border-white/30 px-6 py-3.5 font-medium text-white transition-colors hover:bg-white/10"
+                >
+                  {secondaryCta.label}
+                </Link>
+              ) : null}
+            </div>
+          </div>
+        </Reveal>
+      </Container>
     </section>
   );
 }
