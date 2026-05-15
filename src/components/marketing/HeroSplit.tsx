@@ -123,15 +123,20 @@ export function HeroSplit({
           )}
         </div>
 
-        {/* Framed photo with offset green block behind */}
+        {/* Photo card with offset SQUARE color block behind */}
         <div className="relative md:col-span-5">
-          {/* Offset green block behind photo */}
+          {/* Solid green offset rectangle behind */}
           <div
             aria-hidden
-            className="absolute inset-0 -translate-x-3 translate-y-3 rounded-md bg-brand-accent/85 md:-translate-x-5 md:translate-y-5"
+            className="absolute inset-0 -translate-x-4 translate-y-4 bg-brand-accent md:-translate-x-6 md:translate-y-6"
+          />
+          {/* Optional small navy chip top-left of photo (architectural detail) */}
+          <div
+            aria-hidden
+            className="absolute -left-2 -top-3 hidden h-12 w-12 bg-brand-primary md:block md:-left-3 md:-top-4"
           />
           <div
-            className="animate-fade-up relative mx-auto aspect-[4/5] w-full max-w-[460px] overflow-hidden rounded-md shadow-[0_30px_80px_-20px_rgba(0,0,0,0.55)] ring-1 ring-white/10 md:ml-auto md:mr-0"
+            className="animate-fade-up relative mx-auto aspect-[4/5] w-full max-w-[460px] overflow-hidden ring-1 ring-white/10 md:ml-auto md:mr-0"
             style={{ animationDelay: "320ms" }}
           >
             <div className="absolute inset-0 -m-[6%]">
@@ -145,9 +150,8 @@ export function HeroSplit({
               />
             </div>
             {caption ? (
-              <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/75 to-transparent p-5">
-                <p className="flex items-center gap-2 text-xs uppercase tracking-[0.25em] text-white/85">
-                  <span className="inline-block size-1.5 rounded-full bg-brand-accent" />
+              <div className="absolute bottom-0 left-0 bg-brand-bg-dark/90 px-4 py-2">
+                <p className="text-[0.65rem] font-medium uppercase tracking-[0.3em] text-white">
                   {caption}
                 </p>
               </div>
@@ -163,13 +167,15 @@ export function HeroSplit({
         </div>
       </div>
 
-      {/* Scroll indicator (desktop only) */}
+      {/* Scroll indicator — square badge (no pill) */}
       <div
         aria-hidden
-        className="absolute bottom-6 left-1/2 z-10 hidden -translate-x-1/2 items-center gap-2 text-white/60 md:flex"
+        className="absolute bottom-6 left-1/2 z-10 hidden -translate-x-1/2 flex-col items-center gap-2 text-white/70 md:flex"
       >
-        <ChevronDown className="size-5 animate-bounce" />
         <span className="text-[0.6rem] font-medium uppercase tracking-[0.3em]">Scroll</span>
+        <div className="flex size-8 items-center justify-center border border-white/30">
+          <ChevronDown className="size-4 animate-bounce" />
+        </div>
       </div>
     </section>
   );

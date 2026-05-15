@@ -34,7 +34,7 @@ export function ServiceTile({
   return (
     <Link
       href={`/diensten/${slug}`}
-      className="group relative block aspect-[4/5] overflow-hidden rounded-md bg-brand-bg-dark"
+      className="group relative block aspect-[4/5] overflow-hidden bg-brand-bg-dark"
     >
       <Image
         src={image}
@@ -58,7 +58,7 @@ export function ServiceTile({
         </div>
         <span
           aria-hidden
-          className="grid size-9 shrink-0 place-items-center rounded-full border border-white/30 text-white transition-all duration-300 group-hover:bg-white group-hover:text-brand-bg-dark"
+          className="grid size-9 shrink-0 place-items-center border border-white/30 text-white transition-all duration-300 group-hover:bg-brand-accent group-hover:border-brand-accent group-hover:text-white"
         >
           <ArrowUpRight className="size-4" />
         </span>

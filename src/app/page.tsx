@@ -10,6 +10,7 @@ import { SectionHeader } from "@/components/marketing/SectionHeader";
 import { StatsStrip } from "@/components/marketing/StatsStrip";
 import { ScrollMarquee } from "@/components/marketing/ScrollMarquee";
 import { RevealZoom } from "@/components/marketing/RevealZoom";
+import { MaterialStrip } from "@/components/marketing/MaterialStrip";
 import { DotAccent } from "@/components/marketing/DotAccent";
 import { Button } from "@/components/ui/button";
 import { Reveal } from "@/components/ui/Reveal";
@@ -148,35 +149,48 @@ export default function HomePage() {
               </p>
             </div>
           </Reveal>
-          <ol className="mt-16 grid gap-12 lg:grid-cols-3">
-            {[
-              {
-                n: "01",
-                t: "Plaatsbezoek",
-                b: "We komen langs, luisteren, meten op en denken mee. Geen verkooppraat.",
-              },
-              {
-                n: "02",
-                t: "Onderbouwde offerte",
-                b: "Eén document met alle disciplines, premies en planning. Vrijblijvend.",
-              },
-              {
-                n: "03",
-                t: "Uitvoering",
-                b: "Eigen werfleiding, één aanspreekpunt, 10 jaar uitvoeringsgarantie.",
-              },
-            ].map((s, i) => (
-              <Reveal key={s.n} delay={i * 100}>
-                <li className="relative border-t border-brand-line pt-8">
-                  <span className="absolute -top-7 left-0 font-display text-7xl leading-none text-brand-accent md:text-8xl">
-                    {s.n}
-                  </span>
-                  <h3 className="mt-12 font-display text-2xl text-brand-ink md:mt-14">{s.t}</h3>
-                  <p className="mt-4 text-brand-ink-soft">{s.b}</p>
-                </li>
-              </Reveal>
-            ))}
-          </ol>
+          <div className="relative mt-20">
+            {/* Architectural dashed connector across (lg+) */}
+            <div
+              aria-hidden
+              className="pointer-events-none absolute left-[12%] right-[12%] top-7 hidden border-t-2 border-dashed border-brand-accent/40 lg:block"
+            />
+            <ol className="relative grid gap-14 lg:grid-cols-3 lg:gap-10">
+              {[
+                {
+                  n: "01",
+                  t: "Plaatsbezoek",
+                  b: "We komen langs, luisteren, meten op en denken mee. Geen verkooppraat.",
+                },
+                {
+                  n: "02",
+                  t: "Onderbouwde offerte",
+                  b: "Eén document met alle disciplines, premies en planning. Vrijblijvend.",
+                },
+                {
+                  n: "03",
+                  t: "Uitvoering",
+                  b: "Eigen werfleiding, één aanspreekpunt, 10 jaar uitvoeringsgarantie.",
+                },
+              ].map((s, i) => (
+                <Reveal key={s.n} delay={i * 100}>
+                  <li className="relative bg-brand-bg-alt p-8 ring-1 ring-brand-line lg:bg-brand-bg lg:p-0 lg:ring-0">
+                    {/* Square number badge */}
+                    <span className="relative z-10 inline-flex size-14 items-center justify-center bg-brand-primary font-display text-xl font-semibold text-white lg:size-16">
+                      {s.n}
+                    </span>
+                    <h3 className="mt-6 font-display text-2xl text-brand-ink">{s.t}</h3>
+                    <p className="mt-3 text-brand-ink-soft">{s.b}</p>
+                    {/* Square green accent corner */}
+                    <span
+                      aria-hidden
+                      className="absolute right-0 top-0 size-3 bg-brand-accent lg:hidden"
+                    />
+                  </li>
+                </Reveal>
+              ))}
+            </ol>
+          </div>
 
           <div className="mt-20 flex justify-center">
             <Button asChild size="lg" className="group">
@@ -188,6 +202,13 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+
+      <MaterialStrip
+        src="/images/projects/IMG-20260512-WA0074.jpg"
+        alt="Duco D-systeem met verzinkte ventilatiebuizen op bakstenen wand"
+        label="Vakmanschap zit in elk detail."
+        tag="Ventilatie"
+      />
 
       <ScrollMarquee
         variant="light"

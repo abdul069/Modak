@@ -52,21 +52,29 @@ export function FeaturedProject({
             imageSide === "right" && "lg:[&>*:first-child]:order-2"
           )}
         >
-          {/* Photo + offset block */}
+          {/* Photo + offset SQUARE block */}
           <div className="relative lg:col-span-7">
-            {/* Offset green color block behind */}
+            {/* Solid green offset rectangle behind (sharp corners) */}
             <div
               aria-hidden
               className={cn(
-                "absolute inset-0 rounded-lg bg-brand-accent/85",
+                "absolute inset-0 bg-brand-accent",
                 imageSide === "right"
                   ? "translate-x-3 translate-y-3 md:translate-x-6 md:translate-y-6"
                   : "-translate-x-3 translate-y-3 md:-translate-x-6 md:translate-y-6"
               )}
             />
+            {/* Architectural detail: tiny navy square accent */}
+            <div
+              aria-hidden
+              className={cn(
+                "absolute hidden h-12 w-12 bg-brand-primary md:block",
+                imageSide === "right" ? "-right-3 -top-4" : "-left-3 -top-4"
+              )}
+            />
 
             <RevealZoom className="relative block">
-              <div className="relative aspect-[4/5] w-full overflow-hidden rounded-lg shadow-xl md:aspect-[5/6]">
+              <div className="relative aspect-[4/5] w-full overflow-hidden md:aspect-[5/6]">
                 <Image
                   src={image}
                   alt={`Realisatie ${title}`}
@@ -77,12 +85,12 @@ export function FeaturedProject({
               </div>
             </RevealZoom>
 
-            {/* Floating secondary detail photo (md+) */}
+            {/* Floating secondary detail photo — SQUARE with ring (md+) */}
             {secondary ? (
               <RevealZoom
                 delay={180}
                 className={cn(
-                  "absolute hidden aspect-[4/5] w-40 overflow-hidden rounded-md ring-4 ring-brand-bg shadow-2xl md:block lg:w-48",
+                  "absolute hidden aspect-[4/5] w-40 overflow-hidden ring-[6px] ring-brand-bg md:block lg:w-48",
                   imageSide === "right"
                     ? "-left-4 -bottom-10 lg:-left-10"
                     : "-right-4 -bottom-10 lg:-right-10"
@@ -137,7 +145,7 @@ export function FeaturedProject({
             ) : null}
             <Link
               href={`/realisaties/${slug}`}
-              className="group/link relative mt-10 inline-flex items-center gap-3 rounded-full border border-brand-ink/15 px-6 py-3 text-xs font-semibold uppercase tracking-[0.2em] text-brand-ink transition-colors hover:border-brand-accent hover:bg-brand-accent hover:text-white"
+              className="group/link relative mt-10 inline-flex items-center gap-3 border border-brand-ink/20 bg-transparent px-6 py-3 text-xs font-semibold uppercase tracking-[0.2em] text-brand-ink transition-colors hover:border-brand-accent hover:bg-brand-accent hover:text-white"
             >
               Bekijk realisatie
               <ArrowRight className="size-4 transition-transform duration-300 group-hover/link:translate-x-1" />
