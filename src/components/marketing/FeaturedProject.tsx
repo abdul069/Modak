@@ -57,7 +57,7 @@ export function FeaturedProject({
           {/* Photo with arched top */}
           <div className="relative lg:col-span-7">
             <RevealZoom className="block">
-              <div className="shape-arch-soft relative aspect-[4/5] w-full overflow-hidden md:aspect-[5/6]">
+              <div className="relative aspect-[4/5] w-full overflow-hidden rounded-lg shadow-lg md:aspect-[5/6]">
                 <Image
                   src={image}
                   alt={`Realisatie ${title}`}

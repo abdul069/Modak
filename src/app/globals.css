@@ -1,26 +1,26 @@
 @import "tailwindcss";
 
 @theme {
-  /* Tifre-style palette: sky-blue primary, red accent dot, warm cream alt */
-  --color-brand-primary: #4aa3d4;
-  --color-brand-primary-50: #eff8fd;
-  --color-brand-primary-100: #cfe5f0;
-  --color-brand-primary-700: #2e85b5;
-  --color-brand-primary-900: #1c587a;
+  /* AGNAU palette uit eigen logo: navy + green */
+  --color-brand-primary: #1B2A3A;       /* navy uit logo */
+  --color-brand-primary-50: #eef1f4;
+  --color-brand-primary-100: #c9d2da;
+  --color-brand-primary-700: #14202d;
+  --color-brand-primary-900: #0c1620;
 
-  --color-brand-accent: #e0413f;
-  --color-brand-accent-soft: #fde3e2;
-  --color-brand-accent-dark: #b1302e;
+  --color-brand-accent: #3A9B3A;        /* green uit logo */
+  --color-brand-accent-soft: #d8eed8;
+  --color-brand-accent-dark: #2a7a2a;
 
   --color-brand-bg: #ffffff;
-  --color-brand-bg-alt: #f5efe6;
+  --color-brand-bg-alt: #f4f0e8;        /* warm cream */
   --color-brand-bg-cream: #faf6ef;
-  --color-brand-bg-dark: #1a1a1a;
-  --color-brand-ink: #2a2a2a;
-  --color-brand-ink-soft: #5a5a5a;
+  --color-brand-bg-dark: #14202d;       /* matched aan primary-700 */
+  --color-brand-ink: #1f2937;
+  --color-brand-ink-soft: #4b5563;
   --color-brand-ink-inverted: #ffffff;
-  --color-brand-line: #e8e2d6;
-  --color-brand-accent-bold: #e0413f;
+  --color-brand-line: #e6ddcd;
+  --color-brand-accent-bold: #3A9B3A;
 
   --font-sans: var(--font-inter), ui-sans-serif, system-ui, -apple-system,
     "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;

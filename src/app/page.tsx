@@ -130,7 +130,7 @@ export default function HomePage() {
                   className="heading-editorial mt-5 max-w-md"
                   style={{ fontSize: "clamp(1.8rem, 3.6vw, 3rem)" }}
                 >
-                  Snel en efficiënt, met oog voor kwaliteit.
+                  Eén traject. Drie stappen. Geen verrassingen.
                 </h2>
               </div>
               <p className="text-base leading-relaxed text-brand-ink-soft md:col-span-7 md:text-lg">

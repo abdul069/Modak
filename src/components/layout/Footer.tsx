@@ -6,7 +6,7 @@ import { Logo } from "@/components/brand/Logo";
 export function Footer() {
   const year = new Date().getFullYear();
   return (
-    <footer className="mt-0 border-t border-brand-primary-100 bg-brand-primary-50 text-brand-ink">
+    <footer className="mt-0 border-t border-brand-line bg-brand-bg-alt text-brand-ink">
       <div className="container-page grid gap-12 py-16 md:grid-cols-4">
         <div className="space-y-4">
           <Logo />
@@ -105,7 +105,7 @@ export function Footer() {
         </div>
       </div>
 
-      <div className="border-t border-brand-primary-100">
+      <div className="border-t border-brand-line">
         <div className="container-page flex flex-col gap-4 py-6 text-xs text-brand-ink-soft md:flex-row md:items-center md:justify-between">
           <p>
             © {year} {siteConfig.name}.
