@@ -13,6 +13,7 @@ import { JsonLd } from "@/components/seo/JsonLd";
 import { localBusinessSchema } from "@/lib/seo";
 import { getAllDivisions } from "@/lib/division";
 import { siteConfig } from "@/lib/site";
+import { companyPhotos, locationPhotos } from "@/content/stock-photos";
 
 export default function HomePage() {
   const divisions = getAllDivisions();
@@ -74,7 +75,8 @@ export default function HomePage() {
               <PhotoTile
                 label="Showroom Evergem"
                 aspect="tall"
-                gradient="linear-gradient(135deg, #1A1F2E 0%, #2BAE66 80%, #F4C430 130%)"
+                src={companyPhotos.showroomBig}
+                alt="AGNAU showroom in Evergem"
               />
             </div>
           </div>
@@ -106,19 +108,22 @@ export default function HomePage() {
               label="Showroom"
               aspect="wide"
               className="md:col-span-7"
-              gradient="linear-gradient(135deg, #00A4D6 0%, #1A1F2E 70%)"
+              src={companyPhotos.showroomWide}
+              alt="Showroom interieur AGNAU"
             />
             <PhotoTile
               label="Magazijn"
               aspect="square"
               className="md:col-span-5"
-              gradient="linear-gradient(135deg, #D9531E 0%, #B23E0F 80%)"
+              src={companyPhotos.magazijn}
+              alt="Magazijn van AGNAU"
             />
             <PhotoTile
               label="Team aan het werk"
               aspect="wide"
               className="md:col-span-5"
-              gradient="linear-gradient(135deg, #7B3FE4 0%, #5A23B5 80%)"
+              src={companyPhotos.team3}
+              alt="Vakmensen van AGNAU op een werf"
             />
             <div className="rounded-xl bg-off-white p-8 md:col-span-7">
               <p className="eyebrow mb-3" style={{ color: "var(--mute)" }}>
@@ -174,31 +179,37 @@ export default function HomePage() {
           </div>
 
           <Reveal className="mt-12 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-            {divisions.map((d) => (
-              <Link
-                key={d.slug}
-                href={`/realisaties?divisie=${d.slug}`}
-                data-division={d.themeKey}
-                className="group block"
-              >
-                <PhotoTile
-                  label={d.shortName}
-                  aspect="square"
-                  gradient={`linear-gradient(135deg, var(--accent) 0%, var(--accent-deep) 100%)`}
-                />
-                <div className="mt-3 flex items-center justify-between gap-3">
-                  <div>
-                    <p className="font-mono text-xs uppercase tracking-[0.14em] text-accent">
-                      {d.name}
-                    </p>
-                    <p className="mt-1 font-display text-lg font-bold text-ink">
-                      Project in {["Gent", "Evergem", "Aalter", "Sint-Niklaas", "Drongen", "Lochristi"][divisions.indexOf(d)]}
-                    </p>
+            {divisions.map((d, i) => {
+              const location = ["Gent", "Evergem", "Aalter", "Sint-Niklaas", "Drongen", "Lochristi"][i];
+              const photo = locationPhotos[`${d.themeKey}-${location}`];
+              return (
+                <Link
+                  key={d.slug}
+                  href={`/realisaties?divisie=${d.slug}`}
+                  data-division={d.themeKey}
+                  className="group block"
+                >
+                  <PhotoTile
+                    label={d.shortName}
+                    aspect="square"
+                    src={photo}
+                    alt={`Realisatie ${d.name} in ${location}`}
+                    gradient="linear-gradient(135deg, var(--accent) 0%, var(--accent-deep) 100%)"
+                  />
+                  <div className="mt-3 flex items-center justify-between gap-3">
+                    <div>
+                      <p className="font-mono text-xs uppercase tracking-[0.14em] text-accent">
+                        {d.name}
+                      </p>
+                      <p className="mt-1 font-display text-lg font-bold text-ink">
+                        Project in {location}
+                      </p>
+                    </div>
+                    <ArrowUpRight className="size-4 text-mute transition-all duration-300 group-hover:translate-x-1 group-hover:-translate-y-1 group-hover:text-accent" />
                   </div>
-                  <ArrowUpRight className="size-4 text-mute transition-all duration-300 group-hover:translate-x-1 group-hover:-translate-y-1 group-hover:text-accent" />
-                </div>
-              </Link>
-            ))}
+                </Link>
+              );
+            })}
           </Reveal>
         </Container>
       </section>

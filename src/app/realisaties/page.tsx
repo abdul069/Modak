@@ -6,6 +6,7 @@ import { PhotoTile } from "@/components/marketing/PhotoTile";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { breadcrumbSchema, buildMetadata } from "@/lib/seo";
 import { projects } from "@/content/realisaties";
+import { projectPhotos } from "@/content/stock-photos";
 import { divisions, DIVISION_SLUGS } from "@/content/divisions";
 import type { DivisionSlug } from "@/content/divisions";
 
@@ -85,6 +86,8 @@ export default async function RealisatiesPage({ searchParams }: { searchParams: 
                       <PhotoTile
                         label={primary.name}
                         aspect="square"
+                        src={projectPhotos[p.slug]}
+                        alt={p.title}
                         gradient={p.gradient}
                       />
                       <div className="mt-3">

@@ -5,9 +5,11 @@ import { Reveal } from "@/components/ui/Reveal";
 import { Button } from "@/components/ui/button";
 import { DivisionIcon } from "@/components/brand/DivisionIcon";
 import { PhotoTile } from "@/components/marketing/PhotoTile";
+import { divisionPhotos } from "@/content/stock-photos";
 import type { Division } from "@/content/divisions";
 
 export function DivisionHero({ division }: { division: Division }) {
+  const photo = divisionPhotos[division.slug]?.hero;
   return (
     <section className="relative overflow-hidden bg-white pt-10 pb-16 md:pt-14 md:pb-20">
       <Container>
@@ -57,6 +59,9 @@ export function DivisionHero({ division }: { division: Division }) {
               <PhotoTile
                 label={division.name}
                 aspect="tall"
+                src={photo}
+                alt={`AGNAU ${division.name}`}
+                priority
                 gradient="linear-gradient(135deg, var(--accent) 0%, var(--accent-deep) 100%)"
               />
             </Reveal>

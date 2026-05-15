@@ -12,6 +12,7 @@ import { CTABlock } from "@/components/marketing/CTABlock";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { breadcrumbSchema, buildMetadata, localBusinessSchema } from "@/lib/seo";
 import { siteConfig } from "@/lib/site";
+import { companyPhotos } from "@/content/stock-photos";
 
 export const metadata: Metadata = buildMetadata({
   title: "Over ons — Vlaamse multidisciplinaire bouwgroep",
@@ -53,7 +54,9 @@ export default function OverOnsPage() {
               <PhotoTile
                 label="Vestiging Evergem"
                 aspect="square"
-                gradient="linear-gradient(135deg, #1A1F2E 0%, #2BAE66 80%)"
+                src={companyPhotos.vestiging}
+                alt="AGNAU vestiging in Evergem"
+                priority
               />
             </Reveal>
           </div>
@@ -83,7 +86,8 @@ export default function OverOnsPage() {
               <PhotoTile
                 label="Showroom"
                 aspect="tall"
-                gradient="linear-gradient(135deg, #00A4D6 0%, #1A1F2E 80%)"
+                src={companyPhotos.showroomBig}
+                alt="AGNAU showroom interieur"
               />
             </Reveal>
 

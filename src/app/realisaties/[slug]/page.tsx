@@ -9,6 +9,7 @@ import { CTABlock } from "@/components/marketing/CTABlock";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { breadcrumbSchema, buildMetadata } from "@/lib/seo";
 import { getProject, projects } from "@/content/realisaties";
+import { projectPhotos, companyPhotos } from "@/content/stock-photos";
 import { divisions } from "@/content/divisions";
 
 type Params = { slug: string };
@@ -87,6 +88,9 @@ export default async function ProjectPage({ params }: { params: Promise<Params> 
               <PhotoTile
                 label={primary.shortName}
                 aspect="wide"
+                src={projectPhotos[project.slug]}
+                alt={project.title}
+                priority
                 gradient={project.gradient}
               />
             </div>
@@ -103,11 +107,15 @@ export default async function ProjectPage({ params }: { params: Promise<Params> 
             <PhotoTile
               label="Voor"
               aspect="video"
+              src={companyPhotos.team2}
+              alt="Voor de werkzaamheden"
               gradient="linear-gradient(135deg, #A0A6B3, #5B6478)"
             />
             <PhotoTile
               label="Na"
               aspect="video"
+              src={projectPhotos[project.slug]}
+              alt={`${project.title} na oplevering`}
               gradient={project.gradient}
             />
           </div>

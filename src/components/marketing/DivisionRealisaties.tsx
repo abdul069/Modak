@@ -3,6 +3,7 @@ import { ArrowUpRight } from "lucide-react";
 import { Container } from "@/components/ui/Container";
 import { Reveal } from "@/components/ui/Reveal";
 import { PhotoTile } from "@/components/marketing/PhotoTile";
+import { locationPhotos } from "@/content/stock-photos";
 import type { Division } from "@/content/divisions";
 
 const LOCATIONS: Record<string, string[]> = {
@@ -37,30 +38,35 @@ export function DivisionRealisaties({ division }: { division: Division }) {
         </div>
 
         <Reveal className="mt-10 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-          {locations.map((loc, i) => (
-            <Link
-              key={loc}
-              href={`/realisaties?divisie=${division.slug}`}
-              className="group block"
-            >
-              <PhotoTile
-                label={loc}
-                aspect="square"
-                gradient={`linear-gradient(${135 + i * 15}deg, var(--accent) 0%, var(--accent-deep) 100%)`}
-              />
-              <div className="mt-3 flex items-center justify-between gap-3">
-                <div>
-                  <p className="font-mono text-xs uppercase tracking-[0.14em] text-accent">
-                    {division.name}
-                  </p>
-                  <p className="mt-1 font-display text-lg font-bold text-ink">
-                    Project in {loc}
-                  </p>
+          {locations.map((loc, i) => {
+            const photo = locationPhotos[`${division.themeKey}-${loc}`];
+            return (
+              <Link
+                key={loc}
+                href={`/realisaties?divisie=${division.slug}`}
+                className="group block"
+              >
+                <PhotoTile
+                  label={loc}
+                  aspect="square"
+                  src={photo}
+                  alt={`${division.name}-project in ${loc}`}
+                  gradient={`linear-gradient(${135 + i * 15}deg, var(--accent) 0%, var(--accent-deep) 100%)`}
+                />
+                <div className="mt-3 flex items-center justify-between gap-3">
+                  <div>
+                    <p className="font-mono text-xs uppercase tracking-[0.14em] text-accent">
+                      {division.name}
+                    </p>
+                    <p className="mt-1 font-display text-lg font-bold text-ink">
+                      Project in {loc}
+                    </p>
+                  </div>
+                  <ArrowUpRight className="size-4 text-mute transition-all duration-300 group-hover:translate-x-1 group-hover:-translate-y-1 group-hover:text-accent" />
                 </div>
-                <ArrowUpRight className="size-4 text-mute transition-all duration-300 group-hover:translate-x-1 group-hover:-translate-y-1 group-hover:text-accent" />
-              </div>
-            </Link>
-          ))}
+              </Link>
+            );
+          })}
         </Reveal>
       </Container>
     </section>
