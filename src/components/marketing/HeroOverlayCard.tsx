@@ -61,7 +61,7 @@ export function HeroOverlayCard({
           {/* Decorative green dot in card corner */}
           <span
             aria-hidden
-            className="absolute right-6 top-6 inline-block size-2.5 rounded-full bg-brand-accent shadow-[0_0_0_5px_rgba(58,155,58,0.18)]"
+            className="absolute right-6 top-6 inline-block size-2.5 rounded-full bg-brand-accent shadow-[0_0_0_5px_rgba(20,184,166,0.2)]"
           />
 
           {eyebrow ? (
