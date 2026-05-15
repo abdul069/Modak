@@ -123,20 +123,15 @@ export function HeroSplit({
           )}
         </div>
 
-        {/* Photo with architectural corner brackets */}
+        {/* Photo with soft offset green accent + rounded corners */}
         <div className="relative md:col-span-5">
-          {/* Corner bracket top-left (green) */}
+          {/* Soft green offset rectangle behind */}
           <div
             aria-hidden
-            className="absolute -left-3 -top-3 h-10 w-10 border-l-2 border-t-2 border-brand-accent md:-left-5 md:-top-5 md:h-16 md:w-16"
-          />
-          {/* Corner bracket bottom-right (white) */}
-          <div
-            aria-hidden
-            className="absolute -bottom-3 -right-3 h-10 w-10 border-b-2 border-r-2 border-white/30 md:-bottom-5 md:-right-5 md:h-16 md:w-16"
+            className="absolute inset-0 -translate-x-3 translate-y-3 rounded-2xl bg-brand-accent/85 md:-translate-x-5 md:translate-y-5"
           />
           <div
-            className="animate-fade-up relative mx-auto aspect-[4/5] w-full max-w-[460px] overflow-hidden md:ml-auto md:mr-0"
+            className="animate-fade-up relative mx-auto aspect-[4/5] w-full max-w-[460px] overflow-hidden rounded-2xl shadow-[0_30px_80px_-20px_rgba(0,0,0,0.55)] ring-1 ring-white/10 md:ml-auto md:mr-0"
             style={{ animationDelay: "320ms" }}
           >
             <div className="absolute inset-0 -m-[6%]">
@@ -150,7 +145,7 @@ export function HeroSplit({
               />
             </div>
             {caption ? (
-              <div className="absolute bottom-0 left-0 bg-brand-bg-dark/85 px-4 py-2.5 backdrop-blur-sm">
+              <div className="absolute bottom-4 left-4 rounded-full bg-brand-bg-dark/80 px-4 py-2 backdrop-blur-sm">
                 <p className="flex items-center gap-2 text-[0.6rem] font-medium uppercase tracking-[0.3em] text-white">
                   <span className="inline-block h-px w-4 bg-brand-accent" />
                   {caption}
@@ -168,13 +163,13 @@ export function HeroSplit({
         </div>
       </div>
 
-      {/* Scroll indicator — square badge (no pill) */}
+      {/* Scroll indicator — soft rounded badge */}
       <div
         aria-hidden
         className="absolute bottom-6 left-1/2 z-10 hidden -translate-x-1/2 flex-col items-center gap-2 text-white/70 md:flex"
       >
         <span className="text-[0.6rem] font-medium uppercase tracking-[0.3em]">Scroll</span>
-        <div className="flex size-8 items-center justify-center border border-white/30">
+        <div className="flex size-9 items-center justify-center rounded-full border border-white/30">
           <ChevronDown className="size-4 animate-bounce" />
         </div>
       </div>

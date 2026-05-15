@@ -52,31 +52,21 @@ export function FeaturedProject({
             imageSide === "right" && "lg:[&>*:first-child]:order-2"
           )}
         >
-          {/* Photo with architectural corner brackets */}
+          {/* Photo with soft offset green block + rounded corners */}
           <div className="relative lg:col-span-7">
-            {/* Corner bracket (green) on the outer side */}
+            {/* Soft green offset rectangle behind */}
             <div
               aria-hidden
               className={cn(
-                "absolute h-12 w-12 border-brand-accent md:h-20 md:w-20",
+                "absolute inset-0 rounded-2xl bg-brand-accent/80",
                 imageSide === "right"
-                  ? "-right-3 -top-3 border-r-2 border-t-2 md:-right-6 md:-top-6"
-                  : "-left-3 -top-3 border-l-2 border-t-2 md:-left-6 md:-top-6"
-              )}
-            />
-            {/* Corner bracket (navy/ink) on the opposite corner */}
-            <div
-              aria-hidden
-              className={cn(
-                "absolute h-12 w-12 border-brand-primary/30 md:h-20 md:w-20",
-                imageSide === "right"
-                  ? "-bottom-3 -left-3 border-b-2 border-l-2 md:-bottom-6 md:-left-6"
-                  : "-bottom-3 -right-3 border-b-2 border-r-2 md:-bottom-6 md:-right-6"
+                  ? "translate-x-3 translate-y-3 md:translate-x-6 md:translate-y-6"
+                  : "-translate-x-3 translate-y-3 md:-translate-x-6 md:translate-y-6"
               )}
             />
 
             <RevealZoom className="relative block">
-              <div className="relative aspect-[4/5] w-full overflow-hidden md:aspect-[5/6]">
+              <div className="relative aspect-[4/5] w-full overflow-hidden rounded-2xl shadow-xl md:aspect-[5/6]">
                 <Image
                   src={image}
                   alt={`Realisatie ${title}`}
@@ -87,12 +77,12 @@ export function FeaturedProject({
               </div>
             </RevealZoom>
 
-            {/* Floating secondary detail photo (md+) */}
+            {/* Floating secondary detail photo with soft rounded ring */}
             {secondary ? (
               <RevealZoom
                 delay={180}
                 className={cn(
-                  "absolute hidden aspect-[4/5] w-40 overflow-hidden ring-[6px] ring-brand-bg md:block lg:w-48",
+                  "absolute hidden aspect-[4/5] w-40 overflow-hidden rounded-2xl ring-[6px] ring-brand-bg shadow-2xl md:block lg:w-48",
                   imageSide === "right"
                     ? "-left-4 -bottom-12 lg:-left-12"
                     : "-right-4 -bottom-12 lg:-right-12"
@@ -147,7 +137,7 @@ export function FeaturedProject({
             ) : null}
             <Link
               href={`/realisaties/${slug}`}
-              className="group/link relative mt-10 inline-flex items-center gap-3 border border-brand-ink/20 bg-transparent px-6 py-3 text-xs font-semibold uppercase tracking-[0.2em] text-brand-ink transition-colors hover:border-brand-accent hover:bg-brand-accent hover:text-white"
+              className="group/link relative mt-10 inline-flex items-center gap-3 rounded-full border border-brand-ink/20 bg-transparent px-6 py-3 text-xs font-semibold uppercase tracking-[0.2em] text-brand-ink transition-colors hover:border-brand-accent hover:bg-brand-accent hover:text-white"
             >
               Bekijk realisatie
               <ArrowRight className="size-4 transition-transform duration-300 group-hover/link:translate-x-1" />

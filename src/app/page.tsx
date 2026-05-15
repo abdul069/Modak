@@ -174,18 +174,13 @@ export default function HomePage() {
                 },
               ].map((s, i) => (
                 <Reveal key={s.n} delay={i * 100}>
-                  <li className="relative bg-brand-bg-alt p-8 ring-1 ring-brand-line lg:bg-brand-bg lg:p-0 lg:ring-0">
-                    {/* Square number badge */}
-                    <span className="relative z-10 inline-flex size-14 items-center justify-center bg-brand-primary font-display text-xl font-semibold text-white lg:size-16">
+                  <li className="relative rounded-2xl bg-brand-bg-alt p-8 ring-1 ring-brand-line lg:bg-brand-bg lg:p-0 lg:ring-0">
+                    {/* Rounded number badge */}
+                    <span className="relative z-10 inline-flex size-14 items-center justify-center rounded-full bg-brand-primary font-display text-xl font-semibold text-white lg:size-16">
                       {s.n}
                     </span>
                     <h3 className="mt-6 font-display text-2xl text-brand-ink">{s.t}</h3>
                     <p className="mt-3 text-brand-ink-soft">{s.b}</p>
-                    {/* Square green accent corner */}
-                    <span
-                      aria-hidden
-                      className="absolute right-0 top-0 size-3 bg-brand-accent lg:hidden"
-                    />
                   </li>
                 </Reveal>
               ))}

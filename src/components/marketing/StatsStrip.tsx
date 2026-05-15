@@ -37,7 +37,7 @@ export function StatsStrip() {
             {stats.map((s) => (
               <li
                 key={s.label}
-                className="group relative bg-white/[0.025] p-8 ring-1 ring-white/10 transition-all duration-300 hover:bg-white/[0.06] hover:ring-brand-accent/40"
+                className="group relative overflow-hidden rounded-2xl bg-white/[0.025] p-8 ring-1 ring-white/10 transition-all duration-300 hover:bg-white/[0.06] hover:ring-brand-accent/40"
               >
                 {/* Thin green top-bar accent */}
                 <span
