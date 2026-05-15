@@ -1,5 +1,5 @@
 import { Container } from "@/components/ui/Container";
-import { Reveal, RevealStagger, RevealItem } from "@/components/ui/Reveal";
+import { RevealStagger, RevealItem } from "@/components/ui/Reveal";
 import { DivisionIcon } from "@/components/brand/DivisionIcon";
 import { SectionHeader } from "@/components/marketing/SectionHeader";
 import type { Division } from "@/content/divisions";
