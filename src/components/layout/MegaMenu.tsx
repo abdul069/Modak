@@ -2,43 +2,51 @@
 
 import * as React from "react";
 import Link from "next/link";
-import { ChevronDown, ArrowRight } from "lucide-react";
+import Image from "next/image";
+import { ArrowRight, ChevronDown } from "lucide-react";
 import { cn } from "@/lib/utils";
 
-interface MenuCategory {
+interface MenuCluster {
   title: string;
   items: { label: string; href: string }[];
 }
 
-const categories: MenuCategory[] = [
+const clusters: MenuCluster[] = [
   {
-    title: "Dak & schil",
+    title: "Dak & gevel",
     items: [
       { label: "Dakrenovatie", href: "/diensten/dakrenovatie" },
       { label: "Dakisolatie", href: "/diensten/dakisolatie" },
     ],
   },
   {
-    title: "Klimaat",
+    title: "Interieur",
+    items: [
+      { label: "Badkamers", href: "/diensten/badkamers" },
+      { label: "Sanitair", href: "/diensten/sanitair" },
+      { label: "Keukens", href: "/diensten/keukens" },
+      { label: "Vloeren", href: "/diensten/vloeren" },
+    ],
+  },
+  {
+    title: "Verwarming & koeling",
     items: [
       { label: "Warmtepompen", href: "/diensten/warmtepompen" },
       { label: "Verwarming", href: "/diensten/verwarming" },
-      { label: "Ventilatie", href: "/diensten/ventilatie" },
       { label: "Airco", href: "/diensten/airco" },
     ],
   },
   {
-    title: "Sanitair",
+    title: "Lucht & energie",
     items: [
-      { label: "Sanitair", href: "/diensten/sanitair" },
-      { label: "Badkamers", href: "/diensten/badkamers" },
+      { label: "Ventilatie", href: "/diensten/ventilatie" },
+      { label: "Zonnepanelen", href: "/diensten/zonnepanelen" },
     ],
   },
   {
-    title: "Energie",
+    title: "Elektriciteit",
     items: [
       { label: "Elektriciteitswerken", href: "/diensten/elektriciteitswerken" },
-      { label: "Zonnepanelen", href: "/diensten/zonnepanelen" },
       { label: "Laadpalen", href: "/diensten/laadpalen" },
     ],
   },
@@ -61,7 +69,7 @@ export function MegaMenu({ label, href }: MegaMenuProps) {
     setOpen(true);
   };
   const onLeave = () => {
-    closeTimer.current = window.setTimeout(() => setOpen(false), 150);
+    closeTimer.current = window.setTimeout(() => setOpen(false), 200);
   };
 
   return (
@@ -69,44 +77,38 @@ export function MegaMenu({ label, href }: MegaMenuProps) {
       <Link
         href={href}
         className={cn(
-          "relative flex items-center gap-1 text-sm transition-colors",
-          "text-brand-ink hover:text-brand-primary",
-          "after:absolute after:left-0 after:-bottom-1 after:h-px after:w-full",
-          "after:origin-left after:scale-x-0 after:bg-brand-primary",
-          "after:transition-transform after:duration-300",
-          open && "text-brand-primary after:scale-x-100"
+          "relative flex items-center gap-1 font-mono text-[0.7rem] uppercase tracking-[0.22em] text-charcoal transition-colors hover:text-clay-dark",
+          "after:absolute after:left-0 after:-bottom-1 after:h-px after:w-full after:origin-left after:scale-x-0 after:bg-clay after:transition-transform after:duration-300 hover:after:scale-x-100",
+          open && "text-clay-dark after:scale-x-100"
         )}
       >
         {label}
-        <ChevronDown className={cn("size-3.5 transition-transform duration-300", open && "rotate-180")} />
+        <ChevronDown className={cn("size-3 transition-transform duration-300", open && "rotate-180")} />
       </Link>
 
-      {/* Mega panel */}
       <div
         className={cn(
-          "absolute left-1/2 top-full z-50 mt-3 w-screen max-w-[900px] -translate-x-1/2 transition-all duration-200",
-          open
-            ? "pointer-events-auto translate-y-0 opacity-100"
-            : "pointer-events-none translate-y-2 opacity-0"
+          "absolute left-1/2 top-full z-50 mt-4 w-screen max-w-[1080px] -translate-x-1/2 transition-all duration-300",
+          open ? "pointer-events-auto translate-y-0 opacity-100" : "pointer-events-none translate-y-2 opacity-0"
         )}
         aria-hidden={!open}
       >
-        <div className="overflow-hidden rounded-2xl border border-brand-line bg-brand-bg shadow-2xl">
-          <div className="grid grid-cols-4 gap-6 p-8">
-            {categories.map((cat) => (
-              <div key={cat.title}>
-                <h4 className="text-[0.65rem] font-semibold uppercase tracking-[0.22em] text-brand-accent">
-                  {cat.title}
+        <div className="overflow-hidden rounded-2xl border border-linen bg-bone shadow-[0_30px_80px_-25px_rgba(31,28,26,0.25)]">
+          <div className="grid grid-cols-5 gap-8 p-10">
+            {clusters.map((cluster) => (
+              <div key={cluster.title}>
+                <h4 className="font-mono text-[0.65rem] font-medium uppercase tracking-[0.22em] text-clay-dark">
+                  {cluster.title}
                 </h4>
-                <ul className="mt-4 space-y-2.5">
-                  {cat.items.map((it) => (
+                <ul className="mt-5 space-y-3">
+                  {cluster.items.map((it) => (
                     <li key={it.href}>
                       <Link
                         href={it.href}
-                        className="group/mi inline-flex items-center gap-2 text-sm font-medium text-brand-ink transition-colors hover:text-brand-primary"
+                        className="group/mi inline-flex items-center gap-2 font-display text-base text-charcoal transition-colors hover:text-clay-dark"
                       >
                         {it.label}
-                        <ArrowRight className="size-3 -translate-x-1 opacity-0 transition-all duration-200 group-hover/mi:translate-x-0 group-hover/mi:opacity-100" />
+                        <ArrowRight className="size-3.5 -translate-x-1 opacity-0 transition-all duration-200 group-hover/mi:translate-x-0 group-hover/mi:opacity-100" />
                       </Link>
                     </li>
                   ))}
@@ -114,14 +116,17 @@ export function MegaMenu({ label, href }: MegaMenuProps) {
               </div>
             ))}
           </div>
-          <div className="border-t border-brand-line bg-brand-bg-alt px-8 py-4">
+          <div className="flex items-center justify-between gap-4 border-t border-linen bg-bone-soft px-10 py-5">
             <Link
               href={href}
-              className="group/all inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.22em] text-brand-primary transition-colors hover:text-brand-accent"
+              className="group/all inline-flex items-center gap-2 font-mono text-[0.7rem] uppercase tracking-[0.22em] text-charcoal transition-colors hover:text-clay-dark"
             >
               Bekijk alle diensten
-              <ArrowRight className="size-4 transition-transform duration-300 group-hover/all:translate-x-1" />
+              <ArrowRight className="size-3.5 transition-transform duration-300 group-hover/all:translate-x-1" />
             </Link>
+            <p className="font-mono text-[0.65rem] uppercase tracking-[0.18em] text-stone">
+              13 disciplines · 1 partner
+            </p>
           </div>
         </div>
       </div>

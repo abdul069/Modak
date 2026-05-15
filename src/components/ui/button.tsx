@@ -4,26 +4,32 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/utils";
 
 const buttonVariants = cva(
-  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-full text-sm font-medium transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2 focus-visible:ring-offset-brand-bg disabled:pointer-events-none disabled:opacity-50",
+  "group/btn relative inline-flex items-center justify-center gap-2 whitespace-nowrap font-mono text-[0.7rem] font-medium uppercase tracking-[0.22em] transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-clay focus-visible:ring-offset-2 focus-visible:ring-offset-bone disabled:pointer-events-none disabled:opacity-50",
   {
     variants: {
       variant: {
+        /** Primary clay-fill */
         primary:
-          "bg-brand-primary text-white hover:bg-brand-primary-700",
+          "rounded-full bg-clay text-charcoal hover:bg-clay-dark hover:text-bone",
+        /** Accent — alias for primary (legacy compat) */
         accent:
-          "bg-brand-accent text-brand-ink hover:bg-brand-accent-dark hover:text-white",
-        outline:
-          "border border-brand-primary text-brand-primary bg-transparent hover:bg-brand-primary hover:text-white",
+          "rounded-full bg-clay text-charcoal hover:bg-clay-dark hover:text-bone",
+        /** Ghost — outlined, fills clay on hover */
         ghost:
-          "text-brand-primary hover:bg-brand-primary/5",
-        link: "text-brand-primary underline-offset-4 hover:underline",
+          "rounded-full border border-charcoal/25 bg-transparent text-charcoal hover:border-clay hover:bg-clay hover:text-charcoal",
+        /** Outline — alias for ghost (legacy compat) */
+        outline:
+          "rounded-full border border-charcoal/25 bg-transparent text-charcoal hover:border-clay hover:bg-clay hover:text-charcoal",
+        /** Invert — for use on dark sections */
         invert:
-          "bg-white text-brand-primary hover:bg-brand-bg",
+          "rounded-full bg-bone text-charcoal hover:bg-clay",
+        /** Link with arrow — minimal, decorative */
+        link: "text-charcoal underline-offset-[6px] hover:text-clay-dark hover:underline",
       },
       size: {
-        default: "h-11 px-5 py-2",
-        sm: "h-9 px-3 text-sm",
-        lg: "h-12 px-7 text-base",
+        default: "h-11 px-6",
+        sm: "h-9 px-4 text-[0.65rem]",
+        lg: "h-12 px-7",
         icon: "size-10",
       },
     },

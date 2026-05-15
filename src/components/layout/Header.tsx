@@ -3,22 +3,32 @@
 import * as React from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Logo } from "@/components/brand/Logo";
-import { navigation, services, siteConfig } from "@/lib/site";
-import { MobileNav } from "@/components/layout/MobileNav";
+import { MobileMenu } from "@/components/layout/MobileMenu";
 import { MegaMenu } from "@/components/layout/MegaMenu";
-import { resolveIcon } from "@/lib/icon-map";
+import { navigation, siteConfig } from "@/lib/site";
 import { cn } from "@/lib/utils";
 
 export function Header() {
   const [scrolled, setScrolled] = React.useState(false);
+  const [hidden, setHidden] = React.useState(false);
+  const lastY = React.useRef(0);
   const pathname = usePathname() ?? "";
-  const showServiceNav = pathname === "/" || pathname.startsWith("/diensten");
 
   React.useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 12);
+    const onScroll = () => {
+      const y = window.scrollY;
+      setScrolled(y > 80);
+      // Hide on scroll-down after 200px, show on scroll-up
+      if (y > 200) {
+        setHidden(y > lastY.current);
+      } else {
+        setHidden(false);
+      }
+      lastY.current = y;
+    };
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
@@ -27,15 +37,16 @@ export function Header() {
   return (
     <header
       className={cn(
-        "sticky top-0 z-40 w-full border-b backdrop-blur transition-all duration-300",
+        "sticky top-0 z-40 w-full transition-all duration-500",
         scrolled
-          ? "border-brand-line/80 bg-brand-bg/90 shadow-[0_1px_0_0_rgba(0,0,0,0.02)]"
-          : "border-transparent bg-brand-bg/60"
+          ? "border-b border-linen bg-bone/95 backdrop-blur"
+          : "border-b border-transparent bg-bone/0",
+        hidden && "-translate-y-full"
       )}
     >
       <div
         className={cn(
-          "container-page flex items-center justify-between gap-6 transition-all duration-300",
+          "container-wide flex items-center justify-between gap-6 transition-all duration-500",
           scrolled ? "h-16 md:h-20" : "h-20 md:h-24"
         )}
       >
@@ -43,12 +54,16 @@ export function Header() {
           href="/"
           aria-label={`${siteConfig.name} home`}
           className="group inline-flex items-center transition-opacity hover:opacity-90"
+          data-cursor="Home"
         >
-          <Logo className="transition-transform duration-300 group-hover:-translate-y-0.5" size="lg" />
+          <Logo
+            className="transition-transform duration-300 group-hover:-translate-y-0.5"
+            size={scrolled ? "md" : "lg"}
+          />
         </Link>
 
         <nav
-          className="hidden items-center gap-7 md:flex"
+          className="hidden items-center gap-8 lg:flex"
           aria-label="Hoofdnavigatie"
         >
           {navigation.map((item) =>
@@ -58,10 +73,11 @@ export function Header() {
               <Link
                 key={item.href}
                 href={item.href}
-                className="relative text-sm text-brand-ink transition-colors hover:text-brand-primary
-                           after:absolute after:left-0 after:-bottom-1 after:h-px after:w-full
-                           after:origin-left after:scale-x-0 after:bg-brand-primary
-                           after:transition-transform after:duration-300 hover:after:scale-x-100"
+                className={cn(
+                  "relative font-mono text-[0.7rem] uppercase tracking-[0.22em] text-charcoal transition-colors hover:text-clay-dark",
+                  "after:absolute after:left-0 after:-bottom-1 after:h-px after:w-full after:origin-left after:scale-x-0 after:bg-clay after:transition-transform after:duration-300 hover:after:scale-x-100",
+                  pathname.startsWith(item.href) && "text-clay-dark after:scale-x-100"
+                )}
               >
                 {item.label}
               </Link>
@@ -69,39 +85,24 @@ export function Header() {
           )}
         </nav>
 
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-3">
+          <a
+            href={siteConfig.contact.phoneHref}
+            className="hidden items-center gap-2 font-mono text-[0.7rem] uppercase tracking-[0.18em] text-charcoal transition-colors hover:text-clay-dark md:inline-flex"
+            data-cursor="Bel ons"
+          >
+            <Phone className="size-3.5" />
+            {siteConfig.contact.phone}
+          </a>
           <Button asChild size="sm" className="hidden sm:inline-flex">
             <Link href="/offerte">
               Vraag offerte
-              <ArrowRight className="size-4 transition-transform group-hover:translate-x-0.5" />
+              <ArrowRight className="size-3.5 transition-transform duration-300 group-hover/btn:translate-x-0.5" />
             </Link>
           </Button>
-          <MobileNav />
+          <MobileMenu />
         </div>
       </div>
-
-      {showServiceNav ? (
-        <div className="hidden border-t border-brand-line/40 bg-white lg:block">
-          <nav
-            className="container-page flex items-center gap-6 overflow-x-auto py-2.5"
-            aria-label="Diensten"
-          >
-            {services.map((service) => {
-              const Icon = resolveIcon(service.icon);
-              return (
-                <Link
-                  key={service.slug}
-                  href={`/diensten/${service.slug}`}
-                  className="group inline-flex shrink-0 items-center gap-1.5 text-xs font-medium text-brand-ink-soft transition-colors hover:text-brand-primary"
-                >
-                  <Icon className="size-3.5 transition-colors group-hover:text-brand-primary" />
-                  {service.title}
-                </Link>
-              );
-            })}
-          </nav>
-        </div>
-      ) : null}
     </header>
   );
 }

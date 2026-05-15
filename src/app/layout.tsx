@@ -1,10 +1,11 @@
 import type { Metadata, Viewport } from "next";
-import { Inter, Fraunces } from "next/font/google";
+import { Inter, Fraunces, JetBrains_Mono } from "next/font/google";
 import Script from "next/script";
 import { Analytics } from "@vercel/analytics/react";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
-import { StickyCTA } from "@/components/marketing/StickyCTA";
+import { SmoothScrollProvider } from "@/components/providers/SmoothScrollProvider";
+import { Cursor } from "@/components/ui/Cursor";
 import { siteConfig } from "@/lib/site";
 import "./globals.css";
 
@@ -18,11 +19,17 @@ const fraunces = Fraunces({
   subsets: ["latin"],
   variable: "--font-fraunces",
   display: "swap",
-  axes: ["opsz"],
+  axes: ["opsz", "SOFT"],
+});
+
+const jetbrains = JetBrains_Mono({
+  subsets: ["latin"],
+  variable: "--font-jetbrains-mono",
+  display: "swap",
 });
 
 export const viewport: Viewport = {
-  themeColor: "#1F4E5F",
+  themeColor: "#1F1C1A",
   width: "device-width",
   initialScale: 1,
 };
@@ -30,7 +37,7 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
   title: {
-    default: `${siteConfig.name} — renovatie van dak tot warmtepomp`,
+    default: `${siteConfig.name} — totaalrenovatie van dak tot deur`,
     template: `%s | ${siteConfig.name}`,
   },
   description: siteConfig.description,
@@ -38,13 +45,16 @@ export const metadata: Metadata = {
   authors: [{ name: siteConfig.name }],
   generator: "Next.js",
   keywords: [
-    "renovatie",
     "totaalrenovatie",
+    "renovatie",
     "dakrenovatie",
+    "badkamer",
+    "keuken",
     "warmtepomp",
     "ventilatie",
+    "Evergem",
     "Gent",
-    "Vlaanderen",
+    "Oost-Vlaanderen",
     "aannemer",
   ],
   openGraph: {
@@ -72,7 +82,10 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="nl-BE" className={`${inter.variable} ${fraunces.variable}`}>
+    <html
+      lang="nl-BE"
+      className={`${inter.variable} ${fraunces.variable} ${jetbrains.variable}`}
+    >
       <head>
         {plausibleDomain ? (
           <Script
@@ -83,16 +96,18 @@ export default function RootLayout({
           />
         ) : null}
       </head>
-      <body className="min-h-screen bg-brand-bg font-sans text-brand-ink antialiased">
+      <body className="min-h-screen bg-bone font-sans text-charcoal antialiased">
         <a href="#main" className="skip-link">
           Spring naar inhoud
         </a>
-        <Header />
-        <main id="main" className="min-h-[60vh]">
-          {children}
-        </main>
-        <Footer />
-        <StickyCTA />
+        <SmoothScrollProvider>
+          <Cursor />
+          <Header />
+          <main id="main" className="min-h-[60vh]">
+            {children}
+          </main>
+          <Footer />
+        </SmoothScrollProvider>
         <Analytics />
       </body>
     </html>
