@@ -68,12 +68,12 @@ export function FeaturedProject({
               </div>
             </RevealZoom>
 
-            {/* Floating secondary photo on bottom-corner (md+) */}
+            {/* Floating secondary detail photo on bottom-corner (md+) */}
             {secondary ? (
               <RevealZoom
                 delay={180}
                 className={cn(
-                  "absolute hidden aspect-square w-44 overflow-hidden rounded-full ring-4 ring-white shadow-xl md:block lg:w-52",
+                  "absolute hidden aspect-[4/5] w-40 overflow-hidden rounded-lg ring-4 ring-white shadow-xl md:block lg:w-48",
                   imageSide === "right"
                     ? "-left-4 -bottom-10 lg:-left-8"
                     : "-right-4 -bottom-10 lg:-right-8"
@@ -88,15 +88,6 @@ export function FeaturedProject({
                 />
               </RevealZoom>
             ) : null}
-
-            {/* Red dot accent floating on photo */}
-            <DotAccent
-              size="lg"
-              className={cn(
-                "absolute top-6",
-                imageSide === "right" ? "left-6" : "right-6"
-              )}
-            />
           </div>
 
           {/* Text */}

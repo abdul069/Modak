@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
-import { HeroCircle } from "@/components/marketing/HeroCircle";
+import { HeroSplit } from "@/components/marketing/HeroSplit";
 import { TrustBar } from "@/components/marketing/TrustBar";
 import { ServiceTile } from "@/components/marketing/ServiceTile";
 import { FeaturedProject } from "@/components/marketing/FeaturedProject";
@@ -9,7 +9,6 @@ import { CTABlock } from "@/components/marketing/CTABlock";
 import { SectionHeader } from "@/components/marketing/SectionHeader";
 import { StatsStrip } from "@/components/marketing/StatsStrip";
 import { ScrollMarquee } from "@/components/marketing/ScrollMarquee";
-import { RedCircleCTA } from "@/components/marketing/RedCircleCTA";
 import { RevealZoom } from "@/components/marketing/RevealZoom";
 import { DotAccent } from "@/components/marketing/DotAccent";
 import { Button } from "@/components/ui/button";
@@ -33,14 +32,15 @@ export default function HomePage() {
     <>
       <JsonLd data={localBusinessSchema()} />
 
-      <HeroCircle
+      <HeroSplit
         photoUrl={siteConfig.heroPhoto}
         photoAlt="Afgewerkte badkamer met backlit ronde spiegel — AGNAU realisatie"
         eyebrow="Renovatie · Gent · 2026"
-        title="Eén partner."
-        titleAccent="Volledige renovatie"
+        title="Eén partner. Volledige renovatie."
         subtitle="Dak, isolatie, warmtepomp, ventilatie, sanitair en badkamer onder één planning. Eén team dat je woning gezond, zuinig en mooi maakt."
-        primaryCta={{ label: "Bekijk onze realisaties", href: "/realisaties" }}
+        primaryCta={{ label: "Vraag offerte aan", href: "/offerte" }}
+        secondaryCta={{ label: "Bekijk realisaties", href: "/realisaties" }}
+        caption="Badkamer · 2024"
       />
 
       <TrustBar />
@@ -72,7 +72,7 @@ export default function HomePage() {
                   Onze diensten <DotAccent size="sm" />
                 </p>
                 <h2
-                  className="heading-coral mt-5 max-w-md"
+                  className="heading-editorial mt-5 max-w-md"
                   style={{ fontSize: "clamp(1.8rem, 3.6vw, 3rem)" }}
                 >
                   De volledige energetische schil van je woning.
@@ -127,7 +127,7 @@ export default function HomePage() {
                   Onze aanpak <DotAccent size="sm" />
                 </p>
                 <h2
-                  className="heading-coral mt-5 max-w-md"
+                  className="heading-editorial mt-5 max-w-md"
                   style={{ fontSize: "clamp(1.8rem, 3.6vw, 3rem)" }}
                 >
                   Snel en efficiënt, met oog voor kwaliteit.
@@ -171,13 +171,13 @@ export default function HomePage() {
             ))}
           </ol>
 
-          {/* Floating red circle CTA */}
           <div className="mt-16 flex justify-center">
-            <RedCircleCTA
-              label="Vraag een onderbouwde offerte"
-              href="/offerte"
-              size="lg"
-            />
+            <Button asChild size="lg" className="group">
+              <Link href="/offerte">
+                Vraag een onderbouwde offerte
+                <ArrowRight className="size-4 transition-transform duration-300 group-hover:translate-x-1" />
+              </Link>
+            </Button>
           </div>
         </div>
       </section>
@@ -212,7 +212,7 @@ export default function HomePage() {
                   Wat klanten zeggen <DotAccent size="sm" />
                 </p>
                 <h2
-                  className="heading-coral mt-5 max-w-2xl"
+                  className="heading-editorial mt-5 max-w-2xl"
                   style={{ fontSize: "clamp(1.8rem, 3.6vw, 3rem)" }}
                 >
                   20 jaar ervaring vertelt zich door.

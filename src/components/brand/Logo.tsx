@@ -3,6 +3,7 @@ import { cn } from "@/lib/utils";
 interface Props {
   className?: string;
   variant?: "color" | "white";
+  size?: "sm" | "md" | "lg";
 }
 
 const COLORS = {
@@ -163,20 +164,28 @@ export function LogoWordmark({ className }: { className?: string }) {
   );
 }
 
-export function Logo({ className, variant = "color" }: Props) {
+export function Logo({ className, variant = "color", size = "md" }: Props) {
+  const markSize =
+    size === "lg" ? "size-12 md:size-14" : size === "sm" ? "size-7" : "size-9";
+  const wordmarkSize =
+    size === "lg"
+      ? "text-xl md:text-2xl tracking-[0.18em]"
+      : size === "sm"
+        ? "text-sm tracking-[0.14em]"
+        : "text-[1.35rem] tracking-[0.16em]";
   return (
     <span
       className={cn(
-        "inline-flex items-center gap-2.5",
+        "inline-flex items-center gap-3",
         variant === "color" ? "text-brand-primary" : "text-white",
         className
       )}
     >
       <LogoMark
-        className="size-9 shrink-0"
+        className={cn(markSize, "shrink-0")}
         monochrome={variant === "white"}
       />
-      <LogoWordmark />
+      <LogoWordmark className={wordmarkSize} />
     </span>
   );
 }

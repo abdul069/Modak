@@ -35,7 +35,7 @@ export function Header() {
       <div
         className={cn(
           "container-page flex items-center justify-between gap-6 transition-all duration-300",
-          scrolled ? "h-14 md:h-16" : "h-16 md:h-20"
+          scrolled ? "h-16 md:h-20" : "h-20 md:h-24"
         )}
       >
         <Link
@@ -43,11 +43,11 @@ export function Header() {
           aria-label={`${siteConfig.name} home`}
           className="group inline-flex items-center transition-opacity hover:opacity-90"
         >
-          <Logo className="transition-transform duration-300 group-hover:-translate-y-0.5" />
+          <Logo className="transition-transform duration-300 group-hover:-translate-y-0.5" size="lg" />
         </Link>
 
         <nav
-          className="hidden items-center gap-7 lg:flex"
+          className="hidden items-center gap-7 md:flex"
           aria-label="Hoofdnavigatie"
         >
           {navigation.map((item) => (
@@ -65,7 +65,7 @@ export function Header() {
         </nav>
 
         <div className="flex items-center gap-2">
-          <Button asChild size="sm" className="hidden md:inline-flex">
+          <Button asChild size="sm" className="hidden sm:inline-flex">
             <Link href="/offerte">
               Vraag offerte
               <ArrowRight className="size-4 transition-transform group-hover:translate-x-0.5" />

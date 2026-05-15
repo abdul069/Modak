@@ -240,13 +240,13 @@
     overflow: hidden;
   }
 
-  /* Tifre's signature: coral italic serif section heading */
-  .heading-coral {
+  /* Editorial section heading — display serif in ink, NOT italic-coral
+     (which would copy tifre's signature too closely). */
+  .heading-editorial {
     font-family: var(--font-display);
-    font-style: italic;
-    color: var(--color-brand-accent);
+    color: var(--color-brand-ink);
     line-height: 1.05;
-    letter-spacing: -0.005em;
+    letter-spacing: -0.01em;
     font-weight: 500;
   }
 
