@@ -250,6 +250,35 @@
     font-weight: 500;
   }
 
+  /* Highlight accent — green display italic word, used selectively in
+     headings to give editorial richness without coral-italic full-heading. */
+  .accent-word {
+    color: var(--color-brand-accent);
+    font-style: italic;
+    font-weight: 500;
+  }
+
+  /* Subtle dot grid for cream/alt section backgrounds. */
+  .pattern-dot-grid {
+    background-image: radial-gradient(circle, rgba(31,41,55,0.07) 1px, transparent 1.4px);
+    background-size: 24px 24px;
+    background-position: 0 0;
+  }
+
+  /* Subtle vertical noise overlay for dark sections. */
+  .pattern-noise {
+    position: relative;
+  }
+  .pattern-noise::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.05;
+    mix-blend-mode: overlay;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+  }
+
   .container-page {
     width: 100%;
     margin-inline: auto;

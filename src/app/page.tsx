@@ -36,7 +36,8 @@ export default function HomePage() {
         photoUrl={siteConfig.heroPhoto}
         photoAlt="Afgewerkte badkamer met backlit ronde spiegel — AGNAU realisatie"
         eyebrow="Renovatie · Gent · 2026"
-        title="Eén partner. Volledige renovatie."
+        title="Eén partner."
+        titleAccent="Volledige renovatie."
         subtitle="Dak, isolatie, warmtepomp, ventilatie, sanitair en badkamer onder één planning. Eén team dat je woning gezond, zuinig en mooi maakt."
         primaryCta={{ label: "Vraag offerte aan", href: "/offerte" }}
         secondaryCta={{ label: "Bekijk realisaties", href: "/realisaties" }}
@@ -62,20 +63,21 @@ export default function HomePage() {
         />
       ) : null}
 
-      {/* Services on cream bg */}
-      <section className="section-cream py-24">
-        <div className="container-page">
+      {/* Services on cream bg with dot pattern */}
+      <section className="section-cream pattern-dot-grid relative py-24 md:py-28">
+        <div className="container-page relative">
           <Reveal>
             <div className="grid items-start gap-8 md:grid-cols-12 md:gap-12">
               <div className="md:col-span-5">
-                <p className="flex items-center gap-2 text-[0.7rem] font-medium uppercase tracking-[0.35em] text-brand-primary">
-                  Onze diensten <DotAccent size="sm" />
+                <p className="flex items-center gap-3 text-[0.7rem] font-medium uppercase tracking-[0.4em] text-brand-primary">
+                  <span className="inline-block h-px w-8 bg-brand-accent" />
+                  Onze diensten
                 </p>
                 <h2
                   className="heading-editorial mt-5 max-w-md"
-                  style={{ fontSize: "clamp(1.8rem, 3.6vw, 3rem)" }}
+                  style={{ fontSize: "clamp(2rem, 4vw, 3.2rem)" }}
                 >
-                  De volledige energetische schil van je woning.
+                  De volledige energetische <span className="accent-word">schil</span> van je woning.
                 </h2>
               </div>
               <p className="text-base leading-relaxed text-brand-ink-soft md:col-span-7 md:text-lg">
@@ -117,20 +119,26 @@ export default function HomePage() {
         />
       ) : null}
 
-      {/* Aanpak in 3 stappen — white bg, blue accents */}
-      <section className="bg-brand-bg py-24">
-        <div className="container-page">
+      {/* Aanpak in 3 stappen — white bg with green left-accent bar */}
+      <section className="relative bg-brand-bg py-24 md:py-28">
+        {/* Subtle accent column on left */}
+        <div
+          aria-hidden
+          className="absolute left-0 top-1/2 hidden h-40 w-1 -translate-y-1/2 bg-brand-accent lg:block"
+        />
+        <div className="container-page relative">
           <Reveal>
             <div className="grid items-start gap-8 md:grid-cols-12 md:gap-12">
               <div className="md:col-span-5">
-                <p className="flex items-center gap-2 text-[0.7rem] font-medium uppercase tracking-[0.35em] text-brand-primary">
-                  Onze aanpak <DotAccent size="sm" />
+                <p className="flex items-center gap-3 text-[0.7rem] font-medium uppercase tracking-[0.4em] text-brand-primary">
+                  <span className="inline-block h-px w-8 bg-brand-accent" />
+                  Onze aanpak
                 </p>
                 <h2
                   className="heading-editorial mt-5 max-w-md"
-                  style={{ fontSize: "clamp(1.8rem, 3.6vw, 3rem)" }}
+                  style={{ fontSize: "clamp(2rem, 4vw, 3.2rem)" }}
                 >
-                  Eén traject. Drie stappen. Geen verrassingen.
+                  Eén traject. Drie stappen. <span className="accent-word">Geen verrassingen.</span>
                 </h2>
               </div>
               <p className="text-base leading-relaxed text-brand-ink-soft md:col-span-7 md:text-lg">
@@ -159,19 +167,18 @@ export default function HomePage() {
               },
             ].map((s, i) => (
               <Reveal key={s.n} delay={i * 100}>
-                <li className="border-t border-brand-line pt-6">
-                  <span className="flex items-baseline gap-2 font-display text-5xl text-brand-primary md:text-6xl">
+                <li className="relative border-t border-brand-line pt-8">
+                  <span className="absolute -top-7 left-0 font-display text-7xl leading-none text-brand-accent md:text-8xl">
                     {s.n}
-                    <DotAccent size="md" />
                   </span>
-                  <h3 className="mt-4 font-display text-2xl text-brand-ink">{s.t}</h3>
-                  <p className="mt-3 text-brand-ink-soft">{s.b}</p>
+                  <h3 className="mt-12 font-display text-2xl text-brand-ink md:mt-14">{s.t}</h3>
+                  <p className="mt-4 text-brand-ink-soft">{s.b}</p>
                 </li>
               </Reveal>
             ))}
           </ol>
 
-          <div className="mt-16 flex justify-center">
+          <div className="mt-20 flex justify-center">
             <Button asChild size="lg" className="group">
               <Link href="/offerte">
                 Vraag een onderbouwde offerte
@@ -203,19 +210,20 @@ export default function HomePage() {
         />
       ) : null}
 
-      <section className="section-cream py-24">
-        <div className="container-page">
+      <section className="section-cream pattern-dot-grid relative py-24 md:py-28">
+        <div className="container-page relative">
           <Reveal>
             <div className="flex flex-wrap items-end justify-between gap-4">
               <div>
-                <p className="flex items-center gap-2 text-[0.7rem] font-medium uppercase tracking-[0.35em] text-brand-primary">
-                  Wat klanten zeggen <DotAccent size="sm" />
+                <p className="flex items-center gap-3 text-[0.7rem] font-medium uppercase tracking-[0.4em] text-brand-primary">
+                  <span className="inline-block h-px w-8 bg-brand-accent" />
+                  Wat klanten zeggen
                 </p>
                 <h2
                   className="heading-editorial mt-5 max-w-2xl"
-                  style={{ fontSize: "clamp(1.8rem, 3.6vw, 3rem)" }}
+                  style={{ fontSize: "clamp(2rem, 4vw, 3.2rem)" }}
                 >
-                  20 jaar ervaring vertelt zich door.
+                  20 jaar ervaring <span className="accent-word">vertelt</span> zich door.
                 </h2>
               </div>
               <Button asChild variant="outline" className="group">
