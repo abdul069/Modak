@@ -45,12 +45,10 @@ export default function RealisatiesPage() {
         <ProjectFilter projects={projects} />
       </section>
 
-      <section className="container-page pb-20">
-        <CTABlock
-          title="Past uw project bij wat we doen?"
-          body="Bekijk de realisaties en stel ons gerust een vraag — graag horen we welke renovatie u plant."
-        />
-      </section>
+      <CTABlock
+        title="Past uw project bij wat we doen?"
+        body="Bekijk de realisaties en stel ons gerust een vraag — graag horen we welke renovatie u plant."
+      />
     </>
   );
 }

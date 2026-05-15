@@ -5,6 +5,7 @@ import { Hero } from "@/components/marketing/Hero";
 import { Breadcrumbs } from "@/components/marketing/Breadcrumbs";
 import { CTABlock } from "@/components/marketing/CTABlock";
 import { Lightbox } from "@/components/marketing/Lightbox";
+import { Parallax } from "@/components/marketing/Parallax";
 import { MDXContent } from "@/components/MDXContent";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { breadcrumbSchema, buildMetadata } from "@/lib/seo";
@@ -66,16 +67,18 @@ export default async function ProjectPage({ params }: Props) {
 
       {fm.heroImage ? (
         <section className="container-page">
-          <div className="relative aspect-[16/9] overflow-hidden rounded-xl bg-brand-bg-alt">
-            <Image
-              src={fm.heroImage}
-              alt={`Realisatie ${fm.title} in ${fm.location}`}
-              fill
-              priority
-              sizes="(min-width: 1280px) 1200px, 100vw"
-              className="object-cover"
-            />
-          </div>
+          <Parallax range={90} className="relative aspect-[16/9] overflow-hidden rounded-xl bg-brand-bg-alt">
+            <div className="absolute inset-x-0 -top-[10%] h-[120%]">
+              <Image
+                src={fm.heroImage}
+                alt={`Realisatie ${fm.title} in ${fm.location}`}
+                fill
+                priority
+                sizes="(min-width: 1280px) 1200px, 100vw"
+                className="photo-graded object-cover"
+              />
+            </div>
+          </Parallax>
         </section>
       ) : null}
 
@@ -149,12 +152,10 @@ export default async function ProjectPage({ params }: Props) {
         </section>
       ) : null}
 
-      <section className="container-page pb-20">
-        <CTABlock
-          title="Een gelijkaardig project in gedachten?"
-          body="Vraag een offerte op maat aan, of plan een gesprek om uw situatie te bespreken."
-        />
-      </section>
+      <CTABlock
+        title="Een gelijkaardig project in gedachten?"
+        body="Vraag een offerte op maat aan, of plan een gesprek om uw situatie te bespreken."
+      />
     </>
   );
 }

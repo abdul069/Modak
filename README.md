@@ -1,4 +1,4 @@
-# modak.be
+# agnau.be
 
 Marketing site for AGNAU — Belgian renovation company in Ghent. Single partner
 for the full energetic shell of a home: roof, insulation, heat pumps, heating,
@@ -35,9 +35,9 @@ npm run build && npm run start
 | Name | Required | Description |
 |---|---|---|
 | `RESEND_API_KEY` | for forms in prod | Resend API key for transactional mail |
-| `CONTACT_EMAIL` | recommended | Inbox that receives form submissions (default `info@modak.be`) |
-| `EMAIL_FROM` | optional | From address (default `AGNAU <noreply@modak.be>`) |
-| `NEXT_PUBLIC_SITE_URL` | yes | Public origin used for canonical URLs (e.g. `https://modak.be`) |
+| `CONTACT_EMAIL` | recommended | Inbox that receives form submissions (default `info@agnau.be`) |
+| `EMAIL_FROM` | optional | From address (default `AGNAU <noreply@agnau.be>`) |
+| `NEXT_PUBLIC_SITE_URL` | yes | Public origin used for canonical URLs (e.g. `https://agnau.be`) |
 | `NEXT_PUBLIC_PLAUSIBLE_DOMAIN` | optional | Enables the Plausible script tag when set |
 | `CRM_WEBHOOK_URL` | optional | Best-effort POST per submission for future CRM integration |
 
@@ -142,9 +142,9 @@ Target is **Vercel**.
 
 1. Connect this repo to a Vercel project.
 2. Set the env vars listed above (Production + Preview).
-3. Add the `modak.be` domain (apex + redirect from `www`).
+3. Add the `agnau.be` domain (apex + redirect from `www`).
 4. Vercel Analytics is included; turn on in dashboard.
-5. Submit `https://modak.be/sitemap.xml` to Google Search Console + Bing Webmaster Tools.
+5. Submit `https://agnau.be/sitemap.xml` to Google Search Console + Bing Webmaster Tools.
 
 ## What's NOT in v1
 

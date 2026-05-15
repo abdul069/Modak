@@ -7,6 +7,7 @@ interface Props {
   align?: "left" | "center";
   className?: string;
   as?: "h2" | "h3";
+  invert?: boolean;
 }
 
 export function SectionHeader({
@@ -16,6 +17,7 @@ export function SectionHeader({
   align = "left",
   className,
   as: Heading = "h2",
+  invert = false,
 }: Props) {
   return (
     <header
@@ -26,13 +28,27 @@ export function SectionHeader({
       )}
     >
       {eyebrow ? (
-        <p className="mb-3 text-xs font-medium uppercase tracking-[0.2em] text-brand-primary">
+        <p
+          className={cn(
+            "mb-3 text-xs font-medium uppercase tracking-[0.2em]",
+            invert ? "text-brand-accent" : "text-brand-primary"
+          )}
+        >
           {eyebrow}
         </p>
       ) : null}
-      <Heading className="font-display text-brand-ink">{title}</Heading>
+      <Heading
+        className={cn("font-display", invert ? "text-white" : "text-brand-ink")}
+      >
+        {title}
+      </Heading>
       {description ? (
-        <p className="mt-3 text-base text-brand-ink-soft md:text-lg">
+        <p
+          className={cn(
+            "mt-3 text-base md:text-lg",
+            invert ? "text-white/75" : "text-brand-ink-soft"
+          )}
+        >
           {description}
         </p>
       ) : null}

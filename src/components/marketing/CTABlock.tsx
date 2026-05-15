@@ -25,18 +25,16 @@ export function CTABlock({
   return (
     <section
       className={cn(
-        "rounded-xl px-6 py-12 md:px-12 md:py-16",
-        isDark
-          ? "bg-brand-primary text-white"
-          : "bg-brand-bg-alt text-brand-ink",
+        "py-20 md:py-24",
+        isDark ? "section-dark" : "bg-brand-bg-alt",
         className
       )}
     >
-      <div className="grid items-center gap-8 md:grid-cols-[1.5fr_1fr]">
+      <div className="container-page grid items-center gap-10 md:grid-cols-[1.5fr_1fr]">
         <div>
           <h2
             className={cn(
-              "font-display",
+              "font-display uppercase leading-[1.05] text-3xl md:text-5xl",
               isDark ? "text-white" : "text-brand-ink"
             )}
           >
@@ -45,7 +43,7 @@ export function CTABlock({
           {body ? (
             <p
               className={cn(
-                "mt-4 max-w-2xl text-base md:text-lg",
+                "mt-5 max-w-2xl text-base md:text-lg",
                 isDark ? "text-white/80" : "text-brand-ink-soft"
               )}
             >
@@ -61,7 +59,12 @@ export function CTABlock({
             </Link>
           </Button>
           {variant === "b2b" ? (
-            <Button asChild size="lg" variant="invert">
+            <Button
+              asChild
+              size="lg"
+              variant="invert"
+              className="border border-white bg-transparent text-white hover:bg-white hover:text-brand-ink"
+            >
               <Link href={siteConfig.contact.phoneHref}>
                 <Phone className="size-4" />
                 {siteConfig.contact.phone}
@@ -72,6 +75,11 @@ export function CTABlock({
               asChild
               size="lg"
               variant={isDark ? "invert" : "outline"}
+              className={
+                isDark
+                  ? "border border-white bg-transparent text-white hover:bg-white hover:text-brand-ink"
+                  : undefined
+              }
             >
               <Link href={secondaryCta.href}>{secondaryCta.label}</Link>
             </Button>

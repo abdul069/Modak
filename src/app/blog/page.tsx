@@ -66,13 +66,11 @@ export default function BlogIndexPage() {
           </ul>
         )}
       </section>
-      <section className="container-page pb-20">
-        <CTABlock
-          variant="secondary"
-          title="Heeft u zelf een renovatievraag?"
-          body="We horen ze graag. Of u nu nog in oriëntatiefase zit of klaar bent voor offerte — we tonen u graag wat we uitvoeren."
-        />
-      </section>
+      <CTABlock
+        variant="secondary"
+        title="Heeft u zelf een renovatievraag?"
+        body="We horen ze graag. Of u nu nog in oriëntatiefase zit of klaar bent voor offerte — we tonen u graag wat we uitvoeren."
+      />
     </>
   );
 }

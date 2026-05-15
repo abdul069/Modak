@@ -479,12 +479,10 @@ export default function PremiesPage() {
         </div>
       </section>
 
-      <section className="container-page pb-20">
-        <CTABlock
-          title="Klaar om te weten wat jouw renovatie écht kost?"
-          body="Vraag een offerte aan en we bezorgen er een onderbouwde premieberekening bij. Geen verkooppraat, gewoon de cijfers."
-        />
-      </section>
+      <CTABlock
+        title="Klaar om te weten wat jouw renovatie écht kost?"
+        body="Vraag een offerte aan en we bezorgen er een onderbouwde premieberekening bij. Geen verkooppraat, gewoon de cijfers."
+      />
     </>
   );
 }

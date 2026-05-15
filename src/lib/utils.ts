@@ -15,6 +15,6 @@ export function formatDate(date: string | Date, locale = "nl-BE") {
 }
 
 export function absoluteUrl(path: string) {
-  const base = process.env.NEXT_PUBLIC_SITE_URL ?? "https://modak.be";
+  const base = process.env.NEXT_PUBLIC_SITE_URL ?? "https://agnau.be";
   return `${base}${path.startsWith("/") ? path : `/${path}`}`;
 }

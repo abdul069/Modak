@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { ArrowDown, CheckCircle2 } from "lucide-react";
 import { Hero } from "@/components/marketing/Hero";
 import { SectionHeader } from "@/components/marketing/SectionHeader";
@@ -179,11 +180,14 @@ export default function TotaalrenovatiePage() {
       <section className="bg-brand-bg-alt/50 py-20">
         <div className="container-page">
           <div className="grid gap-10 lg:grid-cols-2 lg:items-center">
-            <div className="aspect-[4/3] overflow-hidden rounded-xl bg-white">
-              {/* TODO: vervangen door echte projectfoto na fotosessie week 2 */}
-              <div className="flex h-full items-center justify-center text-brand-primary/20">
-                <span className="font-display text-5xl">Foto AGNAU</span>
-              </div>
+            <div className="relative aspect-[4/3] overflow-hidden rounded-xl bg-white">
+              <Image
+                src="/images/projects/IMG-20260512-WA0102.jpg"
+                alt="Totaalrenovatie Sint-Denijs-Westrem — donker fineer keuken met witte bovenkasten en Siemens oven"
+                fill
+                sizes="(min-width: 1024px) 50vw, 100vw"
+                className="photo-graded object-cover"
+              />
             </div>
             <div>
               <SectionHeader
@@ -249,14 +253,12 @@ export default function TotaalrenovatiePage() {
         </div>
       </section>
 
-      <section className="container-page py-20">
-        <CTABlock
-          title="Plan een vrijblijvend gesprek."
-          body="Eén uur volstaat om uw woning, ambities en budget te begrijpen. Geen offerte zonder dat we eerst geluisterd hebben."
-          primaryCta={{ label: "Contacteer ons", href: "/contact" }}
-          secondaryCta={{ label: "Vraag offerte aan", href: "/offerte" }}
-        />
-      </section>
+      <CTABlock
+        title="Plan een vrijblijvend gesprek."
+        body="Eén uur volstaat om uw woning, ambities en budget te begrijpen. Geen offerte zonder dat we eerst geluisterd hebben."
+        primaryCta={{ label: "Contacteer ons", href: "/contact" }}
+        secondaryCta={{ label: "Vraag offerte aan", href: "/offerte" }}
+      />
     </>
   );
 }

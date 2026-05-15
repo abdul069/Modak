@@ -89,12 +89,10 @@ export default async function BlogPostPage({ params }: Props) {
         </div>
       </article>
 
-      <section className="container-page pb-20">
-        <CTABlock
-          title="Doorpraten over uw renovatie?"
-          body="Een vrijblijvend gesprek of plaatsbezoek — daar starten we elk goed project mee."
-        />
-      </section>
+      <CTABlock
+        title="Doorpraten over uw renovatie?"
+        body="Een vrijblijvend gesprek of plaatsbezoek — daar starten we elk goed project mee."
+      />
     </>
   );
 }
