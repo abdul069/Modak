@@ -2,26 +2,26 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { Parallax } from "./Parallax";
+import { RevealZoom } from "./RevealZoom";
+import { DotAccent } from "./DotAccent";
 
 export interface FeaturedProjectProps {
   slug: string;
   title: string;
   location: string;
   excerpt: string;
-  /** Primary image (e.g. heroImage). */
   image: string;
-  /** Optional secondary images for the mosaic. Falls back to primary. */
   extraImages?: string[];
   quote?: { text: string; author: string };
   imageSide?: "left" | "right";
-  variant?: "white" | "dark" | "accent";
+  variant?: "white" | "cream" | "alt";
   index?: number;
 }
 
 /**
- * Editorial 3-photo mosaic + text panel. Replaces full-bleed photo treatment
- * that exposed phone-camera limitations at desktop scale.
+ * Tifre-style realisatie block: arched-top photo on one side, headline +
+ * excerpt + quote + CTA on the other. Photo enters the viewport with a
+ * scale-fade reveal.
  */
 export function FeaturedProject({
   slug,
@@ -36,146 +36,100 @@ export function FeaturedProject({
   index,
 }: FeaturedProjectProps) {
   const bgClass =
-    variant === "accent"
-      ? "section-accent"
-      : variant === "dark"
-        ? "section-dark"
+    variant === "cream"
+      ? "section-cream"
+      : variant === "alt"
+        ? "section-alt"
         : "bg-brand-bg";
 
-  const subtleText =
-    variant === "accent"
-      ? "text-brand-bg-dark/70"
-      : variant === "dark"
-        ? "text-white/70"
-        : "text-brand-ink-soft";
-
-  const linkColor =
-    variant === "accent"
-      ? "text-brand-bg-dark"
-      : variant === "dark"
-        ? "text-brand-accent"
-        : "text-brand-primary";
-
-  const quoteBorder =
-    variant === "accent"
-      ? "border-brand-bg-dark/30"
-      : variant === "dark"
-        ? "border-white/30"
-        : "border-brand-primary/30";
-
-  // Build the 3-photo mosaic, padding with the main image if extras missing.
-  const photos: string[] = [
-    image,
-    extraImages[0] ?? image,
-    extraImages[1] ?? extraImages[0] ?? image,
-  ];
+  // Optional small secondary photo offset on the corner (visible md+)
+  const secondary = extraImages[0];
 
   return (
     <section className={cn("py-20 md:py-28", bgClass)}>
       <div className="container-page">
         <div
           className={cn(
-            "grid items-center gap-10 md:gap-14 lg:grid-cols-12 lg:gap-16",
+            "grid items-center gap-12 md:gap-16 lg:grid-cols-12",
             imageSide === "right" && "lg:[&>*:first-child]:order-2"
           )}
         >
-          {/* Photo mosaic */}
-          <div className="lg:col-span-7">
-            <div className="relative grid grid-cols-6 grid-rows-6 gap-3 md:gap-4">
-              {/* Large portrait, spans 2/3 height */}
-              <Parallax
-                range={50}
-                className="col-span-4 row-span-6 overflow-hidden rounded-md shadow-lg ring-1 ring-black/5"
-              >
-                <div className="relative aspect-[4/5] w-full">
-                  <div className="absolute inset-0 -m-[6%]">
-                    <Image
-                      src={photos[0]}
-                      alt={`Realisatie ${title}`}
-                      fill
-                      sizes="(min-width: 1024px) 40vw, 70vw"
-                      className="photo-graded object-cover transition-transform duration-700 hover:scale-[1.03]"
-                    />
-                  </div>
-                </div>
-              </Parallax>
+          {/* Photo with arched top */}
+          <div className="relative lg:col-span-7">
+            <RevealZoom className="block">
+              <div className="shape-arch-soft relative aspect-[4/5] w-full overflow-hidden md:aspect-[5/6]">
+                <Image
+                  src={image}
+                  alt={`Realisatie ${title}`}
+                  fill
+                  sizes="(min-width: 1024px) 55vw, 90vw"
+                  className="object-cover transition-transform duration-700 hover:scale-[1.03]"
+                />
+              </div>
+            </RevealZoom>
 
-              {/* Square top-right */}
-              <Parallax
-                range={70}
-                className="col-span-2 row-span-3 overflow-hidden rounded-md shadow-lg ring-1 ring-black/5"
+            {/* Floating secondary photo on bottom-corner (md+) */}
+            {secondary ? (
+              <RevealZoom
+                delay={180}
+                className={cn(
+                  "absolute hidden aspect-square w-44 overflow-hidden rounded-full ring-4 ring-white shadow-xl md:block lg:w-52",
+                  imageSide === "right"
+                    ? "-left-4 -bottom-10 lg:-left-8"
+                    : "-right-4 -bottom-10 lg:-right-8"
+                )}
               >
-                <div className="relative aspect-square w-full">
-                  <div className="absolute inset-0 -m-[8%]">
-                    <Image
-                      src={photos[1]}
-                      alt={`Detail ${title}`}
-                      fill
-                      sizes="(min-width: 1024px) 20vw, 35vw"
-                      className="photo-graded object-cover transition-transform duration-700 hover:scale-[1.03]"
-                    />
-                  </div>
-                </div>
-              </Parallax>
+                <Image
+                  src={secondary}
+                  alt={`Detail ${title}`}
+                  fill
+                  sizes="220px"
+                  className="object-cover"
+                />
+              </RevealZoom>
+            ) : null}
 
-              {/* Wide bottom-right */}
-              <Parallax
-                range={90}
-                className="col-span-2 row-span-3 overflow-hidden rounded-md shadow-lg ring-1 ring-black/5"
-              >
-                <div className="relative aspect-square w-full">
-                  <div className="absolute inset-0 -m-[8%]">
-                    <Image
-                      src={photos[2]}
-                      alt={`Detail ${title}`}
-                      fill
-                      sizes="(min-width: 1024px) 20vw, 35vw"
-                      className="photo-graded object-cover transition-transform duration-700 hover:scale-[1.03]"
-                    />
-                  </div>
-                </div>
-              </Parallax>
-            </div>
+            {/* Red dot accent floating on photo */}
+            <DotAccent
+              size="lg"
+              className={cn(
+                "absolute top-6",
+                imageSide === "right" ? "left-6" : "right-6"
+              )}
+            />
           </div>
 
-          {/* Text panel */}
+          {/* Text */}
           <div className="lg:col-span-5">
-            <p className={cn("text-[0.7rem] font-medium uppercase tracking-[0.4em]", subtleText)}>
+            <p className="flex items-center gap-2 text-[0.7rem] font-medium uppercase tracking-[0.35em] text-brand-primary">
               {typeof index === "number"
                 ? `${String(index).padStart(2, "0")} · Realisatie · ${location}`
                 : `Realisatie · ${location}`}
+              <DotAccent size="sm" />
             </p>
             <h2
-              className="mt-5 font-display uppercase leading-[0.95]"
+              className="mt-5 font-display leading-[1.05] text-brand-ink"
               style={{
-                fontSize: "clamp(2rem, 4.2vw, 3.5rem)",
-                letterSpacing: "-0.015em",
+                fontSize: "clamp(1.8rem, 3.6vw, 3rem)",
+                letterSpacing: "-0.01em",
               }}
             >
               {title}
             </h2>
-            <p className="mt-6 max-w-xl text-base leading-relaxed md:text-lg">
+            <p className="mt-6 max-w-xl text-base leading-relaxed text-brand-ink-soft md:text-lg">
               {excerpt}
             </p>
             {quote ? (
-              <blockquote
-                className={cn(
-                  "mt-8 max-w-xl border-l-2 pl-5 text-base italic md:text-lg",
-                  quoteBorder
-                )}
-              >
+              <blockquote className="mt-8 max-w-xl border-l-2 border-brand-accent pl-5 font-display text-base italic leading-relaxed text-brand-ink/85 md:text-lg">
                 &ldquo;{quote.text}&rdquo;
-                <footer className={cn("mt-2 text-sm not-italic", subtleText)}>
+                <footer className="mt-2 text-sm not-italic text-brand-ink-soft">
                   — {quote.author}
                 </footer>
               </blockquote>
             ) : null}
             <Link
               href={`/realisaties/${slug}`}
-              className={cn(
-                "group/link mt-10 inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-wider",
-                linkColor
-              )}
+              className="group/link mt-10 inline-flex items-center gap-3 rounded-full border border-brand-ink/15 px-5 py-2.5 text-[0.65rem] font-semibold uppercase tracking-[0.2em] text-brand-ink transition-colors hover:border-brand-primary hover:text-brand-primary md:text-xs"
             >
               Bekijk realisatie
               <ArrowRight className="size-4 transition-transform duration-300 group-hover/link:translate-x-1" />

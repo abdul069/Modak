@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
-import { HeroSplit } from "@/components/marketing/HeroSplit";
+import { HeroCircle } from "@/components/marketing/HeroCircle";
 import { TrustBar } from "@/components/marketing/TrustBar";
 import { ServiceTile } from "@/components/marketing/ServiceTile";
 import { FeaturedProject } from "@/components/marketing/FeaturedProject";
@@ -9,6 +9,9 @@ import { CTABlock } from "@/components/marketing/CTABlock";
 import { SectionHeader } from "@/components/marketing/SectionHeader";
 import { StatsStrip } from "@/components/marketing/StatsStrip";
 import { ScrollMarquee } from "@/components/marketing/ScrollMarquee";
+import { RedCircleCTA } from "@/components/marketing/RedCircleCTA";
+import { RevealZoom } from "@/components/marketing/RevealZoom";
+import { DotAccent } from "@/components/marketing/DotAccent";
 import { Button } from "@/components/ui/button";
 import { Reveal } from "@/components/ui/Reveal";
 import { JsonLd } from "@/components/seo/JsonLd";
@@ -16,9 +19,9 @@ import { localBusinessSchema } from "@/lib/seo";
 import { services, siteConfig } from "@/lib/site";
 import { getAllProjects } from "@/lib/content";
 
-const PROJECT_ACCENT_VARIANTS: Array<"white" | "accent" | "dark"> = [
+const PROJECT_VARIANTS: Array<"white" | "cream" | "alt"> = [
   "white",
-  "accent",
+  "cream",
   "white",
 ];
 
@@ -30,15 +33,14 @@ export default function HomePage() {
     <>
       <JsonLd data={localBusinessSchema()} />
 
-      <HeroSplit
+      <HeroCircle
         photoUrl={siteConfig.heroPhoto}
-        photoAlt="Afgewerkte badkamer met backlit ronde spiegel en oak vanity — AGNAU realisatie"
+        photoAlt="Afgewerkte badkamer met backlit ronde spiegel — AGNAU realisatie"
         eyebrow="Renovatie · Gent · 2026"
-        title="Eén partner. Volledige renovatie."
+        title="Eén partner."
+        titleAccent="Volledige renovatie"
         subtitle="Dak, isolatie, warmtepomp, ventilatie, sanitair en badkamer onder één planning. Eén team dat je woning gezond, zuinig en mooi maakt."
-        primaryCta={{ label: "Vraag offerte aan", href: "/offerte" }}
-        secondaryCta={{ label: "Bekijk realisaties", href: "/realisaties" }}
-        caption="Badkamer · 2024"
+        primaryCta={{ label: "Bekijk onze realisaties", href: "/realisaties" }}
       />
 
       <TrustBar />
@@ -55,24 +57,32 @@ export default function HomePage() {
           extraImages={featured[0].frontmatter.gallery ?? []}
           quote={featured[0].frontmatter.quote}
           imageSide="left"
-          variant={PROJECT_ACCENT_VARIANTS[0]}
+          variant={PROJECT_VARIANTS[0]}
           index={1}
         />
       ) : null}
 
-      <section className="section-dark py-24">
+      {/* Services on cream bg */}
+      <section className="section-cream py-24">
         <div className="container-page">
           <Reveal>
-            <SectionHeader
-              eyebrow="Onze diensten"
-              title="De volledige energetische schil van je woning."
-              description="Acht specialisaties die we onder eigen leiding uitvoeren — geen onderaannemers waar het om kerntechniek gaat."
-              invert
-            />
+            <p className="flex items-center gap-2 text-[0.7rem] font-medium uppercase tracking-[0.35em] text-brand-primary">
+              Onze diensten <DotAccent size="sm" />
+            </p>
+            <h2
+              className="mt-5 max-w-3xl font-display leading-[1.05] text-brand-ink"
+              style={{ fontSize: "clamp(1.8rem, 3.6vw, 3rem)" }}
+            >
+              De volledige energetische schil van je woning.
+            </h2>
+            <p className="mt-5 max-w-2xl text-base text-brand-ink-soft md:text-lg">
+              Elf specialisaties die we onder eigen leiding uitvoeren — geen
+              onderaannemers waar het om kerntechniek gaat.
+            </p>
           </Reveal>
           <div className="mt-14 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {services.map((service, i) => (
-              <Reveal key={service.slug} delay={i * 60}>
+              <RevealZoom key={service.slug} delay={i * 60}>
                 <ServiceTile
                   slug={service.slug}
                   title={service.title}
@@ -81,7 +91,7 @@ export default function HomePage() {
                   image={service.image}
                   tint={service.tint}
                 />
-              </Reveal>
+              </RevealZoom>
             ))}
           </div>
         </div>
@@ -97,20 +107,24 @@ export default function HomePage() {
           extraImages={featured[1].frontmatter.gallery ?? []}
           quote={featured[1].frontmatter.quote}
           imageSide="right"
-          variant={PROJECT_ACCENT_VARIANTS[1]}
+          variant={PROJECT_VARIANTS[1]}
           index={2}
         />
       ) : null}
 
-      {/* Aanpak in 3 stappen */}
-      <section className="section-dark py-24">
+      {/* Aanpak in 3 stappen — white bg, blue accents */}
+      <section className="bg-brand-bg py-24">
         <div className="container-page">
           <Reveal>
-            <SectionHeader
-              eyebrow="Onze aanpak"
-              title="Eén traject. Drie stappen. Geen verrassingen."
-              invert
-            />
+            <p className="flex items-center gap-2 text-[0.7rem] font-medium uppercase tracking-[0.35em] text-brand-primary">
+              Onze aanpak <DotAccent size="sm" />
+            </p>
+            <h2
+              className="mt-5 max-w-3xl font-display leading-[1.05] text-brand-ink"
+              style={{ fontSize: "clamp(1.8rem, 3.6vw, 3rem)" }}
+            >
+              Eén traject. Drie stappen. Geen verrassingen.
+            </h2>
           </Reveal>
           <ol className="mt-16 grid gap-12 lg:grid-cols-3">
             {[
@@ -131,21 +145,31 @@ export default function HomePage() {
               },
             ].map((s, i) => (
               <Reveal key={s.n} delay={i * 100}>
-                <li className="border-t border-white/20 pt-6">
-                  <span className="font-display text-5xl text-brand-accent md:text-6xl">
+                <li className="border-t border-brand-line pt-6">
+                  <span className="flex items-baseline gap-2 font-display text-5xl text-brand-primary md:text-6xl">
                     {s.n}
+                    <DotAccent size="md" />
                   </span>
-                  <h3 className="mt-4 font-display text-2xl text-white">{s.t}</h3>
-                  <p className="mt-3 text-white/75">{s.b}</p>
+                  <h3 className="mt-4 font-display text-2xl text-brand-ink">{s.t}</h3>
+                  <p className="mt-3 text-brand-ink-soft">{s.b}</p>
                 </li>
               </Reveal>
             ))}
           </ol>
+
+          {/* Floating red circle CTA */}
+          <div className="mt-16 flex justify-center">
+            <RedCircleCTA
+              label="Vraag een onderbouwde offerte"
+              href="/offerte"
+              size="lg"
+            />
+          </div>
         </div>
       </section>
 
       <ScrollMarquee
-        variant="accent"
+        variant="light"
         words={["Dak", "Isolatie", "Warmtepomp", "Ventilatie", "Sanitair", "Badkamer", "Zonnepanelen", "Laadpaal"]}
         speed={0.5}
       />
@@ -160,19 +184,26 @@ export default function HomePage() {
           extraImages={featured[2].frontmatter.gallery ?? []}
           quote={featured[2].frontmatter.quote}
           imageSide="left"
-          variant={PROJECT_ACCENT_VARIANTS[2]}
+          variant={PROJECT_VARIANTS[2]}
           index={3}
         />
       ) : null}
 
-      <section className="bg-white py-24">
+      <section className="section-cream py-24">
         <div className="container-page">
           <Reveal>
             <div className="flex flex-wrap items-end justify-between gap-4">
-              <SectionHeader
-                eyebrow="Wat klanten zeggen"
-                title="20 jaar ervaring vertelt zich door."
-              />
+              <div>
+                <p className="flex items-center gap-2 text-[0.7rem] font-medium uppercase tracking-[0.35em] text-brand-primary">
+                  Wat klanten zeggen <DotAccent size="sm" />
+                </p>
+                <h2
+                  className="mt-5 max-w-3xl font-display leading-[1.05] text-brand-ink"
+                  style={{ fontSize: "clamp(1.8rem, 3.6vw, 3rem)" }}
+                >
+                  20 jaar ervaring vertelt zich door.
+                </h2>
+              </div>
               <Button asChild variant="outline" className="group">
                 <Link href="/realisaties">
                   Alle realisaties
