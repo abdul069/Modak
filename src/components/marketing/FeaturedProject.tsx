@@ -54,19 +54,26 @@ export function FeaturedProject({
         >
           {/* Photo with soft offset green block + rounded corners */}
           <div className="relative lg:col-span-7">
-            {/* Soft green offset rectangle behind */}
+            {/* Soft green offset rectangle behind — matches asymmetric corner */}
             <div
               aria-hidden
               className={cn(
-                "absolute inset-0 rounded-2xl bg-brand-accent/80",
+                "absolute inset-0 rounded-3xl bg-brand-accent/80",
                 imageSide === "right"
-                  ? "translate-x-3 translate-y-3 md:translate-x-6 md:translate-y-6"
-                  : "-translate-x-3 translate-y-3 md:-translate-x-6 md:translate-y-6"
+                  ? "translate-x-3 translate-y-3 rounded-tl-[5rem] md:translate-x-6 md:translate-y-6"
+                  : "-translate-x-3 translate-y-3 rounded-tr-[5rem] md:-translate-x-6 md:translate-y-6"
               )}
             />
 
             <RevealZoom className="relative block">
-              <div className="relative aspect-[4/5] w-full overflow-hidden rounded-2xl shadow-xl md:aspect-[5/6]">
+              <div
+                className={cn(
+                  "relative aspect-[4/5] w-full overflow-hidden rounded-3xl shadow-xl md:aspect-[5/6]",
+                  imageSide === "right"
+                    ? "rounded-tl-[5rem]"
+                    : "rounded-tr-[5rem]"
+                )}
+              >
                 <Image
                   src={image}
                   alt={`Realisatie ${title}`}

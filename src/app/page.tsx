@@ -1,17 +1,20 @@
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
-import { HeroSplit } from "@/components/marketing/HeroSplit";
+import { HeroOverlayCard } from "@/components/marketing/HeroOverlayCard";
 import { TrustBar } from "@/components/marketing/TrustBar";
+import { AwardsStrip } from "@/components/marketing/AwardsStrip";
 import { ServiceTile } from "@/components/marketing/ServiceTile";
 import { FeaturedProject } from "@/components/marketing/FeaturedProject";
 import { TestimonialSlider } from "@/components/marketing/TestimonialSlider";
 import { CTABlock } from "@/components/marketing/CTABlock";
-import { SectionHeader } from "@/components/marketing/SectionHeader";
 import { StatsStrip } from "@/components/marketing/StatsStrip";
 import { ScrollMarquee } from "@/components/marketing/ScrollMarquee";
-import { RevealZoom } from "@/components/marketing/RevealZoom";
 import { MaterialStrip } from "@/components/marketing/MaterialStrip";
-import { DotAccent } from "@/components/marketing/DotAccent";
+import { SolutionsList } from "@/components/marketing/SolutionsList";
+import { EngagementsBlock } from "@/components/marketing/EngagementsBlock";
+import { MagazineSignup } from "@/components/marketing/MagazineSignup";
+import { WorksiteVisit } from "@/components/marketing/WorksiteVisit";
+import { RevealZoom } from "@/components/marketing/RevealZoom";
 import { Button } from "@/components/ui/button";
 import { Reveal } from "@/components/ui/Reveal";
 import { JsonLd } from "@/components/seo/JsonLd";
@@ -25,6 +28,14 @@ const PROJECT_VARIANTS: Array<"white" | "cream" | "alt"> = [
   "white",
 ];
 
+const STEPS = [
+  { n: "01", t: "Plaatsbezoek", b: "We komen langs, luisteren en meten op." },
+  { n: "02", t: "Concept & advies", b: "Disciplines, scope en planning bepaald." },
+  { n: "03", t: "Onderbouwde offerte", b: "Eén document, alle premies inbegrepen." },
+  { n: "04", t: "Uitvoering", b: "Eigen werfleiding, één aanspreekpunt." },
+  { n: "05", t: "Oplevering & nazorg", b: "10 jaar uitvoeringsgarantie." },
+];
+
 export default function HomePage() {
   const projects = getAllProjects();
   const featured = projects.slice(0, 3);
@@ -33,20 +44,19 @@ export default function HomePage() {
     <>
       <JsonLd data={localBusinessSchema()} />
 
-      <HeroSplit
+      <HeroOverlayCard
         photoUrl={siteConfig.heroPhoto}
         photoAlt="Afgewerkte badkamer met backlit ronde spiegel — AGNAU realisatie"
         eyebrow="Renovatie · Gent · 2026"
         title="Eén partner."
         titleAccent="Volledige renovatie."
         subtitle="Dak, isolatie, warmtepomp, ventilatie, sanitair en badkamer onder één planning. Eén team dat je woning gezond, zuinig en mooi maakt."
-        primaryCta={{ label: "Vraag offerte aan", href: "/offerte" }}
-        secondaryCta={{ label: "Bekijk realisaties", href: "/realisaties" }}
+        primaryCta={{ label: "Bekijk onze realisaties", href: "/realisaties" }}
         caption="Badkamer · 2024"
       />
 
       <TrustBar />
-
+      <AwardsStrip />
       <StatsStrip />
 
       {featured[0] ? (
@@ -59,7 +69,7 @@ export default function HomePage() {
           extraImages={featured[0].frontmatter.gallery ?? []}
           quote={featured[0].frontmatter.quote}
           imageSide="left"
-          variant={PROJECT_VARIANTS[0]}
+          variant="white"
           index={1}
         />
       ) : null}
@@ -105,6 +115,11 @@ export default function HomePage() {
         </div>
       </section>
 
+      <SolutionsList
+        photo={featured[1]?.frontmatter.heroImage ?? siteConfig.heroPhoto}
+        photoAlt="AGNAU renovatie realisatie"
+      />
+
       {featured[1] ? (
         <FeaturedProject
           slug={featured[1].slug}
@@ -115,79 +130,57 @@ export default function HomePage() {
           extraImages={featured[1].frontmatter.gallery ?? []}
           quote={featured[1].frontmatter.quote}
           imageSide="right"
-          variant={PROJECT_VARIANTS[1]}
+          variant="cream"
           index={2}
         />
       ) : null}
 
-      {/* Aanpak in 3 stappen — white bg with green left-accent bar */}
-      <section className="relative bg-brand-bg py-24 md:py-28">
-        {/* Subtle accent column on left */}
-        <div
-          aria-hidden
-          className="absolute left-0 top-1/2 hidden h-40 w-1 -translate-y-1/2 bg-brand-accent lg:block"
-        />
-        <div className="container-page relative">
+      {/* Aanpak — 5-step horizontal stepper with dashed connector */}
+      <section className="bg-brand-bg py-24 md:py-28">
+        <div className="container-page">
           <Reveal>
-            <div className="grid items-start gap-8 md:grid-cols-12 md:gap-12">
-              <div className="md:col-span-5">
-                <p className="flex items-center gap-3 text-[0.7rem] font-medium uppercase tracking-[0.4em] text-brand-primary">
-                  <span className="inline-block h-px w-8 bg-brand-accent" />
-                  Onze aanpak
-                </p>
-                <h2
-                  className="heading-editorial mt-5 max-w-md"
-                  style={{ fontSize: "clamp(2rem, 4vw, 3.2rem)" }}
-                >
-                  Eén traject. Drie stappen. <span className="accent-word">Geen verrassingen.</span>
-                </h2>
-              </div>
-              <p className="text-base leading-relaxed text-brand-ink-soft md:col-span-7 md:text-lg">
-                Eén traject van plaatsbezoek tot oplevering, één aanspreekpunt
-                die alles coördineert. Geen verrassingen, geen telefoons tussen
-                aannemers — wij nemen de regie.
+            <div className="max-w-2xl">
+              <p className="flex items-center gap-3 text-[0.7rem] font-medium uppercase tracking-[0.4em] text-brand-primary">
+                <span className="inline-block h-px w-8 bg-brand-accent" />
+                Onze aanpak
               </p>
+              <h2
+                className="heading-editorial mt-5"
+                style={{ fontSize: "clamp(2rem, 4vw, 3.2rem)" }}
+              >
+                Eén traject. Vijf stappen. <span className="accent-word">Geen verrassingen.</span>
+              </h2>
             </div>
           </Reveal>
-          <div className="relative mt-20">
-            {/* Architectural dashed connector across (lg+) */}
+
+          <div className="relative mt-16">
+            {/* Horizontal dashed connector (md+) */}
             <div
               aria-hidden
-              className="pointer-events-none absolute left-[12%] right-[12%] top-7 hidden border-t-2 border-dashed border-brand-accent/40 lg:block"
+              className="pointer-events-none absolute left-[10%] right-[10%] top-7 hidden border-t-2 border-dashed border-brand-accent/35 lg:block"
             />
-            <ol className="relative grid gap-14 lg:grid-cols-3 lg:gap-10">
-              {[
-                {
-                  n: "01",
-                  t: "Plaatsbezoek",
-                  b: "We komen langs, luisteren, meten op en denken mee. Geen verkooppraat.",
-                },
-                {
-                  n: "02",
-                  t: "Onderbouwde offerte",
-                  b: "Eén document met alle disciplines, premies en planning. Vrijblijvend.",
-                },
-                {
-                  n: "03",
-                  t: "Uitvoering",
-                  b: "Eigen werfleiding, één aanspreekpunt, 10 jaar uitvoeringsgarantie.",
-                },
-              ].map((s, i) => (
-                <Reveal key={s.n} delay={i * 100}>
-                  <li className="relative rounded-2xl bg-brand-bg-alt p-8 ring-1 ring-brand-line lg:bg-brand-bg lg:p-0 lg:ring-0">
-                    {/* Rounded number badge */}
-                    <span className="relative z-10 inline-flex size-14 items-center justify-center rounded-full bg-brand-primary font-display text-xl font-semibold text-white lg:size-16">
+            <ol className="relative grid gap-12 lg:grid-cols-5 lg:gap-6">
+              {STEPS.map((s, i) => (
+                <Reveal key={s.n} delay={i * 80}>
+                  <li className="relative text-center lg:text-left">
+                    <span
+                      className={`relative z-10 inline-flex size-14 items-center justify-center rounded-full font-display text-base font-semibold transition-colors ${
+                        i === 0
+                          ? "bg-brand-accent text-white"
+                          : "bg-brand-bg ring-2 ring-brand-primary text-brand-primary"
+                      }`}
+                    >
                       {s.n}
                     </span>
-                    <h3 className="mt-6 font-display text-2xl text-brand-ink">{s.t}</h3>
-                    <p className="mt-3 text-brand-ink-soft">{s.b}</p>
+                    <h3 className="mt-5 font-display text-lg text-brand-ink">{s.t}</h3>
+                    <p className="mt-2 text-sm text-brand-ink-soft">{s.b}</p>
                   </li>
                 </Reveal>
               ))}
             </ol>
           </div>
 
-          <div className="mt-20 flex justify-center">
+          <div className="mt-16 flex justify-center">
             <Button asChild size="lg" className="group">
               <Link href="/offerte">
                 Vraag een onderbouwde offerte
@@ -201,7 +194,7 @@ export default function HomePage() {
       <MaterialStrip
         src="/images/projects/IMG-20260512-WA0074.jpg"
         alt="Duco D-systeem met verzinkte ventilatiebuizen op bakstenen wand"
-        label="Vakmanschap zit in elk detail."
+        label="Vakmanschap in elk detail."
         tag="Ventilatie"
       />
 
@@ -221,10 +214,14 @@ export default function HomePage() {
           extraImages={featured[2].frontmatter.gallery ?? []}
           quote={featured[2].frontmatter.quote}
           imageSide="left"
-          variant={PROJECT_VARIANTS[2]}
+          variant="white"
           index={3}
         />
       ) : null}
+
+      <EngagementsBlock />
+
+      <WorksiteVisit />
 
       <section className="section-cream pattern-dot-grid relative py-24 md:py-28">
         <div className="container-page relative">
@@ -284,6 +281,8 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+
+      <MagazineSignup />
 
       <Reveal direction="scale">
         <CTABlock

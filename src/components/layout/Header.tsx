@@ -8,6 +8,7 @@ import { Button } from "@/components/ui/button";
 import { Logo } from "@/components/brand/Logo";
 import { navigation, services, siteConfig } from "@/lib/site";
 import { MobileNav } from "@/components/layout/MobileNav";
+import { MegaMenu } from "@/components/layout/MegaMenu";
 import { resolveIcon } from "@/lib/icon-map";
 import { cn } from "@/lib/utils";
 
@@ -50,18 +51,22 @@ export function Header() {
           className="hidden items-center gap-7 md:flex"
           aria-label="Hoofdnavigatie"
         >
-          {navigation.map((item) => (
-            <Link
-              key={item.href}
-              href={item.href}
-              className="relative text-sm text-brand-ink transition-colors hover:text-brand-primary
-                         after:absolute after:left-0 after:-bottom-1 after:h-px after:w-full
-                         after:origin-left after:scale-x-0 after:bg-brand-primary
-                         after:transition-transform after:duration-300 hover:after:scale-x-100"
-            >
-              {item.label}
-            </Link>
-          ))}
+          {navigation.map((item) =>
+            item.label === "Diensten" ? (
+              <MegaMenu key={item.href} label={item.label} href={item.href} />
+            ) : (
+              <Link
+                key={item.href}
+                href={item.href}
+                className="relative text-sm text-brand-ink transition-colors hover:text-brand-primary
+                           after:absolute after:left-0 after:-bottom-1 after:h-px after:w-full
+                           after:origin-left after:scale-x-0 after:bg-brand-primary
+                           after:transition-transform after:duration-300 hover:after:scale-x-100"
+              >
+                {item.label}
+              </Link>
+            )
+          )}
         </nav>
 
         <div className="flex items-center gap-2">
