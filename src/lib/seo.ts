@@ -5,6 +5,7 @@ interface PageMetaInput {
   title: string;
   description?: string;
   path?: string;
+  canonical?: string;
   ogImage?: string;
   noIndex?: boolean;
 }
@@ -13,6 +14,7 @@ export function buildMetadata({
   title,
   description,
   path = "/",
+  canonical,
   ogImage,
   noIndex,
 }: PageMetaInput): Metadata {
@@ -20,7 +22,7 @@ export function buildMetadata({
     ? title
     : `${title} | ${siteConfig.name}`;
   const desc = description ?? siteConfig.description;
-  const url = `${siteConfig.url}${path}`;
+  const url = canonical ?? `${siteConfig.url}${path}`;
   const image = ogImage ?? siteConfig.ogImage;
 
   return {
