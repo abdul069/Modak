@@ -37,12 +37,12 @@ export function StatsStrip() {
             {stats.map((s) => (
               <li
                 key={s.label}
-                className="group relative bg-white/[0.03] p-8 ring-1 ring-white/10 transition-colors hover:bg-white/[0.06]"
+                className="group relative bg-white/[0.025] p-8 ring-1 ring-white/10 transition-all duration-300 hover:bg-white/[0.06] hover:ring-brand-accent/40"
               >
-                {/* Tiny green corner accent */}
+                {/* Thin green top-bar accent */}
                 <span
                   aria-hidden
-                  className="absolute right-0 top-0 size-3 bg-brand-accent"
+                  className="absolute left-0 right-0 top-0 h-px bg-brand-accent"
                 />
                 <CountUp
                   to={s.value}

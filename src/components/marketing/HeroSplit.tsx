@@ -123,20 +123,20 @@ export function HeroSplit({
           )}
         </div>
 
-        {/* Photo card with offset SQUARE color block behind */}
+        {/* Photo with architectural corner brackets */}
         <div className="relative md:col-span-5">
-          {/* Solid green offset rectangle behind */}
+          {/* Corner bracket top-left (green) */}
           <div
             aria-hidden
-            className="absolute inset-0 -translate-x-4 translate-y-4 bg-brand-accent md:-translate-x-6 md:translate-y-6"
+            className="absolute -left-3 -top-3 h-10 w-10 border-l-2 border-t-2 border-brand-accent md:-left-5 md:-top-5 md:h-16 md:w-16"
           />
-          {/* Optional small navy chip top-left of photo (architectural detail) */}
+          {/* Corner bracket bottom-right (white) */}
           <div
             aria-hidden
-            className="absolute -left-2 -top-3 hidden h-12 w-12 bg-brand-primary md:block md:-left-3 md:-top-4"
+            className="absolute -bottom-3 -right-3 h-10 w-10 border-b-2 border-r-2 border-white/30 md:-bottom-5 md:-right-5 md:h-16 md:w-16"
           />
           <div
-            className="animate-fade-up relative mx-auto aspect-[4/5] w-full max-w-[460px] overflow-hidden ring-1 ring-white/10 md:ml-auto md:mr-0"
+            className="animate-fade-up relative mx-auto aspect-[4/5] w-full max-w-[460px] overflow-hidden md:ml-auto md:mr-0"
             style={{ animationDelay: "320ms" }}
           >
             <div className="absolute inset-0 -m-[6%]">
@@ -150,8 +150,9 @@ export function HeroSplit({
               />
             </div>
             {caption ? (
-              <div className="absolute bottom-0 left-0 bg-brand-bg-dark/90 px-4 py-2">
-                <p className="text-[0.65rem] font-medium uppercase tracking-[0.3em] text-white">
+              <div className="absolute bottom-0 left-0 bg-brand-bg-dark/85 px-4 py-2.5 backdrop-blur-sm">
+                <p className="flex items-center gap-2 text-[0.6rem] font-medium uppercase tracking-[0.3em] text-white">
+                  <span className="inline-block h-px w-4 bg-brand-accent" />
                   {caption}
                 </p>
               </div>
@@ -160,7 +161,7 @@ export function HeroSplit({
           {/* Decorative vertical wordmark */}
           <div
             aria-hidden
-            className="absolute -right-3 -top-2 hidden font-display text-[0.65rem] uppercase tracking-[0.5em] text-white/25 [writing-mode:vertical-rl] lg:block"
+            className="absolute -right-3 top-8 hidden font-display text-[0.55rem] uppercase tracking-[0.5em] text-white/30 [writing-mode:vertical-rl] lg:block"
           >
             AGNAU · Realisaties · 2026
           </div>

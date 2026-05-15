@@ -52,24 +52,26 @@ export function FeaturedProject({
             imageSide === "right" && "lg:[&>*:first-child]:order-2"
           )}
         >
-          {/* Photo + offset SQUARE block */}
+          {/* Photo with architectural corner brackets */}
           <div className="relative lg:col-span-7">
-            {/* Solid green offset rectangle behind (sharp corners) */}
+            {/* Corner bracket (green) on the outer side */}
             <div
               aria-hidden
               className={cn(
-                "absolute inset-0 bg-brand-accent",
+                "absolute h-12 w-12 border-brand-accent md:h-20 md:w-20",
                 imageSide === "right"
-                  ? "translate-x-3 translate-y-3 md:translate-x-6 md:translate-y-6"
-                  : "-translate-x-3 translate-y-3 md:-translate-x-6 md:translate-y-6"
+                  ? "-right-3 -top-3 border-r-2 border-t-2 md:-right-6 md:-top-6"
+                  : "-left-3 -top-3 border-l-2 border-t-2 md:-left-6 md:-top-6"
               )}
             />
-            {/* Architectural detail: tiny navy square accent */}
+            {/* Corner bracket (navy/ink) on the opposite corner */}
             <div
               aria-hidden
               className={cn(
-                "absolute hidden h-12 w-12 bg-brand-primary md:block",
-                imageSide === "right" ? "-right-3 -top-4" : "-left-3 -top-4"
+                "absolute h-12 w-12 border-brand-primary/30 md:h-20 md:w-20",
+                imageSide === "right"
+                  ? "-bottom-3 -left-3 border-b-2 border-l-2 md:-bottom-6 md:-left-6"
+                  : "-bottom-3 -right-3 border-b-2 border-r-2 md:-bottom-6 md:-right-6"
               )}
             />
 
@@ -80,20 +82,20 @@ export function FeaturedProject({
                   alt={`Realisatie ${title}`}
                   fill
                   sizes="(min-width: 1024px) 55vw, 90vw"
-                  className="object-cover transition-transform duration-700 hover:scale-[1.03]"
+                  className="photo-graded object-cover transition-transform duration-700 hover:scale-[1.03]"
                 />
               </div>
             </RevealZoom>
 
-            {/* Floating secondary detail photo — SQUARE with ring (md+) */}
+            {/* Floating secondary detail photo (md+) */}
             {secondary ? (
               <RevealZoom
                 delay={180}
                 className={cn(
                   "absolute hidden aspect-[4/5] w-40 overflow-hidden ring-[6px] ring-brand-bg md:block lg:w-48",
                   imageSide === "right"
-                    ? "-left-4 -bottom-10 lg:-left-10"
-                    : "-right-4 -bottom-10 lg:-right-10"
+                    ? "-left-4 -bottom-12 lg:-left-12"
+                    : "-right-4 -bottom-12 lg:-right-12"
                 )}
               >
                 <Image
@@ -101,7 +103,7 @@ export function FeaturedProject({
                   alt={`Detail ${title}`}
                   fill
                   sizes="220px"
-                  className="object-cover"
+                  className="photo-graded object-cover"
                 />
               </RevealZoom>
             ) : null}
