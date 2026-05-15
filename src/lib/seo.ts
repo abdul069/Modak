@@ -92,7 +92,7 @@ export function serviceSchema(input: {
     "@type": "Service",
     name: input.name,
     description: input.description,
-    url: `${siteConfig.url}/diensten/${input.slug}`,
+    url: `${siteConfig.url}/${input.slug}`,
     provider: {
       "@type": "LocalBusiness",
       name: siteConfig.name,
