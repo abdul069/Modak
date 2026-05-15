@@ -67,6 +67,31 @@ export function localBusinessSchema() {
   };
 }
 
+export function organizationSchema() {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    name: siteConfig.legalName,
+    legalName: siteConfig.legalName,
+    url: siteConfig.url,
+    logo: `${siteConfig.url}/og.jpg`,
+    description: siteConfig.description,
+    sameAs: [
+      siteConfig.social.instagram,
+      siteConfig.social.facebook,
+      siteConfig.social.linkedin,
+    ],
+    contactPoint: {
+      "@type": "ContactPoint",
+      telephone: siteConfig.contact.phone,
+      contactType: "customer service",
+      email: siteConfig.contact.email,
+      areaServed: "BE",
+      availableLanguage: ["nl-BE"],
+    },
+  };
+}
+
 export function breadcrumbSchema(
   items: { name: string; url: string }[]
 ) {

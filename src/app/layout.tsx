@@ -7,6 +7,8 @@ import { LenisProvider } from "@/components/layout/LenisProvider";
 import { MetaPixel } from "@/components/tracking/MetaPixel";
 import { GTM, GTMNoScript } from "@/components/tracking/GTM";
 import { UTMCapture } from "@/components/tracking/UTMCapture";
+import { JsonLd } from "@/components/seo/JsonLd";
+import { organizationSchema } from "@/lib/seo";
 import { siteConfig } from "@/lib/site";
 import "./globals.css";
 
@@ -86,6 +88,7 @@ export default function RootLayout({
       <head>
         <GTM />
         <MetaPixel />
+        <JsonLd data={organizationSchema()} />
       </head>
       <body className="min-h-screen bg-white font-sans text-ink antialiased">
         <GTMNoScript />
