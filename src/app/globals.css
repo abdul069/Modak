@@ -240,6 +240,16 @@
     overflow: hidden;
   }
 
+  /* Tifre's signature: coral italic serif section heading */
+  .heading-coral {
+    font-family: var(--font-display);
+    font-style: italic;
+    color: var(--color-brand-accent);
+    line-height: 1.05;
+    letter-spacing: -0.005em;
+    font-weight: 500;
+  }
+
   .container-page {
     width: 100%;
     margin-inline: auto;

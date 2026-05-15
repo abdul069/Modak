@@ -66,19 +66,24 @@ export default function HomePage() {
       <section className="section-cream py-24">
         <div className="container-page">
           <Reveal>
-            <p className="flex items-center gap-2 text-[0.7rem] font-medium uppercase tracking-[0.35em] text-brand-primary">
-              Onze diensten <DotAccent size="sm" />
-            </p>
-            <h2
-              className="mt-5 max-w-3xl font-display leading-[1.05] text-brand-ink"
-              style={{ fontSize: "clamp(1.8rem, 3.6vw, 3rem)" }}
-            >
-              De volledige energetische schil van je woning.
-            </h2>
-            <p className="mt-5 max-w-2xl text-base text-brand-ink-soft md:text-lg">
-              Elf specialisaties die we onder eigen leiding uitvoeren — geen
-              onderaannemers waar het om kerntechniek gaat.
-            </p>
+            <div className="grid items-start gap-8 md:grid-cols-12 md:gap-12">
+              <div className="md:col-span-5">
+                <p className="flex items-center gap-2 text-[0.7rem] font-medium uppercase tracking-[0.35em] text-brand-primary">
+                  Onze diensten <DotAccent size="sm" />
+                </p>
+                <h2
+                  className="heading-coral mt-5 max-w-md"
+                  style={{ fontSize: "clamp(1.8rem, 3.6vw, 3rem)" }}
+                >
+                  De volledige energetische schil van je woning.
+                </h2>
+              </div>
+              <p className="text-base leading-relaxed text-brand-ink-soft md:col-span-7 md:text-lg">
+                Elf specialisaties die we onder eigen leiding uitvoeren — geen
+                onderaannemers waar het om kerntechniek gaat. Van het dak tot
+                de laadpaal, één partij die plant, uitvoert en oplevert.
+              </p>
+            </div>
           </Reveal>
           <div className="mt-14 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {services.map((service, i) => (
@@ -116,15 +121,24 @@ export default function HomePage() {
       <section className="bg-brand-bg py-24">
         <div className="container-page">
           <Reveal>
-            <p className="flex items-center gap-2 text-[0.7rem] font-medium uppercase tracking-[0.35em] text-brand-primary">
-              Onze aanpak <DotAccent size="sm" />
-            </p>
-            <h2
-              className="mt-5 max-w-3xl font-display leading-[1.05] text-brand-ink"
-              style={{ fontSize: "clamp(1.8rem, 3.6vw, 3rem)" }}
-            >
-              Eén traject. Drie stappen. Geen verrassingen.
-            </h2>
+            <div className="grid items-start gap-8 md:grid-cols-12 md:gap-12">
+              <div className="md:col-span-5">
+                <p className="flex items-center gap-2 text-[0.7rem] font-medium uppercase tracking-[0.35em] text-brand-primary">
+                  Onze aanpak <DotAccent size="sm" />
+                </p>
+                <h2
+                  className="heading-coral mt-5 max-w-md"
+                  style={{ fontSize: "clamp(1.8rem, 3.6vw, 3rem)" }}
+                >
+                  Snel en efficiënt, met oog voor kwaliteit.
+                </h2>
+              </div>
+              <p className="text-base leading-relaxed text-brand-ink-soft md:col-span-7 md:text-lg">
+                Eén traject van plaatsbezoek tot oplevering, één aanspreekpunt
+                die alles coördineert. Geen verrassingen, geen telefoons tussen
+                aannemers — wij nemen de regie.
+              </p>
+            </div>
           </Reveal>
           <ol className="mt-16 grid gap-12 lg:grid-cols-3">
             {[
@@ -198,7 +212,7 @@ export default function HomePage() {
                   Wat klanten zeggen <DotAccent size="sm" />
                 </p>
                 <h2
-                  className="mt-5 max-w-3xl font-display leading-[1.05] text-brand-ink"
+                  className="heading-coral mt-5 max-w-2xl"
                   style={{ fontSize: "clamp(1.8rem, 3.6vw, 3rem)" }}
                 >
                   20 jaar ervaring vertelt zich door.
